@@ -4985,9 +4985,6 @@ span.select2-container.select2-container--default.select2-container--open {
   }
   .expand-menu .sidebar-right {
     display: block;
-    -webkit-transition: all 0.2s ease;
-    -ms-transition: all 0.2s ease;
-    transition: all 0.2s ease;
   }
   .expand-menu .sidebar {
     width: 260px;
