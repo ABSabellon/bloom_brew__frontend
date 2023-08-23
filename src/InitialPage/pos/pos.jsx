@@ -98,103 +98,20 @@ const Pos = () => {
           <div className="content">
             <div className="row">
               <POS />
-              <div className="col-lg-4 col-sm-12 ">
+              <div className="col-lg-3 col-sm-12 ">
                 <div className="order-list">
                   <div className="orderid">
                     <h4>Order List</h4>
                     <h5>Transaction id : #65565</h5>
                   </div>
-                  <div className="actionproducts">
-                    <ul>
-                      <li>
-                        <Link
-                          to="#"
-                          className="deletebg confirm-text"
-                          onClick={confirmText}
-                        >
-                          <img src={delete2} alt="img" />
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="#"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                          className="dropset"
-                        >
-                          <img src={ellipise1} alt="img" />
-                        </Link>
-                        <ul
-                          className="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton"
-                          data-popper-placement="bottom-end"
-                        >
-                          <li>
-                            <Link to="#" className="dropdown-item">
-                              Action
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="#" className="dropdown-item">
-                              Another Action
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="#" className="dropdown-item">
-                              Something Elses
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
                 <div className="card card-order">
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-12">
-                        <Link
-                          to="#"
-                          className="btn btn-adds"
-                          data-bs-toggle="modal"
-                          data-bs-target="#create"
-                        >
-                          <i className="fa fa-plus me-2" />
-                          Add Customer
-                        </Link>
-                      </div>
                       <div className="col-lg-12">
-                        <div className="select-split ">
-                          <div className="select-group w-100">
-                            <Select2
-                              className="select"
-                              data={options}
-                              options={{
-                                placeholder: "Walk-in Customer",
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="select-split">
-                          <div className="select-group w-100">
-                            <Select2
-                              className="select"
-                              data={options1}
-                              options={{
-                                placeholder: "Product",
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="text-end">
-                          <Link to="#" className="btn btn-scanner-set">
-                            <img src={scanner1} alt="img" className="me-2" />
-                            Scan bardcode
-                          </Link>
+                        <div class="form-group w-100 mb-0">
+                          <label>Customer Name</label>
+                          <input type="text"/>
                         </div>
                       </div>
                     </div>
@@ -403,15 +320,15 @@ const Pos = () => {
                       <ul>
                         <li>
                           <h5>Subtotal </h5>
-                          <h6>55.00$</h6>
+                          <h6>&#8369;55.00</h6>
                         </li>
                         <li>
                           <h5>Tax </h5>
-                          <h6>5.00$</h6>
+                          <h6>&#8369;5.00</h6>
                         </li>
                         <li className="total-value">
                           <h5>Total</h5>
-                          <h6>60.00$</h6>
+                          <h6>&#8369;60.00</h6>
                         </li>
                       </ul>
                     </div>
@@ -432,14 +349,14 @@ const Pos = () => {
                         <li>
                           <Link to="#" className="paymentmethod">
                             <img src={scan} alt="img" className="me-2" />
-                            Scan
+                            E-Wallet
                           </Link>
                         </li>
                       </ul>
                     </div>
                     <div className="btn-totallabel">
                       <h5>Checkout</h5>
-                      <h6>60.00$</h6>
+                      <h6>&#8369;60.00</h6>
                     </div>
                     <div className="btn-pos">
                       <ul>

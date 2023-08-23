@@ -348,8 +348,8 @@ const HeaderOne = () => {
                   <img src={Avatar} alt="" className="img-fluid" />
                 </span>
                 <span className="user-detail">
-                  <span className="user-name">John Smilga</span>
-                  <span className="user-role">Super Admin</span>
+                  <span className="user-name">Test User</span>
+                  <span className="user-role">Cashier</span>
                 </span>
               </span>
             </Link>
@@ -361,8 +361,8 @@ const HeaderOne = () => {
                     <span className="status online" />
                   </span>
                   <div className="profilesets">
-                    <h6>John Smilga</h6>
-                    <h5>Super Admin</h5>
+                    <h6>Test User</h6>
+                    <h5>Cashier</h5>
                   </div>
                 </div>
                 <hr className="m-0" />

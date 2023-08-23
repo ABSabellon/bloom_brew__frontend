@@ -1,13 +1,13 @@
 /****** UTILS ******/
-@import "utils/variables";
-@import "utils/mixins";
+@import "utils/variables.scss";
+@import "utils/mixins.scss";
 
 /******* BASE *******/
-@import "base/reset";
-@import "base/typography";
-@import "base/colors"; 
-@import "base/base";
-@import "base/grid";
+@import "base/reset.scss";
+@import "base/typography.scss";
+@import "base/colors.scss"; 
+@import "base/base.scss";
+@import "base/grid.scss";
 
 /******* COMPONENTS ******/
 @import "components/button";
