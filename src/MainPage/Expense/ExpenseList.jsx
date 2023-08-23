@@ -181,7 +181,7 @@ const ExpenseList = () => {
       title: "Action",
       render: () => (
         <>
-          <Link className="me-3" to="/dream-pos/expense/editexpense-expense">
+          <Link className="me-3" to="/bloom-brew/expense/editexpense-expense">
             <img src={EditIcon} alt="img" />
           </Link>
           <Link className="confirm-text" to="#" onClick={confirmText}>
@@ -203,7 +203,7 @@ const ExpenseList = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/dream-pos/expense/addexpense-expense"
+                to="/bloom-brew/expense/addexpense-expense"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

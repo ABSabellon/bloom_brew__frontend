@@ -167,7 +167,7 @@ const PurchaseList = () => {
       title: "Action",
       render: () => (
         <>
-          <Link className="me-3" to="/dream-pos/purchase/editpurchase-purchase">
+          <Link className="me-3" to="/bloom-brew/purchase/editpurchase-purchase">
             <img src={EditIcon} alt="img" />
           </Link>
           <Link className="confirm-text" to="#">
@@ -189,7 +189,7 @@ const PurchaseList = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/dream-pos/purchase/addpurchase-purchase"
+                to="/bloom-brew/purchase/addpurchase-purchase"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

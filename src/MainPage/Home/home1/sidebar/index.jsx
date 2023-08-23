@@ -63,7 +63,7 @@ const SidebarThree = (props) => {
                 <ul className={`${menu === true ? "d-block" : ""}`}>
                   <li>
                     <Link
-                      to="/dream-pos/index-three"
+                      to="/bloom-brew/index-three"
                       className={`${menu === true ? "subdrop" : ""}`}
                     >
                       <img src={Dashboard} alt="img" />
@@ -83,52 +83,52 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu6 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/product/productlist-product">
+                        <Link to="/bloom-brew/product/productlist-product">
                           Product List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/addproduct-product">
+                        <Link to="/bloom-brew/product/addproduct-product">
                           Add Product
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/categorylist-product">
+                        <Link to="/bloom-brew/product/categorylist-product">
                           Category List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/addcategory-product">
+                        <Link to="/bloom-brew/product/addcategory-product">
                           Add Category
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/subcategorytable-product">
+                        <Link to="/bloom-brew/product/subcategorytable-product">
                           Sub Category List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/addsubcategory-product">
+                        <Link to="/bloom-brew/product/addsubcategory-product">
                           Add Sub Category
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/brandlist-product">
+                        <Link to="/bloom-brew/product/brandlist-product">
                           Brand List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/addbrand-product">
+                        <Link to="/bloom-brew/product/addbrand-product">
                           Add Brand
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/importproduct-product">
+                        <Link to="/bloom-brew/product/importproduct-product">
                           Import Products
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/product/printbarcode-product">
+                        <Link to="/bloom-brew/product/printbarcode-product">
                           Print Barcode
                         </Link>
                       </li>
@@ -147,7 +147,7 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu7 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/sales/saleslist">Sales List</Link>
+                        <Link to="/bloom-brew/sales/saleslist">Sales List</Link>
                       </li>
                       <li>
                         <Link to="/pos">POS</Link>
@@ -156,12 +156,12 @@ const SidebarThree = (props) => {
                         <Link to="/pos">New Sales</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/return/salesreturnlist-return">
+                        <Link to="/bloom-brew/return/salesreturnlist-return">
                           Sales Return List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/return/addsalesreturn-return">
+                        <Link to="/bloom-brew/return/addsalesreturn-return">
                           New Sales Return
                         </Link>
                       </li>
@@ -180,17 +180,17 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu8 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/purchase/purchaselist-purchase">
+                        <Link to="/bloom-brew/purchase/purchaselist-purchase">
                           Purchase List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/purchase/addpurchase-purchase">
+                        <Link to="/bloom-brew/purchase/addpurchase-purchase">
                           Add Purchase
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/purchase/importpurchase-purchase">
+                        <Link to="/bloom-brew/purchase/importpurchase-purchase">
                           Import Purchase
                         </Link>
                       </li>
@@ -209,17 +209,17 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu9 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/expense/expenselist-expense">
+                        <Link to="/bloom-brew/expense/expenselist-expense">
                           Expense List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/expense/addexpense-expense">
+                        <Link to="/bloom-brew/expense/addexpense-expense">
                           Add Expense
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/expense/expensecategory-expense">
+                        <Link to="/bloom-brew/expense/expensecategory-expense">
                           Expense Category
                         </Link>
                       </li>
@@ -238,12 +238,12 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu10 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/quotation/quotationlist-quotation">
+                        <Link to="/bloom-brew/quotation/quotationlist-quotation">
                           Quotation List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/quotation/addquotation-quotation">
+                        <Link to="/bloom-brew/quotation/addquotation-quotation">
                           Add Quotation
                         </Link>
                       </li>
@@ -262,17 +262,17 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu11 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/transfer/transferlist-transfer">
+                        <Link to="/bloom-brew/transfer/transferlist-transfer">
                           Transfer List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/transfer/addtransfer-transfer">
+                        <Link to="/bloom-brew/transfer/addtransfer-transfer">
                           Add Transfer{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/transfer/importtransfer-transfer">
+                        <Link to="/bloom-brew/transfer/importtransfer-transfer">
                           Import Transfer{" "}
                         </Link>
                       </li>
@@ -291,22 +291,22 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu12 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/return/salesreturnlist-return">
+                        <Link to="/bloom-brew/return/salesreturnlist-return">
                           Sales Return List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/return/addsalesreturn-return">
+                        <Link to="/bloom-brew/return/addsalesreturn-return">
                           Add Sales Return{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/return/purchasereturnlist-return">
+                        <Link to="/bloom-brew/return/purchasereturnlist-return">
                           Purchase Return List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/return/addpurchasereturn-return">
+                        <Link to="/bloom-brew/return/addpurchasereturn-return">
                           Add Purchase Return{" "}
                         </Link>
                       </li>
@@ -325,42 +325,42 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu13 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/people/customerlist-people">
+                        <Link to="/bloom-brew/people/customerlist-people">
                           Customer List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/addcustomer-people">
+                        <Link to="/bloom-brew/people/addcustomer-people">
                           Add Customer
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/supplierlist-people">
+                        <Link to="/bloom-brew/people/supplierlist-people">
                           Supplier List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/addsupplier-people">
+                        <Link to="/bloom-brew/people/addsupplier-people">
                           Add Supplier{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/userlist-people">
+                        <Link to="/bloom-brew/people/userlist-people">
                           User List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/adduser-people">
+                        <Link to="/bloom-brew/people/adduser-people">
                           Add User
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/storelist-people">
+                        <Link to="/bloom-brew/people/storelist-people">
                           Store List
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/people/addstore-people">
+                        <Link to="/bloom-brew/people/addstore-people">
                           Add Store
                         </Link>
                       </li>
@@ -379,22 +379,22 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu20 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/places/newcountry-places">
+                        <Link to="/bloom-brew/places/newcountry-places">
                           New Country
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/places/countrylist-places">
+                        <Link to="/bloom-brew/places/countrylist-places">
                           Countries list
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/places/newstate-places">
+                        <Link to="/bloom-brew/places/newstate-places">
                           New State{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/places/statelist-places">
+                        <Link to="/bloom-brew/places/statelist-places">
                           State list
                         </Link>
                       </li>
@@ -415,10 +415,10 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu1 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/users/newuser">New User </Link>
+                    <Link to="/bloom-brew/users/newuser">New User </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/users/userlists">Users List</Link>
+                    <Link to="/bloom-brew/users/userlists">Users List</Link>
                   </li>
                 </ul>
               </li>
@@ -455,74 +455,74 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu14 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/elements/sweetalerts">
+                        <Link to="/bloom-brew/elements/sweetalerts">
                           Sweet Alerts
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/tooltip">Tooltip</Link>
+                        <Link to="/bloom-brew/elements/tooltip">Tooltip</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/popover">Popover</Link>
+                        <Link to="/bloom-brew/elements/popover">Popover</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/ribbon">Ribbon</Link>
+                        <Link to="/bloom-brew/elements/ribbon">Ribbon</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/clipboard">
+                        <Link to="/bloom-brew/elements/clipboard">
                           Clipboard
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/drag-drop">
+                        <Link to="/bloom-brew/elements/drag-drop">
                           Drag &amp; Drop
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/rangeslider">
+                        <Link to="/bloom-brew/elements/rangeslider">
                           Range Slider
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/rating">Rating</Link>
+                        <Link to="/bloom-brew/elements/rating">Rating</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/toastr">Toastr</Link>
+                        <Link to="/bloom-brew/elements/toastr">Toastr</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/text-editor">
+                        <Link to="/bloom-brew/elements/text-editor">
                           Text Editor
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/counter">Counter</Link>
+                        <Link to="/bloom-brew/elements/counter">Counter</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/scrollbar">
+                        <Link to="/bloom-brew/elements/scrollbar">
                           Scrollbar
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/spinner">Spinner</Link>
+                        <Link to="/bloom-brew/elements/spinner">Spinner</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/notification">
+                        <Link to="/bloom-brew/elements/notification">
                           Notification
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/lightbox">Lightbox</Link>
+                        <Link to="/bloom-brew/elements/lightbox">Lightbox</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/stickynote">
+                        <Link to="/bloom-brew/elements/stickynote">
                           Sticky Note
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/timeline">Timeline</Link>
+                        <Link to="/bloom-brew/elements/timeline">Timeline</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/elements/form-wizard">
+                        <Link to="/bloom-brew/elements/form-wizard">
                           Form Wizard
                         </Link>
                       </li>
@@ -541,25 +541,25 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu15 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/charts/chart-apex">
+                        <Link to="/bloom-brew/charts/chart-apex">
                           Apex Charts
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/charts/chart-js">Chart Js</Link>
+                        <Link to="/bloom-brew/charts/chart-js">Chart Js</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/charts/chart-morris">
+                        <Link to="/bloom-brew/charts/chart-morris">
                           Morris Charts
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/charts/chart-flot">
+                        <Link to="/bloom-brew/charts/chart-flot">
                           Flot Charts
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/charts/chart-peity">
+                        <Link to="/bloom-brew/charts/chart-peity">
                           Peity Charts
                         </Link>
                       </li>
@@ -578,50 +578,50 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu16 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/icons/icon-fontawesome">
+                        <Link to="/bloom-brew/icons/icon-fontawesome">
                           Fontawesome Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-feather">
+                        <Link to="/bloom-brew/icons/icon-feather">
                           Feather Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-ionic">
+                        <Link to="/bloom-brew/icons/icon-ionic">
                           Ionic Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-material">
+                        <Link to="/bloom-brew/icons/icon-material">
                           Material Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-pe7">Pe7 Icons</Link>
+                        <Link to="/bloom-brew/icons/icon-pe7">Pe7 Icons</Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-simpleline">
+                        <Link to="/bloom-brew/icons/icon-simpleline">
                           Simpleline Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-themify">
+                        <Link to="/bloom-brew/icons/icon-themify">
                           Themify Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-weather">
+                        <Link to="/bloom-brew/icons/icon-weather">
                           Weather Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-typicon">
+                        <Link to="/bloom-brew/icons/icon-typicon">
                           Typicon Icons
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/icons/icon-flag">Flag Icons</Link>
+                        <Link to="/bloom-brew/icons/icon-flag">Flag Icons</Link>
                       </li>
                     </ul>
                   </li>
@@ -638,41 +638,41 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu17 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/forms/form-basic-inputs">
+                        <Link to="/bloom-brew/forms/form-basic-inputs">
                           Basic Inputs{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-input-groups">
+                        <Link to="/bloom-brew/forms/form-input-groups">
                           Input Groups{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-horizontal">
+                        <Link to="/bloom-brew/forms/form-horizontal">
                           Horizontal Form{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-vertical">
+                        <Link to="/bloom-brew/forms/form-vertical">
                           {" "}
                           Vertical Form{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-mask">Form Mask </Link>
+                        <Link to="/bloom-brew/forms/form-mask">Form Mask </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-validation">
+                        <Link to="/bloom-brew/forms/form-validation">
                           Form Validation{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-select2">
+                        <Link to="/bloom-brew/forms/form-select2">
                           Form Select2{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/forms/form-fileupload">
+                        <Link to="/bloom-brew/forms/form-fileupload">
                           File Upload{" "}
                         </Link>
                       </li>
@@ -691,19 +691,19 @@ const SidebarThree = (props) => {
                     </Link>
                     <ul className={`${menu18 === true ? "d-block" : ""}`}>
                       <li>
-                        <Link to="/dream-pos/table/tables-basic">
+                        <Link to="/bloom-brew/table/tables-basic">
                           Basic Tables{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link to="/dream-pos/table/data-tables">
+                        <Link to="/bloom-brew/table/data-tables">
                           Data Table{" "}
                         </Link>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <Link to="/dream-pos/blankpage">
+                    <Link to="/bloom-brew/blankpage">
                       <i data-feather="file" />
                       <span> Blank Page</span>{" "}
                     </Link>
@@ -743,13 +743,13 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu3 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/application/chat">Chat</Link>
+                    <Link to="/bloom-brew/application/chat">Chat</Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/application/calendar">Calendar</Link>
+                    <Link to="/bloom-brew/application/calendar">Calendar</Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/application/email">Email</Link>
+                    <Link to="/bloom-brew/application/email">Email</Link>
                   </li>
                 </ul>
               </li>
@@ -766,35 +766,35 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu4 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/report/purchaseorderreport">
+                    <Link to="/bloom-brew/report/purchaseorderreport">
                       Purchase order report
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/report/inventoryreport">
+                    <Link to="/bloom-brew/report/inventoryreport">
                       Inventory Report
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/report/salesreport">Sales Report</Link>
+                    <Link to="/bloom-brew/report/salesreport">Sales Report</Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/report/invoicereport">
+                    <Link to="/bloom-brew/report/invoicereport">
                       Invoice Report
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/report/purchasereport">
+                    <Link to="/bloom-brew/report/purchasereport">
                       Purchase Report
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/report/supplierreport">
+                    <Link to="/bloom-brew/report/supplierreport">
                       Supplier Report
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/report/customerreport">
+                    <Link to="/bloom-brew/report/customerreport">
                       Customer Report
                     </Link>
                   </li>
@@ -813,32 +813,32 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu5 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/settings/generalsettings">
+                    <Link to="/bloom-brew/settings/generalsettings">
                       General Settings
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/settings/emailsettings">
+                    <Link to="/bloom-brew/settings/emailsettings">
                       Email Settings
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/settings/paymentsettings">
+                    <Link to="/bloom-brew/settings/paymentsettings">
                       Payment Settings
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/settings/currencysettings">
+                    <Link to="/bloom-brew/settings/currencysettings">
                       Currency Settings
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/settings/grouppermissions">
+                    <Link to="/bloom-brew/settings/grouppermissions">
                       Group Permissions
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/settings/taxrates">Tax Rates</Link>
+                    <Link to="/bloom-brew/settings/taxrates">Tax Rates</Link>
                   </li>
                 </ul>
               </li>
@@ -855,7 +855,7 @@ const SidebarThree = (props) => {
             <ul className={`${menu === true ? "d-block" : ""}`}>
               <li>
                 <Link
-                  to="/dream-pos/index-three"
+                  to="/bloom-brew/index-three"
                   className={`${menu === true ? "subdrop" : ""}`}
                 >
                   <img src={Dashboard} alt="img" />
@@ -875,52 +875,52 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu6 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/product/productlist-product">
+                    <Link to="/bloom-brew/product/productlist-product">
                       Product List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/addproduct-product">
+                    <Link to="/bloom-brew/product/addproduct-product">
                       Add Product
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/categorylist-product">
+                    <Link to="/bloom-brew/product/categorylist-product">
                       Category List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/addcategory-product">
+                    <Link to="/bloom-brew/product/addcategory-product">
                       Add Category
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/subcategorytable-product">
+                    <Link to="/bloom-brew/product/subcategorytable-product">
                       Sub Category List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/addsubcategory-product">
+                    <Link to="/bloom-brew/product/addsubcategory-product">
                       Add Sub Category
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/brandlist-product">
+                    <Link to="/bloom-brew/product/brandlist-product">
                       Brand List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/addbrand-product">
+                    <Link to="/bloom-brew/product/addbrand-product">
                       Add Brand
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/importproduct-product">
+                    <Link to="/bloom-brew/product/importproduct-product">
                       Import Products
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/product/printbarcode-product">
+                    <Link to="/bloom-brew/product/printbarcode-product">
                       Print Barcode
                     </Link>
                   </li>
@@ -939,7 +939,7 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu7 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/sales/saleslist">Sales List</Link>
+                    <Link to="/bloom-brew/sales/saleslist">Sales List</Link>
                   </li>
                   <li>
                     <Link to="/pos">POS</Link>
@@ -948,12 +948,12 @@ const SidebarThree = (props) => {
                     <Link to="/pos">New Sales</Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/return/salesreturnlist-return">
+                    <Link to="/bloom-brew/return/salesreturnlist-return">
                       Sales Return List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/return/addsalesreturn-return">
+                    <Link to="/bloom-brew/return/addsalesreturn-return">
                       New Sales Return
                     </Link>
                   </li>
@@ -972,17 +972,17 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu8 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/purchase/purchaselist-purchase">
+                    <Link to="/bloom-brew/purchase/purchaselist-purchase">
                       Purchase List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/purchase/addpurchase-purchase">
+                    <Link to="/bloom-brew/purchase/addpurchase-purchase">
                       Add Purchase
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/purchase/importpurchase-purchase">
+                    <Link to="/bloom-brew/purchase/importpurchase-purchase">
                       Import Purchase
                     </Link>
                   </li>
@@ -1001,17 +1001,17 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu9 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/expense/expenselist-expense">
+                    <Link to="/bloom-brew/expense/expenselist-expense">
                       Expense List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/expense/addexpense-expense">
+                    <Link to="/bloom-brew/expense/addexpense-expense">
                       Add Expense
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/expense/expensecategory-expense">
+                    <Link to="/bloom-brew/expense/expensecategory-expense">
                       Expense Category
                     </Link>
                   </li>
@@ -1030,12 +1030,12 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu10 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/quotation/quotationlist-quotation">
+                    <Link to="/bloom-brew/quotation/quotationlist-quotation">
                       Quotation List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/quotation/addquotation-quotation">
+                    <Link to="/bloom-brew/quotation/addquotation-quotation">
                       Add Quotation
                     </Link>
                   </li>
@@ -1054,17 +1054,17 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu11 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/transfer/transferlist-transfer">
+                    <Link to="/bloom-brew/transfer/transferlist-transfer">
                       Transfer List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/transfer/addtransfer-transfer">
+                    <Link to="/bloom-brew/transfer/addtransfer-transfer">
                       Add Transfer{" "}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/transfer/importtransfer-transfer">
+                    <Link to="/bloom-brew/transfer/importtransfer-transfer">
                       Import Transfer{" "}
                     </Link>
                   </li>
@@ -1083,22 +1083,22 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu12 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/return/salesreturnlist-return">
+                    <Link to="/bloom-brew/return/salesreturnlist-return">
                       Sales Return List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/return/addsalesreturn-return">
+                    <Link to="/bloom-brew/return/addsalesreturn-return">
                       Add Sales Return{" "}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/return/purchasereturnlist-return">
+                    <Link to="/bloom-brew/return/purchasereturnlist-return">
                       Purchase Return List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/return/addpurchasereturn-return">
+                    <Link to="/bloom-brew/return/addpurchasereturn-return">
                       Add Purchase Return{" "}
                     </Link>
                   </li>
@@ -1117,40 +1117,40 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu13 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/people/customerlist-people">
+                    <Link to="/bloom-brew/people/customerlist-people">
                       Customer List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/addcustomer-people">
+                    <Link to="/bloom-brew/people/addcustomer-people">
                       Add Customer
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/supplierlist-people">
+                    <Link to="/bloom-brew/people/supplierlist-people">
                       Supplier List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/addsupplier-people">
+                    <Link to="/bloom-brew/people/addsupplier-people">
                       Add Supplier{" "}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/userlist-people">
+                    <Link to="/bloom-brew/people/userlist-people">
                       User List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/adduser-people">Add User</Link>
+                    <Link to="/bloom-brew/people/adduser-people">Add User</Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/storelist-people">
+                    <Link to="/bloom-brew/people/storelist-people">
                       Store List
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/people/addstore-people">
+                    <Link to="/bloom-brew/people/addstore-people">
                       Add Store
                     </Link>
                   </li>
@@ -1169,22 +1169,22 @@ const SidebarThree = (props) => {
                 </Link>
                 <ul className={`${menu20 === true ? "d-block" : ""}`}>
                   <li>
-                    <Link to="/dream-pos/places/newcountry-places">
+                    <Link to="/bloom-brew/places/newcountry-places">
                       New Country
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/places/countrylist-places">
+                    <Link to="/bloom-brew/places/countrylist-places">
                       Countries list
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/places/newstate-places">
+                    <Link to="/bloom-brew/places/newstate-places">
                       New State{" "}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dream-pos/places/statelist-places">
+                    <Link to="/bloom-brew/places/statelist-places">
                       State list
                     </Link>
                   </li>

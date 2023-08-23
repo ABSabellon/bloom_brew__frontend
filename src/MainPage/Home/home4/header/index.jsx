@@ -46,7 +46,7 @@ const HeaderFour = (props) => {
   let pathname = location.pathname;
 
   const exclusionArray =[
-    '/template/dream-pos/index-three',
+    '/template/bloom-brew/index-three',
     
   ]
   if (exclusionArray.indexOf(window.location.pathname) >= 0) {
@@ -117,13 +117,13 @@ const HeaderFour = (props) => {
           onMouseLeave={expandMenu}
           onMouseOver={expandMenuOpen}
         >
-          <Link to="/dream-pos/dashboard" className="logo logo-normal">
+          <Link to="/bloom-brew/dashboard" className="logo logo-normal">
             <img src={Logo} alt="" />
           </Link>
-          <Link to="/dream-pos/dashboard" className="logo logo-white">
+          <Link to="/bloom-brew/dashboard" className="logo logo-white">
             <img src={LogoWhite} alt="" />
           </Link>
-          <Link to="/dream-pos/dashboard" className="logo-small">
+          <Link to="/bloom-brew/dashboard" className="logo-small">
             <img src={SmallLogo} alt="" />
           </Link>
           <Link
@@ -240,7 +240,7 @@ const HeaderFour = (props) => {
               <div className="noti-content">
                 <ul className="notification-list">
                   <li className="notification-message active">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar2} />
@@ -263,7 +263,7 @@ const HeaderFour = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar3} />
@@ -286,7 +286,7 @@ const HeaderFour = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar6} />
@@ -312,7 +312,7 @@ const HeaderFour = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar17} />
@@ -335,7 +335,7 @@ const HeaderFour = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar13} />
@@ -360,13 +360,13 @@ const HeaderFour = (props) => {
                 </ul>
               </div>
               <div className="topnav-dropdown-footer">
-                <Link to="/dream-pos/activities">View all Notifications</Link>
+                <Link to="/bloom-brew/activities">View all Notifications</Link>
               </div>
             </div>
           </li>
           {/* /Notifications */}
           <li className="nav-item nav-item-box">
-            <Link to="/dream-pos/settings/generalsettings">
+            <Link to="/bloom-brew/settings/generalsettings">
               {/* <i data-feather="settings" /> */}
               <FeatherIcon icon="settings" />
             </Link>
@@ -402,13 +402,13 @@ const HeaderFour = (props) => {
                 <hr className="m-0" />
                 <Link
                   className="dropdown-item"
-                  to="/dream-pos/profile/user-profile"
+                  to="/bloom-brew/profile/user-profile"
                 >
                   <i className="me-2" data-feather="user" /> My Profile
                 </Link>
                 <Link
                   className="dropdown-item"
-                  to="/dream-pos/settings/generalsettings"
+                  to="/bloom-brew/settings/generalsettings"
                 >
                   <i className="me-2" data-feather="settings" />
                   Settings

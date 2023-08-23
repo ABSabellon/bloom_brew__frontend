@@ -152,7 +152,7 @@ const CategoryList = () => {
       render: () => (
         <>
           <>
-            <Link className="me-3" to="/dream-pos/product/editcategory-product">
+            <Link className="me-3" to="/bloom-brew/product/editcategory-product">
               <img src={EditIcon} alt="img" />
             </Link>
             <Link className="confirm-text" to="#" onClick={confirmText}>
@@ -175,7 +175,7 @@ const CategoryList = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/dream-pos/product/addcategory-product"
+                to="/bloom-brew/product/addcategory-product"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

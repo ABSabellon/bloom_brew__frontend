@@ -104,7 +104,7 @@ const BrandList = () => {
       render: () => (
         <>
           <>
-            <Link className="me-3" to="/dream-pos/product/editbrand-product">
+            <Link className="me-3" to="/bloom-brew/product/editbrand-product">
               <img src={EditIcon} alt="img" />
             </Link>
             <Link className="confirm-text" to="#" onClick={confirmText}>
@@ -127,7 +127,7 @@ const BrandList = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/dream-pos/product/addbrand-product"
+                to="/bloom-brew/product/addbrand-product"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

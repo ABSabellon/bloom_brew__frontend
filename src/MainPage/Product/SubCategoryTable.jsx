@@ -147,7 +147,7 @@ const SubCategoryList = () => {
       render: () => (
         <>
           <>
-            <Link className="me-3" to="/dream-pos/product/editsubcategory-product">
+            <Link className="me-3" to="/bloom-brew/product/editsubcategory-product">
               <img src={EditIcon} alt="img" />
             </Link>
             <Link className="confirm-text" to="#">
@@ -170,7 +170,7 @@ const SubCategoryList = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/dream-pos/product/addsubcategory-product"
+                to="/bloom-brew/product/addsubcategory-product"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

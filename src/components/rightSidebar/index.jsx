@@ -118,7 +118,7 @@ const RightSideBar = () => {
                         className="checktoggle"
                         onClick={refreshPage}
                       >
-                        <Link to="/dream-pos/dashboard" className="layout-link">
+                        <Link to="/bloom-brew/dashboard" className="layout-link">
                           checkbox
                         </Link>{" "}
                       </label>
@@ -139,7 +139,7 @@ const RightSideBar = () => {
                       <input type="checkbox" id={1} className="check" />
                       <label htmlFor={1} className="checktoggle">
                         <a
-                          href="https://dreamspos.dreamguystech.com/reactjs/template-rtl/dream-pos/dashboard"
+                          href="https://dreamspos.dreamguystech.com/reactjs/template-rtl/bloom-brew/dashboard"
                           className="layout-link"
                         >
                           checkbox
@@ -168,7 +168,7 @@ const RightSideBar = () => {
                         onClick={refreshPage}
                       >
                         <Link
-                          to="/dream-pos/index-three"
+                          to="/bloom-brew/index-three"
                           className="layout-link"
                         >
                           checkbox
@@ -195,7 +195,7 @@ const RightSideBar = () => {
                         onClick={refreshPage}
                       >
                         <Link
-                          to="/dream-pos/index-four"
+                          to="/bloom-brew/index-four"
                           className="layout-link"
                         >
                           checkbox
@@ -247,7 +247,7 @@ const RightSideBar = () => {
                         className="checktoggle"
                         onClick={refreshPage}
                       >
-                        <Link to="/dream-pos/dashboard" className="layout-link">
+                        <Link to="/bloom-brew/dashboard" className="layout-link">
                           checkbox
                         </Link>{" "}
                       </label>
@@ -271,7 +271,7 @@ const RightSideBar = () => {
                         className="checktoggle"
                         onClick={refreshPage}
                       >
-                        <Link to="/dream-pos/index-one" className="layout-link">
+                        <Link to="/bloom-brew/index-one" className="layout-link">
                           checkbox
                         </Link>{" "}
                       </label>
@@ -296,7 +296,7 @@ const RightSideBar = () => {
                         onClick={refreshPage}
                       >
                         <Link
-                          to="/dream-pos/index-four"
+                          to="/bloom-brew/index-four"
                           className="layout-link"
                         >
                           checkbox
@@ -323,7 +323,7 @@ const RightSideBar = () => {
                         onClick={refreshPage}
                       >
                         <Link
-                          to="/dream-pos/index-three"
+                          to="/bloom-brew/index-three"
                           className="layout-link"
                         >
                           checkbox
@@ -349,7 +349,7 @@ const RightSideBar = () => {
                         className="checktoggle"
                         onClick={refreshPage}
                       >
-                        <Link to="/dream-pos/index-two" className="layout-link">
+                        <Link to="/bloom-brew/index-two" className="layout-link">
                           checkbox
                         </Link>{" "}
                       </label>

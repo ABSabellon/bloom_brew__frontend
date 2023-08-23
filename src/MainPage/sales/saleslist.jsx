@@ -294,7 +294,7 @@ const SalesList = (props) => {
             <ul className="dropdown-menu">
               <li>
                 <Link
-                  to="/dream-pos/sales/sales-details"
+                  to="/bloom-brew/sales/sales-details"
                   className="dropdown-item"
                 >
                   <img src={Eye1} className="me-2" alt="img" />
@@ -303,7 +303,7 @@ const SalesList = (props) => {
               </li>
               <li>
                 <Link
-                  to="/dream-pos/sales/edit-sales"
+                  to="/bloom-brew/sales/edit-sales"
                   className="dropdown-item"
                 >
                   <img src={EditIcon} className="me-2" alt="img" />
@@ -364,7 +364,7 @@ const SalesList = (props) => {
               <h6>Manage your Sales</h6>
             </div>
             <div className="page-btn">
-              <Link to="/dream-pos/sales/add-sales" className="btn btn-added">
+              <Link to="/bloom-brew/sales/add-sales" className="btn btn-added">
                 <img src={PlusIcon} alt="img" className="me-1" />
                 Add Sales
               </Link>

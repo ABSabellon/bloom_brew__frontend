@@ -94,13 +94,13 @@ const Headerthree = () => {
       <div className="header header-three">
         {/* Logo */}
         <div className="header-left active">
-          <Link to="/dream-pos/dashboard" className="logo logo-normal">
+          <Link to="/bloom-brew/dashboard" className="logo logo-normal">
             <img src={Logo} alt="" />
           </Link>
-          <Link to="/dream-pos/dashboard" className="logo logo-white">
+          <Link to="/bloom-brew/dashboard" className="logo logo-white">
             <img src={LogoWhite} alt="" />
           </Link>
-          <Link to="/dream-pos/dashboard" className="logo-small">
+          <Link to="/bloom-brew/dashboard" className="logo-small">
             <img src={SmallLogo} alt="" />
           </Link>
         </div>
@@ -175,7 +175,7 @@ const Headerthree = () => {
             </Link>
           </li>
           <li className="nav-item nav-item-box">
-            <Link to="/dream-pos/application/email">
+            <Link to="/bloom-brew/application/email">
               <i data-feather="mail">
                 <FeatherIcon icon="mail" />
               </i>
@@ -205,7 +205,7 @@ const Headerthree = () => {
               <div className="noti-content">
                 <ul className="notification-list">
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar2} />
@@ -228,7 +228,7 @@ const Headerthree = () => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar3} />
@@ -251,7 +251,7 @@ const Headerthree = () => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar6} />
@@ -277,7 +277,7 @@ const Headerthree = () => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar17} />
@@ -300,7 +300,7 @@ const Headerthree = () => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar13} />
@@ -325,13 +325,13 @@ const Headerthree = () => {
                 </ul>
               </div>
               <div className="topnav-dropdown-footer">
-                <Link to="/dream-pos/activities">View all Notifications</Link>
+                <Link to="/bloom-brew/activities">View all Notifications</Link>
               </div>
             </div>
           </li>
           {/* /Notifications */}
           <li className="nav-item nav-item-box">
-            <Link to="/dream-pos/settings/generalsettings">
+            <Link to="/bloom-brew/settings/generalsettings">
               <i data-feather="settings">
                 <FeatherIcon icon={"settings"} />
               </i>
@@ -368,14 +368,14 @@ const Headerthree = () => {
                 <hr className="m-0" />
                 <Link
                   className="dropdown-item"
-                  to="/dream-pos/profile/user-profile"
+                  to="/bloom-brew/profile/user-profile"
                 >
                   {" "}
                   <i className="me-2" data-feather="user" /> My Profile
                 </Link>
                 <Link
                   className="dropdown-item"
-                  to="/dream-pos/settings/generalsettings"
+                  to="/bloom-brew/settings/generalsettings"
                 >
                   <i className="me-2" data-feather="settings" />
                   Settings
@@ -403,13 +403,13 @@ const Headerthree = () => {
           <div className="dropdown-menu dropdown-menu-right">
             <Link
               className="dropdown-item"
-              to="/dream-pos/profile/user-profile"
+              to="/bloom-brew/profile/user-profile"
             >
               My Profile
             </Link>
             <Link
               className="dropdown-item"
-              to="/dream-pos/settings/generalsettings"
+              to="/bloom-brew/settings/generalsettings"
             >
               Settings
             </Link>

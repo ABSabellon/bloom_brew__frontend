@@ -324,7 +324,7 @@ class ChartJs extends Component {
                 <h3 className="page-title">Chartjs</h3>
                 <ul className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <Link to="/dream-pos/dashboard">Dashboard</Link>
+                    <Link to="/bloom-brew/dashboard">Dashboard</Link>
                   </li>
                   <li className="breadcrumb-item active">Chartjs</li>
                 </ul>

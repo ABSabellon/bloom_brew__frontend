@@ -45,7 +45,7 @@ const HeaderTwo = () => {
 
   let pathname = location.pathname;
 
-  const exclusionArray = ["/reactjs/template/dream-pos/index-three"];
+  const exclusionArray = ["/admin/bloom-brew/index-three"];
   if (exclusionArray.indexOf(window.location.pathname) >= 0) {
     return "";
   }
@@ -123,13 +123,13 @@ const HeaderTwo = () => {
             onMouseLeave={expandMenu}
             onMouseOver={expandMenuOpen}
           >
-            <Link to="/dream-pos/dashboard" className="logo logo-normal">
+            <Link to="/bloom-brew/dashboard" className="logo logo-normal">
               <img src={Logo} alt="" />
             </Link>
-            <Link to="/dream-pos/dashboard" className="logo logo-white">
+            <Link to="/bloom-brew/dashboard" className="logo logo-white">
               <img src={LogoWhite} alt="" />
             </Link>
-            <Link to="/dream-pos/dashboard" className="logo-small">
+            <Link to="/bloom-brew/dashboard" className="logo-small">
               <img src={SmallLogo} alt="" />
             </Link>
             <Link
@@ -223,7 +223,7 @@ const HeaderTwo = () => {
                 </Link>
               </li>
               <li className="nav-item nav-item-box">
-                <Link to="/dream-pos/application/email">
+                <Link to="/bloom-brew/application/email">
                   {/* <i data-feather="mail" /> */}
                   <FeatherIcon icon="mail" />
                   <span className="badge rounded-pill">1</span>
@@ -251,7 +251,7 @@ const HeaderTwo = () => {
                   <div className="noti-content">
                     <ul className="notification-list">
                       <li className="notification-message active">
-                        <Link to="/dream-pos/activities">
+                        <Link to="/bloom-brew/activities">
                           <div className="media d-flex">
                             <span className="avatar flex-shrink-0">
                               <img alt="" src={Avatar2} />
@@ -274,7 +274,7 @@ const HeaderTwo = () => {
                         </Link>
                       </li>
                       <li className="notification-message">
-                        <Link to="/dream-pos/activities">
+                        <Link to="/bloom-brew/activities">
                           <div className="media d-flex">
                             <span className="avatar flex-shrink-0">
                               <img alt="" src={Avatar3} />
@@ -299,7 +299,7 @@ const HeaderTwo = () => {
                         </Link>
                       </li>
                       <li className="notification-message">
-                        <Link to="/dream-pos/activities">
+                        <Link to="/bloom-brew/activities">
                           <div className="media d-flex">
                             <span className="avatar flex-shrink-0">
                               <img alt="" src={Avatar6} />
@@ -328,7 +328,7 @@ const HeaderTwo = () => {
                         </Link>
                       </li>
                       <li className="notification-message">
-                        <Link to="/dream-pos/activities">
+                        <Link to="/bloom-brew/activities">
                           <div className="media d-flex">
                             <span className="avatar flex-shrink-0">
                               <img alt="" src={Avatar17} />
@@ -353,7 +353,7 @@ const HeaderTwo = () => {
                         </Link>
                       </li>
                       <li className="notification-message">
-                        <Link to="/dream-pos/activities">
+                        <Link to="/bloom-brew/activities">
                           <div className="media d-flex">
                             <span className="avatar flex-shrink-0">
                               <img alt="" src={Avatar13} />
@@ -380,7 +380,7 @@ const HeaderTwo = () => {
                     </ul>
                   </div>
                   <div className="topnav-dropdown-footer">
-                    <Link to="/dream-pos/activities">
+                    <Link to="/bloom-brew/activities">
                       View all Notifications
                     </Link>
                   </div>
@@ -388,7 +388,7 @@ const HeaderTwo = () => {
               </li>
               {/* /Notifications */}
               <li className="nav-item nav-item-box">
-                <Link to="/dream-pos/settings/generalsettings">
+                <Link to="/bloom-brew/settings/generalsettings">
                   {/* <i data-feather="settings" /> */}
                   <FeatherIcon icon="settings" />
                 </Link>
@@ -424,13 +424,13 @@ const HeaderTwo = () => {
                     <hr className="m-0" />
                     <Link
                       className="dropdown-item"
-                      to="/dream-pos/profile/user-profile"
+                      to="/bloom-brew/profile/user-profile"
                     >
                       <i className="me-2" data-feather="user" /> My Profile
                     </Link>
                     <Link
                       className="dropdown-item"
-                      to="/dream-pos/settings/generalsettings"
+                      to="/bloom-brew/settings/generalsettings"
                     >
                       <i className="me-2" data-feather="settings" />
                       Settings

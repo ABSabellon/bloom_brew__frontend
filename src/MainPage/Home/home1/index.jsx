@@ -412,7 +412,7 @@ const IndexOne = () => {
                     >
                       <li>
                         <Link
-                          to="/dream-pos/product/productlist-product"
+                          to="/bloom-brew/product/productlist-product"
                           className="dropdown-item"
                         >
                           Product List
@@ -420,7 +420,7 @@ const IndexOne = () => {
                       </li>
                       <li>
                         <Link
-                          to="/dream-pos/product/addproduct-product"
+                          to="/bloom-brew/product/addproduct-product"
                           className="dropdown-item"
                         >
                           Product Add
