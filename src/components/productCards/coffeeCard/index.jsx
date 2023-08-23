@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import {
     Product29,    
@@ -6,6 +6,8 @@ import {
 import IconMap from "../../iconMap";
 
 const CoffeeCard = () => {
+  
+  const [counter1, setCounter1] = useState(0);
   return (
    <>
     <div className="productset flex-fill active">
@@ -18,9 +20,9 @@ const CoffeeCard = () => {
             <img src={Product29} alt="img" />
             <div className="increment-decrement">
               <div className="input-groups">
-                <input type="button" className="button-minus dec button" value="-"/>
-                <input type="text" name="child" className="quantity-field" value="0"/>
-                <input type="button" className="button-plus inc button " value="+"/>
+                <input type="button" className="button-minus dec button" value="-" onClick={() => setCounter1(counter1 - 1)}/>
+                <input type="text" name="child" className="quantity-field" value={counter1} readOnly/>
+                <input type="button" className="button-plus inc button " value="+"onClick={() => setCounter1(counter1 + 1)}/>
               </div>
             </div>
           </div>
@@ -47,27 +49,6 @@ const CoffeeCard = () => {
         </div>
       </div>
     </div>
-
-    {/* <div className="productset flex-fill active">
-      <div className="productsetimg">
-        <div className="row">
-          <h6>Qty: 5.00</h6>
-          <div className="check-product">
-            <i className="fa fa-check" />
-          </div>
-          <div className="col-6">
-            <img src={Product29} alt="img" />
-          </div>
-          <div className="col-6">
-            <div className="productsetcontent">
-              <h4>Caramel Frappuccino</h4>
-              <h5>Fruits</h5>
-              <h6>150.00</h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> */}
     </>
   );
 };

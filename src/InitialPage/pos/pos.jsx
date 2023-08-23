@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./posheader";
+import Topbar from "../Sidebar/TopBar";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import POS from "./posleft";
@@ -94,7 +95,8 @@ const Pos = () => {
     <>
       <div className="main-wrappers">
         <Header />
-        <div className="page-wrapper ms-0">
+        <Topbar/>
+        <div className="page-wrapper ms-0 pt-0">
           <div className="content">
             <div className="row">
               <POS />
@@ -109,7 +111,7 @@ const Pos = () => {
                   <div className="card-body">
                     <div className="row">
                       <div className="col-lg-12">
-                        <div class="form-group w-100 mb-0">
+                        <div className="form-group w-100 mb-0">
                           <label>Customer Name</label>
                           <input type="text"/>
                         </div>
@@ -145,7 +147,8 @@ const Pos = () => {
                                   <input
                                     type="text"
                                     name="child"
-                                    value={counter}
+                                    value={counter} 
+                                    readOnly
                                     className="quantity-field"
                                   />
                                   <input
@@ -193,6 +196,7 @@ const Pos = () => {
                                     type="text"
                                     name="child"
                                     value={counter1}
+                                    readOnly
                                     className="quantity-field"
                                   />
                                   <input
@@ -240,6 +244,7 @@ const Pos = () => {
                                     type="text"
                                     name="child"
                                     value={counter2}
+                                    readOnly
                                     className="quantity-field"
                                   />
                                   <input
@@ -288,6 +293,7 @@ const Pos = () => {
                                     min={0}
                                     name="child"
                                     value={counter3}
+                                    readOnly
                                     className="quantity-field"
                                   />
                                   <input
