@@ -1,0 +1,60 @@
+[
+  {
+    "id": "ESP123",
+    "name": "Cafe Americano",
+    "ingredients": "coffee, hot water",
+    "details": [
+      { "mood": "hot", "price": "90" },
+      { "mood": "cold", "price": "110" }
+    ],
+    "category": "Espresso Drinks"
+  },
+  {
+    "id": "ESP124",
+    "name": "Cappuccino",
+    "ingredients": "coffee, milk, foam",
+    "details": [
+      { "mood": "hot", "price": "110" },
+      { "mood": "cold", "price": "120" }
+    ],
+    "category": "Espresso Drinks"
+  },
+  {
+    "id": "NED125",
+    "name": "Chocolate Latte",
+    "ingredients": "coffee, chocolate syrup, milk",
+    "details": [
+      { "mood": "hot", "price": "130" },
+      { "mood": "cold", "price": "140" }
+    ],
+    "category": "Non-Espresso Drinks"
+  },
+  {
+    "id": "NED126",
+    "name": "Match Latte",
+    "ingredients": "matcha powder, milk",
+    "details": [
+      { "mood": "hot", "price": "140" },
+      { "mood": "cold", "price": "150" }
+    ],
+    "category": "Non-Espresso Drinks"
+  },
+  {
+    "id": "FFS127",
+    "name": "Match Latte",
+    "ingredients": "fresh fruit, milk",
+    "details": [
+      { "mood": "cold", "price": "160" }
+    ],
+    "category": "Fresh Fruit Shake"
+  },
+  {
+    "id": "FFS128",
+    "name": "Match Latte",
+    "ingredients": "fresh fruit, milk",
+    "details": [
+      { "mood": "cold", "price": "160" }
+    ],
+    "category": "Fresh Fruit Shake"
+  }
+]

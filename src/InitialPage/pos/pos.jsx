@@ -95,8 +95,8 @@ const Pos = () => {
     <>
       <div className="main-wrappers">
         <Header />
-        <Topbar/>
-        <div className="page-wrapper ms-0 pt-0">
+        {/* <Topbar/> */}
+        <div className="page-wrapper ms-0">
           <div className="content">
             <div className="row">
               <POS />

@@ -5687,7 +5687,18 @@ span.select2-container.select2-container--default.select2-container--open {
   display: inline-block;
 }
 
-.sidebar.topbar.new-header {
+.topbar {
+  transition: all 0.2s ease;
+  border-right: 1px solid #E8EBED;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin-top: 0;
+  display: flex;
+}
+.topbar.new-header {
   position: relative;
   top: 0;
   width: 100%;
@@ -5697,39 +5708,39 @@ span.select2-container.select2-container--default.select2-container--open {
   box-shadow: 0px 4px 14px rgba(198, 198, 198, 0.25);
   z-index: unset;
 }
-.sidebar.topbar.new-header .container {
+.topbar.new-header .container {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-end;
 }
-.sidebar.topbar.new-header .container .sidebar-menu {
+.topbar.new-header .container .sidebar-menu {
   padding: 0 15px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li {
+.topbar.new-header .container .sidebar-menu > ul > li {
   margin-bottom: 0;
   margin-right: 20px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a {
+.topbar.new-header .container .sidebar-menu > ul > li > a {
   padding: 22px 15px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a img, .sidebar.topbar.new-header .container .sidebar-menu > ul > li > a svg {
+.topbar.new-header .container .sidebar-menu > ul > li > a img, .topbar.new-header .container .sidebar-menu > ul > li > a svg {
   filter: brightness(0) invert(1);
   margin-right: 0;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a:hover {
+.topbar.new-header .container .sidebar-menu > ul > li > a:hover {
   background: transparent;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a:hover span {
+.topbar.new-header .container .sidebar-menu > ul > li > a:hover span {
   color: #FF9900 !important;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a:hover img, .sidebar.topbar.new-header .container .sidebar-menu > ul > li > a:hover svg {
+.topbar.new-header .container .sidebar-menu > ul > li > a:hover img, .topbar.new-header .container .sidebar-menu > ul > li > a:hover svg {
   filter: brightness(0) saturate(100%) invert(75%) sepia(10%) saturate(5676%) hue-rotate(326deg) brightness(105%) contrast(112%);
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a img {
+.topbar.new-header .container .sidebar-menu > ul > li > a img {
   top: 0 !important;
   width: auto;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a::before {
+.topbar.new-header .container .sidebar-menu > ul > li > a::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -5739,109 +5750,102 @@ span.select2-container.select2-container--default.select2-container--open {
   background: #fff;
   transform: translateY(-50%);
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li > a span {
+.topbar.new-header .container .sidebar-menu > ul > li > a span {
   color: #fff !important;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li a {
+.topbar.new-header .container .sidebar-menu > ul > li a {
   font-weight: 500;
   font-size: 15px;
   color: #fff;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li a img {
+.topbar.new-header .container .sidebar-menu > ul > li a img {
   position: relative;
   top: 3px;
   width: 18px;
   margin-right: 7px;
   filter: brightness(0) invert(1);
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li a svg {
+.topbar.new-header .container .sidebar-menu > ul > li a svg {
   width: 18px;
   margin-right: 7px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li a:hover img, .sidebar.topbar.new-header .container .sidebar-menu > ul > li a:hover svg {
+.topbar.new-header .container .sidebar-menu > ul > li a:hover img, .topbar.new-header .container .sidebar-menu > ul > li a:hover svg {
   filter: brightness(0) saturate(100%) invert(75%) sepia(10%) saturate(5676%) hue-rotate(326deg) brightness(105%) contrast(112%);
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li .menu-arrow {
+.topbar.new-header .container .sidebar-menu > ul > li .menu-arrow {
   position: initial;
   transform: rotate(90deg);
   margin-left: 15px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li .menu-arrow::before {
+.topbar.new-header .container .sidebar-menu > ul > li .menu-arrow::before {
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul {
+.topbar.new-header .container .sidebar-menu > ul > li ul {
   position: absolute;
   width: 250px;
-  height: 0;
   z-index: 2;
   background: #704332;
+  max-height: 0;
   overflow: hidden;
-  -webkit-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  transition: max-height 0.3s ease-in-out;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul.d-block {
-  height: 1000px;
+.topbar.new-header .container .sidebar-menu > ul > li ul.d-block {
+  max-height: 1000px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a {
   padding: 8px 15px !important;
   color: #fff;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a .menu-arrow {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a .menu-arrow {
   float: right;
   margin-right: 15px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a i {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a i {
   margin-right: 7px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a img {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a img {
   position: relative;
   top: 3px;
   width: 18px;
   margin-right: 7px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a svg {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a svg {
   width: 18px;
   margin-right: 7px;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a:hover {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a:hover {
   color: #FF9900;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a:hover img {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu a:hover img {
   filter: brightness(0) saturate(100%) invert(75%) sepia(10%) saturate(5676%) hue-rotate(326deg) brightness(105%) contrast(112%);
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu ul {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu ul {
   box-shadow: none;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu ul {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu ul {
   position: relative;
   padding: 0;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu ul li a {
+.topbar.new-header .container .sidebar-menu > ul > li ul li.submenu ul li a {
   padding: 8px 10px 8px 40px !important;
   color: #fff;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li a {
+.topbar.new-header .container .sidebar-menu > ul > li ul li a {
   padding: 8px 15px !important;
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li ul li a::after {
+.topbar.new-header .container .sidebar-menu > ul > li ul li a::after {
   content: none !important;
 }
 @media (max-width: 1199.98px) {
-  .sidebar.topbar.new-header .container .sidebar-menu > ul > li {
+  .topbar.new-header .container .sidebar-menu > ul > li {
     margin-right: 0;
   }
 }
-.sidebar.topbar.new-header .container .sidebar-menu > ul > li:last-child > a::before {
+.topbar.new-header .container .sidebar-menu > ul > li:last-child > a::before {
   content: none;
 }
 
-@media (min-width: 992px) {
-  .hide-topbar {
-    display: none;
-  }
-}
 /****** PAGES ******/
 .chat-window .card .card-header {
   background-color: #fff;

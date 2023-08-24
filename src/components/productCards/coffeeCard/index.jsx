@@ -1,11 +1,11 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
-import {
-    Product29,    
-  } from "../../../EntryFile/imagePath";
 import IconMap from "../../iconMap";
+import {
+  Product29   
+  } from "../../../EntryFile/imagePath";
 
-const CoffeeCard = () => {
+const CoffeeCard = ({img,id,name,ingredients,details}) => {
   
   const [counter1, setCounter1] = useState(0);
   return (
@@ -28,12 +28,12 @@ const CoffeeCard = () => {
           </div>
         </div>
         <div className="col-6 productsetcontent">
-          <h4>Caramel Frappuccino</h4>
+          <h4>{name}</h4>
           <div className="product-description">
-            <h5>Test description of ingredients if we have some</h5>
+            <h5>{ingredients}</h5>
           </div>
           <div className="product-price">
-            <h6><span>&#8369;</span>150.00</h6>
+            <h6><span>&#8369;</span>{details.price}</h6>
           </div>
           <div className="product-mood">
             <label><p>Mood</p></label>
