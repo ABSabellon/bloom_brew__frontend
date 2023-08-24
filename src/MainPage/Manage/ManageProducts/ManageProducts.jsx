@@ -278,10 +278,10 @@ const ManageProducts = () => {
       render: () => (
         <>
           <>
-            <Link className="me-3" to="/bloom-brew/product/product-details">
+            <Link className="me-3" to="/admin/product/product-details">
               <img src={EyeIcon} alt="img" />
             </Link>
-            <Link className="me-3" to="/bloom-brew/product/editproduct-product">
+            <Link className="me-3" to="/admin/product/editproduct-product">
               <img src={EditIcon} alt="img" />
             </Link>
             <Link className="confirm-text" to="#" onClick={confirmText}>
@@ -304,7 +304,7 @@ const ManageProducts = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/bloom-brew/product/addproduct-product"
+                to="/admin/product/addproduct-product"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

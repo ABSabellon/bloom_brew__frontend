@@ -13,10 +13,10 @@ const MenuList = () => {
       <div className="page-wrapper">
           <div className="content">
             <div className="row">
-              <div className="col-lg-9 col-sm-12 ">
+              <div className="col-lg-8 col-sm-12 ">
                 <MenuItems dataSource={products}/>
               </div>
-              <div className="col-lg-3 col-sm-12 ">
+              <div className="col-lg-4 col-sm-12 ">
                 <MenuCheckout/>
               </div>
             </div>

@@ -21,19 +21,19 @@ const Topbar = (props) => {
   const menuItems = [
     { title: "Main Menu", icon: menu_icon, link: "#",
       submenus:[
-        { title: "Dashboard", icon: Dashboard, link: "/bloom-brew/index-three"},
+        { title: "Dashboard", icon: Dashboard, link: "/admin/index-three"},
         { title: "Products", icon: Product, link: "#",
           submenu_children:[
-            {title: "Product List", link: "/bloom-brew/index-three"},
-            {title: "Add Product", link: "/bloom-brew/index-three"},
-            {title: "Category List", link: "/bloom-brew/index-three"},
+            {title: "Product List", link: "/admin/index-three"},
+            {title: "Add Product", link: "/admin/index-three"},
+            {title: "Category List", link: "/admin/index-three"},
           ]
         },
         { title: "Sales", icon: Sales1, link: "#",
           submenu_children:[
-            {title: "Sales Return List", link: "/bloom-brew/index-three"},
-            {title: "New Sales Return", link: "/bloom-brew/index-three"},
-            {title: "Category List", link: "/bloom-brew/index-three"},
+            {title: "Sales Return List", link: "/admin/index-three"},
+            {title: "New Sales Return", link: "/admin/index-three"},
+            {title: "Category List", link: "/admin/index-three"},
           ]
         },
       ]

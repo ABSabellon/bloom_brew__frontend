@@ -128,7 +128,7 @@ const ManageSuppliers = () => {
       title: "Action",
       render: () => (
         <>
-          <Link className="me-3" to="/bloom-brew/people/editsupplier-people">
+          <Link className="me-3" to="/admin/people/editsupplier-people">
             <img src={EditIcon} alt="img" />
           </Link>
           <Link className="confirm-text" to="#" onClick={confirmText}>
@@ -149,7 +149,7 @@ const ManageSuppliers = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/bloom-brew/people/addsupplier-people"
+                to="/admin/people/addsupplier-people"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-1" />

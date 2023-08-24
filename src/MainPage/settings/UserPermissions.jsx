@@ -83,7 +83,7 @@ const UserPermissions = () => {
       className: "text-end",
       render: (text, record) => (
         <div className="text-end">
-          <Link className="me-3" to="/bloom-brew/settings/editpermission">
+          <Link className="me-3" to="/admin/settings/editpermission">
             <img src={EditIcon} alt="img" />
           </Link>
           <Link className="me-3 confirm-text" to="#" onClick={confirmText}>
@@ -105,7 +105,7 @@ const UserPermissions = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/bloom-brew/settings/createpermission"
+                to="/admin/settings/createpermission"
                 className="btn btn-added"
               >
                 <img src={PlusIcon} alt="img" className="me-2" />

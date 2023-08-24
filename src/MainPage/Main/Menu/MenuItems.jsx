@@ -15,19 +15,21 @@ const MenuItems = ({dataSource}) => {
       <div className="tabs_container">
         <div className="tab_content active" data-tab="fruits">
           <div className="row">
-            {dataSource.map((product) => (
+            {dataSource.map((product, index) => (
               <div className="col-xl-4 col-md-6 d-flex" key={product.id}>
                 <CoffeeCard
+                  dataSource={dataSource}
                   id={product.id}
                   name={product.name}
                   ingredients={product.ingredients}
-                  details={product.details}
+                  price={product.details.find((detail) => detail.temp === "hot")?.price || "N/A"}
                 />
               </div>
             ))}
           </div>
         </div>
       </div>
+
     </>
   );
 };

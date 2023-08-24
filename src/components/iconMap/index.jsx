@@ -3,7 +3,7 @@ import React from 'react';
 // import { } from 'react-icons/md';
 import { FaCodepen } from 'react-icons/fa';
 // import {  } from 'react-icons/rx';
-import { AiOutlinePlusSquare, AiOutlineGold, AiOutlineShopping } from 'react-icons/ai';
+import { AiOutlinePlusSquare, AiOutlineGold, AiOutlineShopping,AiFillFire } from 'react-icons/ai';
 // import {  } from 'react-icons/bs';
 import {BiFoodMenu,BiSolidEdit } from 'react-icons/bi';
 // import {  } from 'react-icons/tb';
@@ -15,8 +15,8 @@ import { FiDatabase,FiLogOut } from 'react-icons/fi';
 // import { } from 'react-icons/io'
 // import {  } from 'react-icons/ti'
 // import {  } from 'react-icons/gi';
-import {BsPhone,BsPeople } from 'react-icons/bs';
-import{ LuLayoutDashboard, LuFileText} from 'react-icons/lu';
+import {BsPhone,BsPeople,BsSnow2,BsArrow90DegRight } from 'react-icons/bs';
+import{ LuLayoutDashboard, LuFileText, LuFlame} from 'react-icons/lu';
 import{ CiShoppingBasket } from 'react-icons/ci'
 import{ FaUsersCog, FaUserCog,FaCog } from 'react-icons/fa'
 
@@ -80,6 +80,22 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
     case 'FiLogOut': {
       icon = <FiLogOut className={classnames} size={size} style={iconStyle} /> //Logout tab
     break;}
+
+    //etc
+
+    case 'AiFillFire': {
+      icon = <AiFillFire className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'BsSnow2': {
+      icon = <BsSnow2 className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'LuFlame': {
+      icon = <LuFlame className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'BsArrow90DegRight': {
+      icon = <BsArrow90DegRight className={classnames} size={size} style={iconStyle} />
+    break;}
+    
 
     
   }

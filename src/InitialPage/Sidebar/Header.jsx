@@ -57,8 +57,8 @@ const Header = (props) => {
 
 
   const exclusionArray = [
-    "/admin/bloom-brew/index-three",
-    "/admin/bloom-brew/index-one",
+    "/admin/admin/index-three",
+    "/admin/admin/index-one",
   ];
   if (exclusionArray.indexOf(window.location.pathname) >= 0) {
     return "";
@@ -136,13 +136,13 @@ const Header = (props) => {
           onMouseLeave={expandMenu}
           onMouseOver={expandMenuOpen}
         >
-          <Link to="/bloom-brew/dashboard" className="logo logo-normal">
+          <Link to="/admin/dashboard" className="logo logo-normal">
             <img src={Logo} alt="" />
           </Link>
-          <Link to="/bloom-brew/dashboard" className="logo logo-white">
+          <Link to="/admin/dashboard" className="logo logo-white">
             <img src={LogoWhite} alt="" />
           </Link>
-          <Link to="/bloom-brew/dashboard" className="logo-small">
+          <Link to="/admin/dashboard" className="logo-small">
             <img src={SmallLogo} alt="" />
           </Link>
           <Link
@@ -235,7 +235,7 @@ const Header = (props) => {
             </Link>
           </li>
           <li className="nav-item nav-item-box">
-            <Link to="/bloom-brew/application/email-applications">
+            <Link to="/admin/application/email-applications">
               {/* <i data-feather="mail" /> */}
               <FeatherIcon icon="mail" />
               <span className="badge rounded-pill">1</span>
@@ -263,7 +263,7 @@ const Header = (props) => {
               <div className="noti-content">
                 <ul className="notification-list">
                   <li className="notification-message active">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar2} />
@@ -286,7 +286,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar3} />
@@ -309,7 +309,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar6} />
@@ -335,7 +335,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar17} />
@@ -358,7 +358,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar13} />
@@ -383,13 +383,13 @@ const Header = (props) => {
                 </ul>
               </div>
               <div className="topnav-dropdown-footer">
-                <Link to="/bloom-brew/activities">View all Notifications</Link>
+                <Link to="/admin/activities">View all Notifications</Link>
               </div>
             </div>
           </li>
           {/* /Notifications */}
           <li className="nav-item nav-item-box">
-            <Link to="/bloom-brew/settings/generalsettings">
+            <Link to="/admin/settings/generalsettings">
               {/* <i data-feather="settings" /> */}
               <FeatherIcon icon="settings" />
             </Link>
@@ -425,13 +425,13 @@ const Header = (props) => {
                 <hr className="m-0" />
                 <Link
                   className="dropdown-item"
-                  to="/bloom-brew/profile/user-profile"
+                  to="/admin/profile/user-profile"
                 >
                   <i className="me-2" data-feather="user" /> My Profile
                 </Link>
                 <Link
                   className="dropdown-item"
-                  to="/bloom-brew/settings/generalsettings"
+                  to="/admin/settings/generalsettings"
                 >
                   <i className="me-2" data-feather="settings" />
                   Settings

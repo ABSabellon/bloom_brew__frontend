@@ -29,10 +29,10 @@
 //       <div className="header">
 //         {/* Logo */}
 //         <div className="header-left border-0">
-//           <Link to="/bloom-brew/dashboard" className="logo">
+//           <Link to="/admin/dashboard" className="logo">
 //             <img src={Logo} alt="" />
 //           </Link>
-//           <Link to="/bloom-brew/dashboard" className="logo-small">
+//           <Link to="/admin/dashboard" className="logo-small">
 //             <img src={SmallLogo} alt="" />
 //           </Link>
 //         </div>
@@ -123,7 +123,7 @@
 //               <div className="noti-content">
 //                 <ul className="notification-list">
 //                   <li className="notification-message">
-//                     <Link to="/bloom-brew/activities">
+//                     <Link to="/admin/activities">
 //                       <div className="media d-flex">
 //                         <span className="avatar flex-shrink-0">
 //                           <img alt="" src={Avatar2} />
@@ -146,7 +146,7 @@
 //                     </Link>
 //                   </li>
 //                   <li className="notification-message">
-//                     <Link to="/bloom-brew/activities">
+//                     <Link to="/admin/activities">
 //                       <div className="media d-flex">
 //                         <span className="avatar flex-shrink-0">
 //                           <img alt="" src={Avatar3} />
@@ -169,7 +169,7 @@
 //                     </Link>
 //                   </li>
 //                   <li className="notification-message">
-//                     <Link to="/bloom-brew/activities">
+//                     <Link to="/admin/activities">
 //                       <div className="media d-flex">
 //                         <span className="avatar flex-shrink-0">
 //                           <img alt="" src={Avatar6} />
@@ -195,7 +195,7 @@
 //                     </Link>
 //                   </li>
 //                   <li className="notification-message">
-//                     <Link to="/bloom-brew/activities">
+//                     <Link to="/admin/activities">
 //                       <div className="media d-flex">
 //                         <span className="avatar flex-shrink-0">
 //                           <img alt="" src={Avatar17} />
@@ -218,7 +218,7 @@
 //                     </Link>
 //                   </li>
 //                   <li className="notification-message">
-//                     <Link to="/bloom-brew/activities">
+//                     <Link to="/admin/activities">
 //                       <div className="media d-flex">
 //                         <span className="avatar flex-shrink-0">
 //                           <img alt="" src={Avatar13} />
@@ -243,7 +243,7 @@
 //                 </ul>
 //               </div>
 //               <div className="topnav-dropdown-footer">
-//                 <Link to="/bloom-brew/activities">View all Notifications</Link>
+//                 <Link to="/admin/activities">View all Notifications</Link>
 //               </div>
 //             </div>
 //           </li>
@@ -274,13 +274,13 @@
 //                 <hr className="m-0" />
 //                 <Link
 //                   className="dropdown-item"
-//                   to="/bloom-brew/profile/user-profile"
+//                   to="/admin/profile/user-profile"
 //                 >
 //                   <i className="me-2" data-feather="user" /> My Profile
 //                 </Link>
 //                 <Link
 //                   className="dropdown-item"
-//                   to="/bloom-brew/settings/generalsettings"
+//                   to="/admin/settings/generalsettings"
 //                 >
 //                   <i className="me-2" data-feather="settings" />
 //                   Settings
@@ -308,13 +308,13 @@
 //           <div className="dropdown-menu dropdown-menu-right">
 //             <Link
 //               className="dropdown-item"
-//               to="/bloom-brew/profile/user-profile"
+//               to="/admin/profile/user-profile"
 //             >
 //               My Profile
 //             </Link>
 //             <Link
 //               className="dropdown-item"
-//               to="/bloom-brew/settings/generalsettings"
+//               to="/admin/settings/generalsettings"
 //             >
 //               Settings
 //             </Link>
@@ -387,13 +387,13 @@ const Header = (props) => {
           onMouseLeave={expandMenu}
           onMouseOver={expandMenuOpen}
         >
-          <Link to="/bloom-brew/dashboard" className="logo logo-normal">
+          <Link to="/admin/dashboard" className="logo logo-normal">
             <img src={Logo} alt="" />
           </Link>
-          <Link to="/bloom-brew/dashboard" className="logo logo-white">
+          <Link to="/admin/dashboard" className="logo logo-white">
             <img src={LogoWhite} alt="" />
           </Link>
-          <Link to="/bloom-brew/dashboard" className="logo-small">
+          <Link to="/admin/dashboard" className="logo-small">
             <img src={SmallLogo} alt="" />
           </Link>
           <Link
@@ -509,7 +509,7 @@ const Header = (props) => {
               <div className="noti-content">
                 <ul className="notification-list">
                   <li className="notification-message active">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar2} />
@@ -532,7 +532,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar3} />
@@ -555,7 +555,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar6} />
@@ -581,7 +581,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar17} />
@@ -604,7 +604,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="notification-message">
-                    <Link to="/bloom-brew/activities">
+                    <Link to="/admin/activities">
                       <div className="media d-flex">
                         <span className="avatar flex-shrink-0">
                           <img alt="" src={Avatar13} />
@@ -629,13 +629,13 @@ const Header = (props) => {
                 </ul>
               </div>
               <div className="topnav-dropdown-footer">
-                <Link to="/bloom-brew/activities">View all Notifications</Link>
+                <Link to="/admin/activities">View all Notifications</Link>
               </div>
             </div>
           </li>
           {/* /Notifications */}
           <li className="nav-item nav-item-box">
-            <Link to="/bloom-brew/settings/generalsettings">
+            <Link to="/admin/settings/generalsettings">
               {/* <i data-feather="settings" /> */}
               <FeatherIcon icon="settings" />
             </Link>
@@ -671,13 +671,13 @@ const Header = (props) => {
                 <hr className="m-0" />
                 <Link
                   className="dropdown-item"
-                  to="/bloom-brew/profile/user-profile"
+                  to="/admin/profile/user-profile"
                 >
                   <i className="me-2" data-feather="user" /> My Profile
                 </Link>
                 <Link
                   className="dropdown-item"
-                  to="/bloom-brew/settings/generalsettings"
+                  to="/admin/settings/generalsettings"
                 >
                   <i className="me-2" data-feather="settings" />
                   Settings

@@ -408,7 +408,7 @@ const DashboardIndex = () => {
                     >
                       <li>
                         <Link
-                          to="/bloom-brew/product/productlist-product"
+                          to="/admin/product/productlist-product"
                           className="dropdown-item"
                         >
                           Product List
@@ -416,7 +416,7 @@ const DashboardIndex = () => {
                       </li>
                       <li>
                         <Link
-                          to="/bloom-brew/product/addproduct-product"
+                          to="/admin/product/addproduct-product"
                           className="dropdown-item"
                         >
                           Product Add

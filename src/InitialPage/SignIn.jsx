@@ -37,7 +37,7 @@ const SignInPage = (props) => {
 
     const onSubmit = (data) => {
         console.log(JSON.stringify(data, null, 2));
-        props.history.push('/bloom-brew/dashboard')
+        props.history.push('/admin/dashboard')
     };
 
     return (

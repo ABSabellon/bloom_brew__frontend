@@ -8278,6 +8278,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 .productset .productsetcontent .product-mood {
   display: flex;
+  justify-content: center;
 }
 .productset .productsetcontent .product-mood label {
   flex-wrap: wrap;
@@ -8289,17 +8290,20 @@ span.select2-container.select2-container--default.select2-container--open {
   font-weight: 700;
 }
 .productset .productsetcontent .product-mood a {
-  margin: 0.2rem;
-  width: 2.625rem;
-  height: 2.625rem;
+  margin: 0.5rem 0.3rem;
+  width: 3rem;
+  height: 3rem;
   flex-shrink: 0;
   border-radius: 6.25rem;
   border: 1px solid rgba(0, 0, 0, 0.18);
   background: #FFF;
   padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.productset .productsetcontent .product-mood a span {
-  font-size: 30px;
+.productset .productsetcontent .product-mood a span.active {
+  color: #734736;
 }
 .productset .productsetcontent .product-mood a.active {
   border: 1px solid #734736;

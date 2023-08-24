@@ -61,7 +61,7 @@ module.exports = {
       apiUrl: "",
       imageapiUrl: "",
 
-      publicPath: "/admin/",
+      publicPath: "/",
     }),
   },
   resolve: {

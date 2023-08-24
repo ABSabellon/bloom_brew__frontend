@@ -14,41 +14,41 @@ const Sidebar = (props) => {
     { 
       title: 'Main', icon: null, path:null, link: "#",
       submenus: [
-        { title: 'Dashboard', icon: IconMap('LuLayoutDashboard',null,null,24),path:'dashboard', link: '/bloom-brew/dashboard'},
-        { title: 'Menu', icon: IconMap('BiFoodMenu',null,null,24), path:'menu-',link: '/bloom-brew/menu/menu-list' },
-        { title: 'Application', icon: IconMap('BsPhone',null,null,24), path:'/bloom-brew/application',link: "#", submenu_children:[
-          {title: 'Chat', icon: null, path:'chat-applications', link:'/bloom-brew/applications/chat-applications'},
-          { title: 'Calendar', icon: null, path:'calendar-applications', link:  '/bloom-brew/applications/calendar-applications' },
-          { title: 'Email', icon: null, path:'email-applications', link:  '/bloom-brew/applications/email-applications' },
+        { title: 'Dashboard', icon: IconMap('LuLayoutDashboard',null,null,24),path:'dashboard', link: '/admin/dashboard'},
+        { title: 'Menu', icon: IconMap('BiFoodMenu',null,null,24), path:'menu-',link: '/admin/menu/menu-list' },
+        { title: 'Application', icon: IconMap('BsPhone',null,null,24), path:'/admin/application',link: "#", submenu_children:[
+          {title: 'Chat', icon: null, path:'chat-applications', link:'/admin/applications/chat-applications'},
+          { title: 'Calendar', icon: null, path:'calendar-applications', link:  '/admin/applications/calendar-applications' },
+          { title: 'Email', icon: null, path:'email-applications', link:  '/admin/applications/email-applications' },
         ]},  
       ]
     },
     { 
       title: 'Manage', icon: null, path:null, link: "#",
       submenus: [
-        { title: 'Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/bloom-brew/manage/sales-manage'},
-        { title: 'Products', icon: IconMap('AiOutlinePlusSquare',null,null,24),path:'products-manage', link: '/bloom-brew/manage/products-manage'},
-        { title: 'Categories', icon: IconMap('FaCodepen',null,null,24), path:'categories-manage', link: '/bloom-brew/manage/categories-manage' },
-        { title: 'Inventory', icon: IconMap('CiShoppingBasket',null,null,24), path:'inventory-manage', link: '/bloom-brew/manage/inventory-manage' },
-        { title: 'Suppliers', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/bloom-brew/manage/users-manage'},
-        { title: 'Users', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/bloom-brew/manage/suppliers-manage' }, 
+        { title: 'Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
+        { title: 'Products', icon: IconMap('AiOutlinePlusSquare',null,null,24),path:'products-manage', link: '/admin/manage/products-manage'},
+        { title: 'Categories', icon: IconMap('FaCodepen',null,null,24), path:'categories-manage', link: '/admin/manage/categories-manage' },
+        { title: 'Inventory', icon: IconMap('CiShoppingBasket',null,null,24), path:'inventory-manage', link: '/admin/manage/inventory-manage' },
+        { title: 'Users', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/admin/manage/users-manage'},
+        { title: 'Suppliers', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/admin/manage/suppliers-manage' }, 
       ]
     },
     { 
       title: 'Reports', icon: null, path:null, link: "#",
       submenus: [
-        { title: 'Sales Report', icon: IconMap('LuFileText',null,null,24), path:'inventory-reports', link: '/bloom-brew/reports/inventory-reports'},
-        { title: 'Inventory Report', icon: IconMap('FiDatabase',null,null,24), path:'sales-reports', link: '/bloom-brew/reports/sales-reports' },
-        { title: 'Supplier Report', icon: IconMap('AiOutlineGold',null,null,24), path:'supplier-reports', link: '/bloom-brew/reports/supplier-reports'},
+        { title: 'Sales Report', icon: IconMap('LuFileText',null,null,24), path:'inventory-reports', link: '/admin/reports/inventory-reports'},
+        { title: 'Inventory Report', icon: IconMap('FiDatabase',null,null,24), path:'sales-reports', link: '/admin/reports/sales-reports' },
+        { title: 'Supplier Report', icon: IconMap('AiOutlineGold',null,null,24), path:'supplier-reports', link: '/admin/reports/supplier-reports'},
       ]
     },
     { 
       title: 'Settings', icon: null, path:null, link: "#",
       submenus: [
         { title: 'Settings', icon: IconMap('FaCog',null,null,24), path:'generalsettings', link: "#", submenu_children:[
-          {title: 'General Settings', icon: null, path:'general-settings', link:'/bloom-brew/settings/general-settings'},
-          { title: 'User Permissions', icon: null, path:'user-permissions', link:  '/bloom-brew/settings/user-permissions' },
-          { title: 'Email Settings', icon: null, path:'email-settings', link:  '/bloom-brew/settings/email-settings' },
+          {title: 'General Settings', icon: null, path:'general-settings', link:'/admin/settings/general-settings'},
+          { title: 'User Permissions', icon: null, path:'user-permissions', link:  '/admin/settings/user-permissions' },
+          { title: 'Email Settings', icon: null, path:'email-settings', link:  '/admin/settings/email-settings' },
         ]},
         { title: 'Logout', icon: IconMap('FiLogOut',null,null,24), path:'signIn', link: '/signIn' },
       ]

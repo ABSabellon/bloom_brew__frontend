@@ -154,8 +154,8 @@ const InventoryReports = () => {
       <div className="content">
         <div className="page-header">
           <div className="page-title">
-            <h4>Purchase report</h4>
-            <h6>Manage your Purchase report</h6>
+            <h4>Sales report</h4>
+            <h6>Manage your sales report</h6>
           </div>
         </div>
         {/* /product list */}

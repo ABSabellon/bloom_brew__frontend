@@ -4,8 +4,8 @@
     "name": "Cafe Americano",
     "ingredients": "coffee, hot water",
     "details": [
-      { "mood": "hot", "price": "90" },
-      { "mood": "cold", "price": "110" }
+      { "temp": "hot", "price": "90" },
+      { "temp": "cold", "price": "110" }
     ],
     "category": "Espresso Drinks"
   },
@@ -14,8 +14,8 @@
     "name": "Cappuccino",
     "ingredients": "coffee, milk, foam",
     "details": [
-      { "mood": "hot", "price": "110" },
-      { "mood": "cold", "price": "120" }
+      { "temp": "hot", "price": "110" },
+      { "temp": "cold", "price": "120" }
     ],
     "category": "Espresso Drinks"
   },
@@ -24,8 +24,8 @@
     "name": "Chocolate Latte",
     "ingredients": "coffee, chocolate syrup, milk",
     "details": [
-      { "mood": "hot", "price": "130" },
-      { "mood": "cold", "price": "140" }
+      { "temp": "hot", "price": "130" },
+      { "temp": "cold", "price": "140" }
     ],
     "category": "Non-Espresso Drinks"
   },
@@ -34,8 +34,8 @@
     "name": "Match Latte",
     "ingredients": "matcha powder, milk",
     "details": [
-      { "mood": "hot", "price": "140" },
-      { "mood": "cold", "price": "150" }
+      { "temp": "hot", "price": "140" },
+      { "temp": "cold", "price": "150" }
     ],
     "category": "Non-Espresso Drinks"
   },
@@ -44,7 +44,7 @@
     "name": "Match Latte",
     "ingredients": "fresh fruit, milk",
     "details": [
-      { "mood": "cold", "price": "160" }
+      { "temp": "cold", "price": "160" }
     ],
     "category": "Fresh Fruit Shake"
   },
@@ -53,7 +53,7 @@
     "name": "Match Latte",
     "ingredients": "fresh fruit, milk",
     "details": [
-      { "mood": "cold", "price": "160" }
+      { "temp": "cold", "price": "160" }
     ],
     "category": "Fresh Fruit Shake"
   }
