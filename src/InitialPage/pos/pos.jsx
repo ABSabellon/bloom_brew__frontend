@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "./posheader";
-import Topbar from "../Sidebar/TopBar";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import POS from "./posleft";
@@ -94,7 +93,7 @@ const Pos = () => {
   return (
     <>
       <div className="main-wrappers">
-        <Header />
+        {/* <Header /> */}
         {/* <Topbar/> */}
         <div className="page-wrapper ms-0">
           <div className="content">

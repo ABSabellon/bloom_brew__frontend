@@ -651,8 +651,8 @@ const Header = (props) => {
                   <img src={Avatar1} alt="" className="img-fluid" />
                 </span>
                 <span className="user-detail">
-                  <span className="user-name">Test User</span>
-                  <span className="user-role">Cashier</span>
+                  <span className="user-name">John Smilga</span>
+                  <span className="user-role">Super Admin</span>
                 </span>
               </span>
             </Link>

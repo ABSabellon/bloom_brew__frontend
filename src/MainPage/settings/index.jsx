@@ -1,34 +1,23 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Genaral from './genaral'
-import Email from './email'
-import Payment from './payment'
-import Currency from './currency'
-import Grouppermission from './grouppermission'
-import Createpermission from './createpermission'
-import Editpermission from './Editpermission'
-import Taxrates from './taxrates'
+import GeneralSettings from './GeneralSettings';
+import UserPermissions from './UserPermissions';
+import EmailSettings from './EmailSettings';
 
 
 
 
 
 
-const UserIndex = ({ match}) =>(
+
+const SettingsIndex = ({ match}) =>(
     <Switch>
-        <Redirect exact from={`${match.url}/`} to={`${match.url}/generalsettings`} />
-        <Route path={`${match.url}/generalsettings`} component={Genaral} />                                                                                             
-        <Route path={`${match.url}/emailsettings`} component={Email} />                                                                                             
-        <Route path={`${match.url}/paymentsettings`} component={Payment} />                                                                                             
-        <Route path={`${match.url}/currencysettings`} component={Currency} />                                                                                             
-        <Route path={`${match.url}/grouppermissions`} component={Grouppermission} />                                                                                             
-        <Route path={`${match.url}/createpermission`} component={Createpermission} />                                                                                             
-        <Route path={`${match.url}/editpermission`} component={Editpermission} />                                                                                             
-        <Route path={`${match.url}/taxrates`} component={Taxrates} />                                                                                             
-                                                                                           
-                                                                                                  
+        <Redirect exact from={`${match.url}/`} to={`${match.url}/general`} />
+        <Route path={`${match.url}/general-settings`} component={GeneralSettings} />       
+        <Route path={`${match.url}/user-permissions`} component={UserPermissions} />     
+        <Route path={`${match.url}/email-settings`} component={EmailSettings} />                                                                                                                                                                                      
         
     </Switch>
 )
 
-export default UserIndex
+export default SettingsIndex

@@ -36,7 +36,6 @@ const CoffeeCard = ({img,id,name,ingredients,details}) => {
             <h6><span>&#8369;</span>{details.price}</h6>
           </div>
           <div className="product-mood">
-            <label><p>Mood</p></label>
             <a className="btn btn-mood active"><span>🔥</span></a>
             <a className="btn btn-mood"><span>❄️</span></a>
           </div>

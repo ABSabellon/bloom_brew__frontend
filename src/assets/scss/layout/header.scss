@@ -294,9 +294,36 @@
         }
     }
 }
+.menu-header{
+    width: 260px;
+    padding: 0 20px;
+    .logo-normal{
+        display: inline-block;
+    }
+    .logo-small{
+        display: none;
+
+    }
+}
+
 .logo-small img {
     width: 50px;
 }
+
+.menu-header{
+
+    width: 260px !important;
+    padding: 0 20px !important;
+}
+
+.showDisplay{
+    display: inline-block !important;
+}
+
+.noDisplay{
+    display: none !important;
+}
+
 @include respond-above(custom992) {
     .mini-sidebar{
         &.expand-menu{

@@ -39,6 +39,22 @@ const Header = (props) => {
   };
 
   let pathname = location.pathname;
+  
+  useEffect(() => {
+    if (pathname.includes("menu-")) {
+      document.querySelector(".header-left").classList.add("menu-header");
+      document.querySelector(".logo-normal").classList.add("showDisplay");
+      document.querySelector(".logo-small").classList.add("noDisplay");
+      document.getElementById("toggle_btn").classList.add("noDisplay");
+      
+    } else {
+      document.querySelector(".header-left").classList.remove("menu-header");
+      document.querySelector(".logo-normal").classList.remove("showDisplay");
+      document.querySelector(".logo-small").classList.remove("noDisplay");
+      document.getElementById("toggle_btn").classList.remove("noDisplay");
+    }
+  }, [pathname]); 
+
 
   const exclusionArray = [
     "/admin/bloom-brew/index-three",
@@ -219,7 +235,7 @@ const Header = (props) => {
             </Link>
           </li>
           <li className="nav-item nav-item-box">
-            <Link to="/bloom-brew/application/email">
+            <Link to="/bloom-brew/application/email-applications">
               {/* <i data-feather="mail" /> */}
               <FeatherIcon icon="mail" />
               <span className="badge rounded-pill">1</span>

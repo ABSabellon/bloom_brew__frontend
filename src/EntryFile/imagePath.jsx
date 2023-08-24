@@ -7,6 +7,10 @@ export { default as GoogleIcon } from '../assets/img/icons/google.png'
 export { default as FacebookIcon } from '../assets/img/icons/facebook.png'
 export { default as Users1 } from '../assets/img/icons/users1.svg'
 
+//Loaders
+export {default as CoffeeSteaming} from '../assets/img/loaders/steamy-coffee.svg'
+
+
 //Dashboard icons
 
 export { default as Dash1 } from '../assets/img/icons/dash1.svg'
