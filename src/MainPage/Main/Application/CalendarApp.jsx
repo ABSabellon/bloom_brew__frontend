@@ -11,9 +11,9 @@ const options1 = [
   { id: 1, text: "Success", text: "Success" },
   { id: 2, text: "Danger", text: "Danger" },
   { id: 3, text: "Info", text: "Info" },
-  { id: 3, text: "Primary", text: "Primary" },
-  { id: 3, text: "Warning", text: "Warning" },
-  { id: 3, text: "Inverse", text: "Inverse" },
+  { id: 4, text: "Primary", text: "Primary" },
+  { id: 5, text: "Warning", text: "Warning" },
+  { id: 6, text: "Inverse", text: "Inverse" },
 ];
 
 const CalendarApp = () => {
@@ -88,6 +88,7 @@ const CalendarApp = () => {
   const handleDateSelect = (selectInfo) => {
     setisnewevent(true);
     setaddneweventobj(selectInfo);
+
   };
   const addnewevent = () => {
     let calendarApi = addneweventobj.view.calendar;
@@ -157,35 +158,6 @@ const CalendarApp = () => {
             </div>
           </div>
           <div className="row">
-            {/* <div className="col-lg-3 col-md-4">
-              <h4 className="card-title">Drag &amp; Drop Event</h4>
-              <div id="calendar-events" className="mb-3">
-                <div className="calendar-events" data-class="bg-info">
-                  <i className="fas fa-circle text-info" /> My Event One
-                </div>
-                <div className="calendar-events" data-class="bg-success">
-                  <i className="fas fa-circle text-success" /> My Event Two
-                </div>
-                <div className="calendar-events" data-class="bg-danger">
-                  <i className="fas fa-circle text-danger" /> My Event Three
-                </div>
-                <div className="calendar-events" data-class="bg-warning">
-                  <i className="fas fa-circle text-warning" /> My Event Four
-                </div>
-              </div>
-              <div className="checkbox  mb-3">
-                <input id="drop-remove" className='me-1' type="checkbox" />
-                <label htmlFor="drop-remove">Remove after drop</label>
-              </div>
-              <a
-                href="#"
-                data-bs-toggle="modal"
-                data-bs-target="#add_new_event"
-                className="btn mb-3 btn-primary btn-block w-100"
-              >
-                <i className="fas fa-plus" /> Add Category
-              </a>
-            </div> */}
             <div className="col-lg-12 col-md-12">
               <div className="card bg-white">
                 <div className="card-body">
@@ -199,6 +171,8 @@ const CalendarApp = () => {
                     initialView="dayGridMonth"
                     editable={true}
                     selectable={true}
+                    data-bs-toggle="modal"
+                    data-bs-target="#add_event"
                     selectMirror={true}
                     dayMaxEvents={true}
                     weekends={weekendsVisible}
