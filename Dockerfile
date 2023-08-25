@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package.json package-l.json* ./
 
 # Install dependencies
+
 RUN npm i --legacy-peer-deps
 
 # Copy the remaining application files to the working directory
@@ -24,6 +25,8 @@ COPY --from=build /app/dist /usr/share/nginx/html
 
 # Replace the default NGINX configuration with custom configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+ENV PORT 80
 
 # Expose the container's port (default is 80 for NGINX)
 EXPOSE 80

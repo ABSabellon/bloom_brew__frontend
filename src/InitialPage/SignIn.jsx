@@ -105,41 +105,6 @@ const SignInPage = (props) => {
                                         </button>
                                     </div>
                                 </form>
-                                <div className="signinform text-center">
-                                    <h4>
-                                        Don’t have an account?{" "}
-                                        <Link to="/signUp" className="hover-a">
-                                            Sign Up
-                                        </Link>
-                                    </h4>
-                                </div>
-                                <div className="form-setlogin">
-                                    <h4>Or sign up with</h4>
-                                </div>
-                                <div className="form-sociallink">
-                                    <ul>
-                                        <li>
-                                            <Link to="/signin">
-                                                <img
-                                                    src={GoogleIcon}
-                                                    className="me-2"
-                                                    alt="google"
-                                                />
-                                                Sign Up using Google
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/signin">
-                                                <img
-                                                    src={FacebookIcon}
-                                                    className="me-2"
-                                                    alt="google"
-                                                />
-                                                Sign Up using Facebook
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <div className="login-img">

@@ -1,45 +1,45 @@
 /****** UTILS ******/
-@import "./utils/variables.scss";
-@import "./utils/mixins.scss";
+@import "utils/variables.scss";
+@import "utils/mixins.scss";
 
 /******* BASE *******/
-@import "./base/reset.scss";
-@import "./base/typography.scss";
-@import "./base/colors.scss"; 
-@import "./base/base.scss";
-@import "./base/grid.scss";
+@import "base/reset.scss";
+@import "base/typography.scss";
+@import "base/colors.scss"; 
+@import "base/base.scss";
+@import "base/grid.scss";
 
 /******* COMPONENTS ******/
-@import "./components/button";
-@import "./components/loader.scss";
+@import "components/button";
+@import "components/loader.scss";
 
   
 /****** LAYOUT ******/
-@import "./layout/avatar";
-@import "./layout/boostrap";
-@import "./layout/calendar";
-@import "./layout/chart";
-@import "./layout/content";
-@import "./layout/common";
-@import "./layout/components";
-@import "./layout/darktheme";
-@import "./layout/elements";
-@import "./layout/datatable";
-@import "./layout/footer";
-@import "./layout/header";
-@import "./layout/header-one";
-@import "./layout/header-two";
-@import "./layout/header-three";
-@import "./layout/header-four";
-@import "./layout/loader";
-@import "./layout/select";
-@import "./layout/sidebar";
-@import "./layout/nav-tab";
-@import "./layout/notification";
-@import "./layout/table";
-@import "./layout/popup";
-@import "./layout/sidebar-settings";
-@import "./layout/topbar.scss";
+@import "layout/avatar";
+@import "layout/boostrap";
+@import "layout/calendar";
+@import "layout/chart";
+@import "layout/content";
+@import "layout/common";
+@import "layout/components";
+@import "layout/darktheme";
+@import "layout/elements";
+@import "layout/datatable";
+@import "layout/footer";
+@import "layout/header";
+@import "layout/header-one";
+@import "layout/header-two";
+@import "layout/header-three";
+@import "layout/header-four";
+@import "layout/loader";
+@import "layout/select";
+@import "layout/sidebar";
+@import "layout/nav-tab";
+@import "layout/notification";
+@import "layout/table";
+@import "layout/popup";
+@import "layout/sidebar-settings";
+@import "layout/topbar.scss";
 
 /****** PAGES ******/
 

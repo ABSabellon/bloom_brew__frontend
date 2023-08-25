@@ -4,13 +4,34 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import OwlCarousel from "react-owl-carousel";
 
+
+
 const MenuCategories = () =>{
+
+  const responsiveOptions = {
+    0: {
+      items: 2
+    },
+    576: {
+      items: 3
+    },
+    768: {
+      items: 5
+    },
+    992: {
+      items: 6
+    },
+    1200: {
+      items: 6
+    }
+  };
+
   return(
     <ul className=" tabs owl-carousel owl-theme owl-product  border-0 ">
       <OwlCarousel
-        className="owl-theme"
+        responsive={responsiveOptions}
         items={6}
-        margin={10}
+        margin={8}
         dots={false}
         nav
       >

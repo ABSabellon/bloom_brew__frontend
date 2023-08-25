@@ -4,7 +4,7 @@ import MenuIndex from "../MainPage/Main/Menu";
 import ManageIndex from "../MainPage/Manage";
 import ProfileIndex from "../MainPage/Profile";
 import ReportsIndex from "../MainPage/Reports";
-import SettingsIndex from "../MainPage/settings";
+import SettingsIndex from "../MainPage/Settings"
 import Activities from "../MainPage/Activities";
 import BlankPage from "../MainPage/BlankPage";
 import Error404 from "../MainPage/ErrorPage/Error404";

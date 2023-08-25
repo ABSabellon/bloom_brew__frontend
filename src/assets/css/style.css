@@ -1228,9 +1228,6 @@ a:hover {
   display: none;
 }
 
-.form-group {
-  margin-bottom: 25px;
-}
 .form-group label {
   margin-bottom: 8px;
   color: #212B36;
@@ -1288,6 +1285,33 @@ a:hover {
   color: #000;
   padding: 10px 15px;
   border-radius: 5px;
+}
+
+.float-label {
+  position: relative;
+}
+.float-label.with-addon .label {
+  left: 56px;
+}
+.float-label .label {
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 12px;
+  top: 11px;
+  transition: 0.2s ease all;
+  z-index: 9;
+}
+.float-label .label.as-placeholder {
+  color: gray;
+}
+.float-label .label.as-label {
+  top: -8px;
+  font-size: 12px !important;
+  background: white;
+  padding: 0 4px;
+  margin-left: -4px;
+  z-index: 9;
 }
 
 .dropdown-item.active,
