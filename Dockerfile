@@ -5,7 +5,7 @@ FROM node:16.17.0 as build
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY package.json package-l.json* ./
 
 # Install dependencies
 RUN npm i --legacy-peer-deps

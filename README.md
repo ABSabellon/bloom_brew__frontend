@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Requirements
+  -React -v 18.2.0
+  -Node -v 16.17.0
+  -Npm
+  -Notepad++ or visual studio or subline text
+  -Webpack -v 5.85.1
+
 ## Available Scripts
 
 In the project directory, you can run:
