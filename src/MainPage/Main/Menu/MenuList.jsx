@@ -13,7 +13,7 @@ const MenuList = () => {
       <div className="page-wrapper">
           <div className="content">
             <div className="row">
-              <div className="col-lg-8 col-sm-12 ">
+              <div className="col-lg-8 col-sm-12 tabs_wrapper">
                 <MenuItems dataSource={products}/>
               </div>
               <div className="col-lg-4 col-sm-12 ">

@@ -67,7 +67,7 @@ const SignInPage = (props) => {
                                                 {...register('email')}
                                                 className={` ${errors.email ? 'is-invalid' : ''}`}
                                                 placeholder="Enter your email address"
-                                                defaultValue="admin@dreamguystech.com"
+                                                defaultValue="test@bloombrew.com"
                                             />
                                             <img src={MailIcon} alt="img" />
                                             <div className="invalid-feedback">{errors.email?.message}</div>
@@ -82,7 +82,7 @@ const SignInPage = (props) => {
                                                 className={` ${errors.password ? 'is-invalid' : ''}`}
                                                 placeholder="Enter your password"
                                                 {...register('password')}
-                                                defaultValue={123456}
+                                                defaultValue={4040404}
                                             />
                                             <span  onClick={onEyeClick} className={`fas toggle-password ${eye ? "fa-eye-slash":"fa-eye"} `} />
                                             <div className="invalid-feedback">{errors.password?.message}</div>

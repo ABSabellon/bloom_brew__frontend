@@ -3,7 +3,7 @@ import { withRouter, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Scrollbars } from "react-custom-scrollbars";
 import FeatherIcon from "feather-icons-react";
-import IconMap from "../../components/iconMap";
+import IconMap from "../../components/iconMap/IconMap"
 
 const Sidebar = (props) => {
   const [isSideMenu, setSideMenu] = useState("");

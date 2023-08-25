@@ -157,7 +157,7 @@ const CalendarApp = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-3 col-md-4">
+            {/* <div className="col-lg-3 col-md-4">
               <h4 className="card-title">Drag &amp; Drop Event</h4>
               <div id="calendar-events" className="mb-3">
                 <div className="calendar-events" data-class="bg-info">
@@ -185,8 +185,8 @@ const CalendarApp = () => {
               >
                 <i className="fas fa-plus" /> Add Category
               </a>
-            </div>
-            <div className="col-lg-9 col-md-8">
+            </div> */}
+            <div className="col-lg-12 col-md-12">
               <div className="card bg-white">
                 <div className="card-body">
                   <FullCalendar

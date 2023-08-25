@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import IconMap from "../iconMap";
+// import IconMap from "../iconMap";
+import IconMap from "../iconMap/IconMap"
 import { Product29 } from "../../EntryFile/imagePath";
 
 const CoffeeCard = ({ img, id, name, ingredients, price, active }) => {

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import CoffeeCard from "../../components/productCards/coffeeCard";
-import PosCategories from "../../components/headers/posCategories";
+import MenuCategories from "../../components/headers/menuCategories/menuCategories";
 import {
   Product29   
   } from "../../EntryFile/imagePath";
@@ -17,7 +17,7 @@ const Posleft = () => {
           <h6>Manage your purchases</h6>
         </div>
       </div>
-      <PosCategories />
+      <MenuCategories />
       <div className="tabs_container">
         <div className="tab_content active" data-tab="fruits">
           <div className="row">

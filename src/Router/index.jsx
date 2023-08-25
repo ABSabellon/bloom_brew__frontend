@@ -9,6 +9,7 @@ import Activities from "../MainPage/Activities";
 import BlankPage from "../MainPage/BlankPage";
 import Error404 from "../MainPage/ErrorPage/Error404";
 import Error500 from "../MainPage/ErrorPage/Error500";
+import Pos from "../InitialPage/pos/pos";
 
 export default [
   { path: "applications", component: Applications,},
@@ -32,4 +33,6 @@ export default [
   { path: "error404", component: Error404, },
 
   { path: "error500", component: Error500, },
+
+  { path: "pos", component: Pos, },
 ];

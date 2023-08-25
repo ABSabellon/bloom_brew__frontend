@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "./posheader";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import POS from "./posleft";
