@@ -88,7 +88,7 @@ const CalendarApp = () => {
   const handleDateSelect = (selectInfo) => {
     setisnewevent(true);
     setaddneweventobj(selectInfo);
-
+    
   };
   const addnewevent = () => {
     let calendarApi = addneweventobj.view.calendar;
@@ -171,8 +171,6 @@ const CalendarApp = () => {
                     initialView="dayGridMonth"
                     editable={true}
                     selectable={true}
-                    data-bs-toggle="modal"
-                    data-bs-target="#add_event"
                     selectMirror={true}
                     dayMaxEvents={true}
                     weekends={weekendsVisible}

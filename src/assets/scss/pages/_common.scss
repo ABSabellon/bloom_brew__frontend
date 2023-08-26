@@ -69,18 +69,23 @@
     }
 }
 
-
 .table-top {
-    @extend %display-flex;
-    @extend %align-items-center;
-    @extend %justify-content-between;
-    margin-bottom: 25px;
-    @include respond-below(custom575) {
-        flex-direction: $__column;
-        .wordset{
-            margin-top: 25px;
-        }
-    }
+    padding-top: 1rem
+    // @extend %display-flex;
+    // @extend %align-items-center;
+    // @extend %justify-content-between;
+    // // margin-bottom: 25px;
+    // @include respond-below(custom575) {
+    //     flex-direction: $__column;
+    //     .wordset{
+    //         margin-top: 25px;
+    //     }
+    // }
+}
+
+.search-form{
+    padding: 6.5px 11px;
+    font-size: 16px;
 }
 
 .search-set {

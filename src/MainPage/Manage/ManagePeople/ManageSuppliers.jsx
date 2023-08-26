@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Table from "../../../EntryFile/datatable";
-import Tabletop from "../../../EntryFile/tabletop"
+import Table from "../../../components/tables/datatable";
+import Tabletop from "../../../components/tables/tabletop"
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import {

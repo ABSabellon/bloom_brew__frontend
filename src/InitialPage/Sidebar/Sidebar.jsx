@@ -26,10 +26,15 @@ const Sidebar = (props) => {
     { 
       title: 'Manage', icon: null, path:null, link: "#",
       submenus: [
-        { title: 'Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
-        { title: 'Products', icon: IconMap('AiOutlinePlusSquare',null,null,24),path:'products-manage', link: '/admin/manage/products-manage'},
-        { title: 'Categories', icon: IconMap('FaCodepen',null,null,24), path:'categories-manage', link: '/admin/manage/categories-manage' },
-        { title: 'Inventory', icon: IconMap('CiShoppingBasket',null,null,24), path:'inventory-manage', link: '/admin/manage/inventory-manage' },
+        { title: 'Manage Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
+        { title: 'Manage Products', icon: IconMap('BiSolidCoffeeTogo',null,null,24),path:'products-', link: '#', submenu_children:[
+          {title: 'Products', icon: null, path:'products-manage', link:'/admin/manage/products-manage'},
+          { title: 'Categories', icon: null, path:'categories-manage', link:  '/admin/manage/categories-manage' },
+        ]},
+        { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
+          {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
+          { title: 'Categories', icon: null, path:'categories-manage', link:  '/admin/manage/categories-manage' },
+        ]},
         { title: 'Users', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/admin/manage/users-manage'},
         { title: 'Suppliers', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/admin/manage/suppliers-manage' }, 
       ]

@@ -7,7 +7,8 @@
       { "temp": "hot", "price": "90" },
       { "temp": "cold", "price": "110" }
     ],
-    "category": "Espresso Drinks"
+    "category": "Espresso Drinks",
+    "quantity":20
   },
   {
     "id": "ESP124",
@@ -17,7 +18,8 @@
       { "temp": "hot", "price": "110" },
       { "temp": "cold", "price": "120" }
     ],
-    "category": "Espresso Drinks"
+    "category": "Espresso Drinks",
+    "quantity":20
   },
   {
     "id": "NED125",
@@ -27,7 +29,8 @@
       { "temp": "hot", "price": "130" },
       { "temp": "cold", "price": "140" }
     ],
-    "category": "Non-Espresso Drinks"
+    "category": "Non-Espresso Drinks",
+    "quantity":20
   },
   {
     "id": "NED126",
@@ -37,7 +40,8 @@
       { "temp": "hot", "price": "140" },
       { "temp": "cold", "price": "150" }
     ],
-    "category": "Non-Espresso Drinks"
+    "category": "Non-Espresso Drinks",
+    "quantity":20
   },
   {
     "id": "FFS127",
@@ -46,7 +50,8 @@
     "details": [
       { "temp": "cold", "price": "160" }
     ],
-    "category": "Fresh Fruit Shake"
+    "category": "Fresh Fruit Shake",
+    "quantity":20
   },
   {
     "id": "FFS128",
@@ -55,6 +60,7 @@
     "details": [
       { "temp": "cold", "price": "160" }
     ],
-    "category": "Fresh Fruit Shake"
+    "category": "Fresh Fruit Shake",
+    "quantity":20
   }
 ]

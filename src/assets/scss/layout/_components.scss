@@ -130,3 +130,20 @@
         }
     }
 }
+.item-details{
+    h4{
+        vertical-align: top;
+        // font-size: 14px;
+        color: rgb(115, 103, 240);
+        font-weight: 600;
+        line-height: 35px;
+
+    }
+    ul{
+        list-style: none;
+        li{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

@@ -1,12 +1,13 @@
 import React,{useEffect,useState} from "react";
 // import IconMap from "../icons/IconMap";
-import { AutoComplete, Input, Select } from 'antd';
+import { AutoComplete,Input,Select,DatePicker, InputNumber } from 'antd';
 import {Form,Button,Spinner } from 'react-bootstrap';
 import Select2 from 'react-select2-wrapper';
 
 const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
   label, id, type, icon, placeholder, required, tooltip, name, isabled,
-  errorType, errorText, format, controlId,loading, option,prefix, pattern
+  errorType, errorText, format, controlId,loading, option,addonBefore,
+  pattern, readOnly, disabledDate,prefix
   
 }) => {
 
@@ -18,7 +19,8 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
   const isOccupied = focus || (value && value.length !== 0);
   const labelClass = isOccupied ? "label as-label" : "label as-placeholder";
   const requiredMark = required ? <span className="text-danger">*</span> : null;
-  const hasPrefix = prefix ? "with-addon" : ""
+  const hasAddonBefore = addonBefore ? "with-addon" : ""
+  const hasPrefix = prefix ? "with-prefix" : ""
 
   const inputChosen = (type) =>{
 
@@ -31,12 +33,13 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           value={value}
           required={required} 
           onChange={onChange} 
-          // defaultValue={value} 
+          readOnly={readOnly}
+          defaultValue={value} 
           pattern={pattern}
-          addonBefore={prefix}
+          addonBefore={addonBefore}
+          prefix={prefix} 
           />
       );
-
     }
     case "password":{
       return(
@@ -45,21 +48,25 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           type={type}
           value={value}
           required={required} 
+          readOnly={readOnly}
           onChange={onChange} 
+          prefix={prefix} 
+          addonBefore={addonBefore}
           />
       );
 
     }
-    case "phone":{
+    case "price":{
       return(
-        <Input
-          addonBefore={prefix}
+        <InputNumber 
           id={id}
-          type={type}
           value={value}
           required={required} 
+          readOnly={readOnly}
           onChange={onChange} 
-          defaultValue={value} 
+          prefix={prefix} 
+          addonBefore={addonBefore}
+          style={{ width: '100%' }} 
         />
       );
     }
@@ -67,7 +74,11 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
       return(
         <Select
           showSearch
+          required={required}
+          readOnly={readOnly}
           onChange={onChange}
+          prefix={prefix} 
+          addonBefore={addonBefore}
           filterOption={(inputValue, option) =>
             option.children.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
           }
@@ -80,6 +91,20 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
         </Select>
       );
     }
+    case "datepicker":{
+      return(
+        <DatePicker
+          style={{ width: '100%' }} 
+          readOnly={readOnly}
+          required={required}
+          onChange={onChange}
+          placeholder=""
+          disabledDate={disabledDate}
+          prefix={prefix} 
+          addonBefore={addonBefore}
+        />
+      );
+    }
     case "autocomplete":{   
       
       return (
@@ -87,6 +112,10 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           value={value}
           options={option}
           onChange={onChange}
+          readOnly={readOnly}
+          required={required}
+          prefix={prefix} 
+          addonBefore={addonBefore}
           filterOption={(inputValue, option) => {
             if (option && option.value) {
               return option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1;
@@ -102,6 +131,10 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           value={value}
           options={option}
           onChange={onChange}
+          required={required}
+          readOnly={readOnly}
+          prefix={prefix} 
+          addonBefore={addonBefore}
           filterOption={
             (inputValue, option) => {
               if (option && option.options) {
@@ -117,7 +150,15 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
     }
     case "email": {
       return(
-        <Input onChange={onChange} type={type} defaultValue={value} />
+        <Input 
+          onChange={onChange} 
+          type={type} 
+          readOnly={readOnly}
+          required={required}
+          defaultValue={value} 
+          prefix={prefix} 
+          addonBefore={addonBefore}
+          />
       );
     }
   }
@@ -127,7 +168,7 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
   return(
 
     <div
-    className={`float-label ${hasPrefix}`}
+    className={`float-label ${hasAddonBefore} ${hasPrefix} `}
     onBlur={() => setFocus(false)}
     onFocus={() => setFocus(true)}
     required={required}

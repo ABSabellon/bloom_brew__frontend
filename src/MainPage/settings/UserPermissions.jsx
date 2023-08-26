@@ -9,7 +9,7 @@ import {
   DeleteIcon,
   EditIcon,
 } from "../../EntryFile/imagePath";
-import Table from "../../EntryFile/datatable";
+import Table from "../../components/tables/datatable";
 import "react-select2-wrapper/css/select2.css";
 import Swal from "sweetalert2";
 

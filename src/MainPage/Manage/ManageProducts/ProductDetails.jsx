@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { barcode1, Printer, Product69 } from "../../../EntryFile/imagePath";
+import { barcode1, Printer, Product69 } from "../../../../EntryFile/imagePath";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";

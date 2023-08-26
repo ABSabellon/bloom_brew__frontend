@@ -97,7 +97,7 @@ const GeneralSettings = () => {
               </div>
               <div className="col-lg-3 col-sm-6 col-12">
                 <Form.Item name="phone" hasFeedback>
-                  <Inputs type = "phone" label="phone" placeholder="phone"  name="phone" prefix={'+63'}
+                  <Inputs type = "text" label="phone" placeholder="phone"  name="phone" addonBefore={'+63'}
                   />
                 </Form.Item>
               </div>

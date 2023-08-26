@@ -1,21 +1,24 @@
 import React from 'react';
 
-// import { } from 'react-icons/md';
+import { MdOutlineDeleteForever } from 'react-icons/md';
 import { FaCodepen } from 'react-icons/fa';
 // import {  } from 'react-icons/rx';
-import { AiOutlinePlusSquare, AiOutlineGold, AiOutlineShopping,AiFillFire } from 'react-icons/ai';
+import { AiOutlinePlusSquare, AiOutlineGold, AiOutlineShopping,AiFillFire, 
+  AiOutlineEye,AiOutlinePlus,AiOutlinePlusCircle,AiOutlineEdit,AiOutlineInbox
+} from 'react-icons/ai';
 // import {  } from 'react-icons/bs';
-import {BiFoodMenu,BiSolidEdit } from 'react-icons/bi';
-// import {  } from 'react-icons/tb';
+import { BiFoodMenu,BiSolidEdit,BiSearchAlt,BiBowlHot,BiSolidCoffeeTogo 
+} from 'react-icons/bi';
+import { TbCurrencyPeso } from 'react-icons/tb';
 // import {  } from 'react-icons/im';
-import { FiDatabase,FiLogOut } from 'react-icons/fi';
+import { FiDatabase,FiLogOut,FiEdit2,FiTrash2 } from 'react-icons/fi';
 // import {  } from 'react-icons/tfi';
 // import {  } from 'react-icons/vsc';
 // import {  } from 'react-icons/hi';
 // import { } from 'react-icons/io'
 // import {  } from 'react-icons/ti'
 // import {  } from 'react-icons/gi';
-import {BsPhone,BsPeople,BsSnow2,BsArrow90DegRight } from 'react-icons/bs';
+import{ BsPhone,BsPeople,BsSnow2,BsArrow90DegRight,BsDownload } from 'react-icons/bs';
 import{ LuLayoutDashboard, LuFileText, LuFlame} from 'react-icons/lu';
 import{ CiShoppingBasket } from 'react-icons/ci'
 import{ FaUsersCog, FaUserCog,FaCog } from 'react-icons/fa'
@@ -45,6 +48,10 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
     case 'FaCodepen': {
       icon = <FaCodepen className={classnames} size={size} style={iconStyle} /> //categories tab
     break;}
+    case 'BiSolidCoffeeTogo': {
+      icon = <BiSolidCoffeeTogo className={classnames} size={size} style={iconStyle} /> //categories tab
+    break;}
+  
 
     //Manage Inventory
     case 'AiOutlineShopping': {
@@ -53,7 +60,13 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
     case 'CiShoppingBasket': {
       icon = <CiShoppingBasket className={classnames} size={size} style={iconStyle} /> //Stocks tab
     break;}
-
+    case 'BiBowlHot': {
+      icon = <BiBowlHot className={classnames} size={size} style={iconStyle} /> //Stocks tab
+    break;}
+    case 'AiOutlineInbox': {
+      icon = <AiOutlineInbox className={classnames} size={size} style={iconStyle} /> //Stocks tab
+    break;}
+    
     //Sales reports
     case 'LuFileText': {
       icon = <LuFileText className={classnames} size={size} style={iconStyle} /> //Invoice Reports tab
@@ -81,8 +94,39 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
       icon = <FiLogOut className={classnames} size={size} style={iconStyle} /> //Logout tab
     break;}
 
+    //action icons
+    case 'AiOutlineEye': {
+      icon = <AiOutlineEye className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'AiOutlinePlus': {
+      icon = <AiOutlinePlus className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'FiEdit2': {
+      icon = <FiEdit2 className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'AiOutlineEdit': {
+      icon = <AiOutlineEdit className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}AiOutlineEdit
+    case 'TbCurrencyPeso': {
+      icon = <TbCurrencyPeso className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'AiOutlinePlusCircle': {
+      icon = <AiOutlinePlusCircle className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'BsDownload': {
+      icon = <BsDownload className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'MdOutlineDeleteForever': {
+      icon = <MdOutlineDeleteForever className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'FiTrash2': {
+      icon = <FiTrash2 className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    case 'BiSearchAlt': {
+      icon = <BiSearchAlt className={classnames} size={size} style={iconStyle} /> //Logout tab
+    break;}
+    
     //etc
-
     case 'AiFillFire': {
       icon = <AiFillFire className={classnames} size={size} style={iconStyle} />
     break;}

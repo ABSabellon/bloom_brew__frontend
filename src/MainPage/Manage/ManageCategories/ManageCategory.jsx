@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Table from "../../../EntryFile/datatable";
+import Table from "../../../../components/tables/datatable";
 import { Link } from "react-router-dom";
-import Tabletop from "../../../EntryFile/tabletop";
+import Tabletop from "../../../../components/tables/tabletop";
 import {
   ClosesIcon,
   Excel,
@@ -19,7 +19,7 @@ import {
   EditIcon,
   DeleteIcon,
   search_whites,
-} from "../../../EntryFile/imagePath";
+} from "../../../../EntryFile/imagePath";
 import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";
 import Swal from "sweetalert2";

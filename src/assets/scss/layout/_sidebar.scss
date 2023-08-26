@@ -3,7 +3,7 @@
     background-color: $__white;
     border-right: 1px solid $__transparent;
     margin-top: 0;
-    z-index: 1001;
+    z-index: 999;
     @include position($__fixed,60px,null,0,0);
     @include transition(all 0.2s ease);
     @extend %display-flex;

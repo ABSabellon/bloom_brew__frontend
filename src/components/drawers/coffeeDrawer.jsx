@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Drawer as AntDrawer } from 'antd';
 
-const LaundryDrawer = ({ 
+const CoffeeDrawer = ({ 
   open, handleOk, handleCancel, title, subtitle, validated, loading, footer, body, 
   closable, size, width, cancelText, okText, update = 0
 }) => {
@@ -47,4 +47,4 @@ const LaundryDrawer = ({
   );
 };
 
-export default LaundryDrawer;
+export default CoffeeDrawer;
