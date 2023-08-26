@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { Table } from "antd";
-import "./antd.css";
+import "../../EntryFile/antd.css";
 
 const Datatables = ({ props, columns, dataSource }) => {
   return (

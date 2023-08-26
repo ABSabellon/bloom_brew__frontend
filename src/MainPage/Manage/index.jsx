@@ -1,8 +1,8 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom';
 import ManageSales from './ManageSales/ManageSales';
-import ManageProducts from './ManageProducts/ManageProducts/ManageProducts';
-import ManageCategory from './ManageProducts/ManageCategories/ManageCategory';
+import ManageProducts from './ManageProducts/ManageProducts';
+import ManageCategory from './ManageCategories/ManageCategory';
 import ManageInventory from './ManageInventory/ManageInventory';
 import ManageUsers from './ManagePeople/ManageUsers';
 import ManageSuppliers from './ManagePeople/ManageSuppliers';

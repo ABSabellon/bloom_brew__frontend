@@ -14,7 +14,7 @@ import {
   SamsungIcon,
   MacbookIcon,
 } from "../../../EntryFile/imagePath";
-import Table from "../../../EntryFile/datatables"
+import Table from "../../../components/tables/datatables"
 import Chart from "react-apexcharts";
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
