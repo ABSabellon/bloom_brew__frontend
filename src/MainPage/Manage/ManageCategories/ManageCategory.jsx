@@ -3,19 +3,12 @@ import Table from "../../../components/tables/datatable";
 import { Link } from "react-router-dom";
 import Tabletop from "../../../components/tables/tabletop";
 import {
-  ClosesIcon,
-  Excel,
-  Filter,
-  Pdf,
   PlusIcon,
-  Printer,
-  Search,
   MacbookIcon,
   OrangeImage,
   PineappleImage,
   StawberryImage,
   AvocatImage,
-  EyeIcon,
   EditIcon,
   DeleteIcon,
   search_whites,
