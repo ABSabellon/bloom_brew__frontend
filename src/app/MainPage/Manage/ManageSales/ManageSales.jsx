@@ -7,7 +7,7 @@ import SaleDetails from "./SaleDetails";
 import Table from "../../../components/tables/datatable";
 import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import IconMap from "../../../components/iconMap/IconMap";
-import productsJson from "../../../assets/jsons/productsJson.json"
+import productsJson from "../../../../assets/jsons/productsJson.json"
 import Swal from "sweetalert2";
 
 const validator = {

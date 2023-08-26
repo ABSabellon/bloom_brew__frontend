@@ -4,7 +4,7 @@ import MenuCategories from "../../components/headers/menuCategories/menuCategori
 import {
   Product29   
   } from "../../EntryFile/imagePath";
-import productsJson from "../../assets/jsons/productsJson.json"
+import productsJson from "../../../assets/jsons/productsJson.json"
 
 const Posleft = () => {
   const [products, setProducts] = useState(productsJson);

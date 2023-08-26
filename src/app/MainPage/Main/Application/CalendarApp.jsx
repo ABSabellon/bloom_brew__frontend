@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import "../../../assets/plugins/fullcalendar/fullcalendar.min.css"
+import "../../../../assets/plugins/fullcalendar/fullcalendar.min.css"
 import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";
 

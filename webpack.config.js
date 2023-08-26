@@ -32,7 +32,7 @@ module.exports = {
   //   "jquery": "jQuery"
   // },
   entry: {
-    app: "./src/index.js",
+    app: "./src/app/index.js",
   },
   output: {
     // The build folder.
@@ -48,7 +48,7 @@ module.exports = {
     hotUpdateMainFilename: "hot/hot-update.json",
   },
   devServer: {
-    contentBase: "./src/index.js",
+    contentBase: "./src/app/index.js",
     host: "localhost",
     compress: true,
     port: 8081, // port number

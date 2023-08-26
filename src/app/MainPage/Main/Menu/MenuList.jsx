@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import MenuItems from "./MenuItems";
 import MenuCheckout from "./MenuCheckout";
 
-import productsJson from "../../../assets/jsons/productsJson.json"
+import productsJson from "../../../../assets/jsons/productsJson.json"
 
 const MenuList = () => {
   

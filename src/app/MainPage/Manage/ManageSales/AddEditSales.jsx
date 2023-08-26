@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import { Form } from "antd";
-import { Upload } from "../../../EntryFile/imagePath";
 import IconMap from "../../../components/iconMap/IconMap";
 import Inputs from "../../../components/forms/inputs";
 import moment from "moment";
