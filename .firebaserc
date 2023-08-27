@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "bloom-brew"
+  },
+  "targets": {
+    "bloom-brew": {
+      "hosting": {
+        "live": [
+          "bloom-brew"
+        ],
+        "dev": [
+          "bloom-brew-dev"
+        ]
+      }
+    }
+  }
+
+}
