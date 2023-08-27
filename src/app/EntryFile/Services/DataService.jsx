@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, writeBatch } from "@firebase/firestore";
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, writeBatch,query, orderBy, limit } from "@firebase/firestore";
 import { firestore } from "../../../environments/environment";
 
 class DataService {
@@ -23,30 +23,38 @@ class DataService {
     }
   }
 
-  async addItems(data, docPrefix) { // This is for items requiring Custom IDs
+  async addItems(data, docPrefix) {
     if (!data || !docPrefix) {
-      throw new Error("Both data and docPrefix are required.");
+        throw new Error("Both data and docPrefix are required.");
     }
-  
+
     try {
-      const dataArray = Array.isArray(data) ? data : [data];
-      const batch = writeBatch(this.collectionRef.firestore);
-  
-      const currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, ''); // Get current date in YYYYMMDD format
-      let currentIncrement = 0;
-  
-      dataArray.forEach(data => {
-        const customId = `${docPrefix}${currentDate}${currentIncrement.toString().padStart(5, '0')}`;
-        const newDocRef = doc(this.collectionRef, customId);
-  
-        batch.set(newDocRef, data);
-        currentIncrement++;
-      });
-  
-      await batch.commit();
+        const dataArray = Array.isArray(data) ? data : [data];
+        const batch = writeBatch(this.collectionRef.firestore);
+
+        const latestDoc = await getDocs(query(this.collectionRef, orderBy("created_at", "desc"), limit(1)));
+        let currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, ''); // Get current date in YYYYMMDD format
+        let currentIncrement = 0;
+        if (!latestDoc.empty) {
+            const latestData = latestDoc.docs[0].id;
+            const latestDate = latestData.substring(docPrefix.length, docPrefix.length + 8);
+
+            if (latestDate === currentDate) {
+                currentIncrement = parseInt(latestData.substring(docPrefix.length + 8)) + 1;
+            }
+        }
+        dataArray.forEach(data => {
+            const customId = `${docPrefix}${currentDate}${currentIncrement.toString().padStart(5, '0')}`;
+            const newDocRef = doc(this.collectionRef, customId);
+
+            batch.set(newDocRef, data);
+            currentIncrement++;
+        });
+
+        await batch.commit();
     } catch (error) {
-      console.error("Error creating documents: ", error);
-      throw error;
+        console.error("Error creating documents: ", error);
+        throw error;
     }
   }
   

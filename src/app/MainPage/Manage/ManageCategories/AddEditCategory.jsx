@@ -32,7 +32,7 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
         }
         console.log('Form DATA after submit:', tempData);
 
-        await dataS.addItems(tempData, 'CT');
+        await dataS.addItems(tempData, 'CT', true);
 
         return { success: true, data: tempData, }; // Return validation success and form data
       } catch (error) {
