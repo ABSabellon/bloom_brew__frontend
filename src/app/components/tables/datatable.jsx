@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Table, Spin } from "antd";
 import "../../EntryFile/antd.css";
 import DataService from "../../EntryFile/Services/DataService";
+import IconMap from "../iconMap/IconMap";
+import DeleteConfirm from "../confirm/deleteConfirm";
 
-const Datatable = ({ url,dataSource, props, columns, reloadTable}) => {
+const Datatable = ({ dataSource, props, columns, reloadTable, query=null, operator=null,value=null}) => {
   const dataS = new DataService(dataSource);
   const [data, setData] = useState([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isTrashActive, setIsTrashActive] = useState(false);
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
@@ -17,12 +20,21 @@ const Datatable = ({ url,dataSource, props, columns, reloadTable}) => {
   const fetchData = async (pageNumber, pageSize) => {
     setIsLoading(true);
     try {
-      const deets = await dataS.getAll("name", pageNumber, pageSize, true);
-      if (deets) {
-        setData(deets.data);
+      let queryToUse = null;
+  
+      if (query && operator && value) {
+        queryToUse = dataS.createWhereQuery(query, operator, value);
+      }
+  
+      const fetchedData = await dataS.getAll(queryToUse || query);
+      if (fetchedData) {
+        setData(fetchedData);
+  
+        const totalCount = await dataS.getTotalCount();
+  
         setPagination((prevPagination) => ({
           ...prevPagination,
-          total: deets.docTotal,
+          total: totalCount,
         }));
       }
     } catch (error) {
@@ -41,6 +53,21 @@ const Datatable = ({ url,dataSource, props, columns, reloadTable}) => {
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
+  const deleteMultipleData = async (selectedData)=>{
+    if (selectedData.length > 0){
+
+      const confirmed = await DeleteConfirm({ collection:'Categories',record:selectedData});
+      if(confirmed){
+        reloadTable(true);
+      }
+    }
+  }
+
+
+  useEffect(() => {
+    setIsTrashActive(selectedRowKeys.length > 0);
+  }, [selectedRowKeys]);
+
   const rowSelection = {
     selectedRowKeys,
     onChange: onSelectChange,
@@ -53,6 +80,14 @@ const Datatable = ({ url,dataSource, props, columns, reloadTable}) => {
 
   return (
     <>
+      <div className="ps-3">
+        
+        
+        <a onClick={() => { deleteMultipleData(selectedRowKeys)}}>
+          {IconMap("FiTrash2", isTrashActive ? "text-danger" : "text-disabled", null, 24)}
+        </a>
+      
+      </div>
       <Table
         key={props}
         className="table datanew dataTable no-footer"

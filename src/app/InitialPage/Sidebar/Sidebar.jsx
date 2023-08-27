@@ -27,9 +27,9 @@ const Sidebar = (props) => {
       title: 'Manage', icon: null, path:null, link: "#",
       submenus: [
         { title: 'Manage Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
-        { title: 'Manage Products', icon: IconMap('BiSolidCoffeeTogo',null,null,24),path:'products-', link: '#', submenu_children:[
-          {title: 'Products', icon: null, path:'products-manage', link:'/admin/manage/products-manage'},
-          { title: 'Categories', icon: null, path:'products-categories', link:  '/admin/manage/products-categories' },
+        { title: 'Manage Menu', icon: IconMap('BiSolidCoffeeTogo',null,null,24),path:'menu-', link: '#', submenu_children:[
+          {title: 'Products', icon: null, path:'products-manage', link:'/admin/manage/menu-manage'},
+          { title: 'Categories', icon: null, path:'products-categories', link:  '/admin/manage/menu-categories' },
         ]},
         { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
           {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},

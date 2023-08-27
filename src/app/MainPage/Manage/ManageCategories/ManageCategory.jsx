@@ -8,57 +8,12 @@ import Swal from "sweetalert2";
 import IconMap from "../../../components/iconMap/IconMap";
 import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import AddEditCategory from "./AddEditCategory";
-import DataService from "../../../EntryFile/Services/DataService";
+import DeleteConfirm from "../../../components/confirm/deleteConfirm";
+import AddConfirm from "../../../components/confirm/addConfirm";
+import EditConfirm from "../../../components/confirm/editConfirm";
 
 const ManageCategory = () => {
-  const dataS = new DataService('Categories')
-  const confirmText = async (record) => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#FFC107',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-      customClass: {
-        icon: 'swal2-icon', // Apply the custom CSS class to the icon
-      },
-    }).then(async (result) => {
-      try{
-        if (result.isConfirmed) {
-          
-          console.log('deleteData ::: ', record.id)
-          
-          const deleteData = await dataS.delete(record.id)
-
-          if(deleteData){
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            ).then(()=>{
-              setRefreshTable(true);
-            })
-          }else{
-            // console.error('Failed to delete:', error);
-            Swal.fire({
-              type: 'error',
-              title: 'Error',
-              text: `Data not found in the server`,
-            });
-          }
-        }
-      }catch(error){
-        console.error('Failed to delete:', error);
-        Swal.fire({
-          type: 'error',
-          title: 'Error',
-          text: `Failed to delete Category. Please try again later. Or contact support if error persist`,
-        });
-
-      }
-    });
+  const confirmText = async (record) => { 
   };
 
   const childRef = useRef(null);
@@ -71,24 +26,32 @@ const ManageCategory = () => {
   const handleOpenDrawer = () => {
     setIsLoading(true); // Assuming setIsLoading is a state update function
    
-    setOpenDrawer(!openDrawer);
+    setOpenDrawer(!openDrawer); 
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 3000); // 3000 milliseconds = 3 secondaa¸¸¸
   };
 
   const handleDrawerSubmit = async () => {
     setIsLoading(true);
+    console.log('initialValues69 :::',initialValues )
+
+    const isUpdate = await Object.keys(initialValues).length > 0;
+
     if (childRef.current) {
       const validation = await childRef.current.formSubmit();
       if (validation.success) {
-        setIsLoading(false);
-        setRefreshTable(true);
-        handleOpenDrawer();
+        if(isUpdate){
+          console.log('update Form ::: ', isUpdate)
+          EditConfirm({ collection: 'Categories' ,id:initialValues.id, record:validation.data, updateTable,handleOpenDrawer });
+        }else{
+          console.log('new data :::', isUpdate)
+          AddConfirm({ collection: 'Categories' , record:validation.data, updateTable,handleOpenDrawer });
+        }
       } else {
+        setIsLoading(false);
         console.error('Form validation error:', validation.error);
       }
-      // handleOpenDrawer();
     }
   };
 
@@ -135,13 +98,21 @@ const ManageCategory = () => {
           <Link className="me-3" to="#" onClick={() => editData(record)}>
             {IconMap('AiOutlineEdit',null,null,24)}
           </Link>
-          <Link className="confirm-text" to="#" onClick={() => confirmText(record)}>
+          <Link className="confirm-text" to="#" onClick={() => {
+            DeleteConfirm({ collection:'Categories',record:record.id, updateTable})
+          }}>
             {IconMap('FiTrash2',"text-danger",null,24)}
           </Link>
         </>
       ),
     },
   ];
+
+  const updateTable = ()=>{
+    setRefreshTable(true);
+    setTimeout(() => setRefreshTable(false), 0);
+
+  }
 
   const editData = async (rowData) => {
     const data = await rowData
@@ -195,7 +166,10 @@ const ManageCategory = () => {
                 <Table                                    
                   columns={columns}
                   dataSource={'Categories'}    
-                  reloadTable={refreshTable}     
+                  reloadTable={refreshTable} 
+                  query={'type'}    
+                  operator={'=='}  
+                  value={window.location.href.includes("inventory-") ? 'inventory':'menu'}  
                 />
               </div>
             </div>

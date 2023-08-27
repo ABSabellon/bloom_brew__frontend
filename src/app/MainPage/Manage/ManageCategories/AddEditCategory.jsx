@@ -1,7 +1,5 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Form } from "antd";
-// import CoffeeLoader from "../../../components/loaders/coffeeloader";
-import FrenchPressLoader from "../../../components/loaders/frenchPressLoader";
 import DataService from "../../../EntryFile/Services/DataService";
 import Inputs from "../../../components/forms/inputs";
 import "react-datepicker/dist/react-datepicker.css";
@@ -22,8 +20,6 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
         const formValues = await validateForm();
         const isUpdate = await Object.keys(initialValues).length > 0; // Check if initialValues exist
   
-        // console.log('isUpdate ::::: ', isUpdate);
-  
         let tempData = {
           name: formValues.category_name,
           description: formValues.category_description,
@@ -33,12 +29,6 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
           updated_at: isUpdate ? new Date() : null,
           updated_by: isUpdate ? 'admin' : null,
         };
-  
-        if (!isUpdate) {
-          await dataS.addItems(tempData, 'CT', true);
-        } else {
-          await dataS.update(initialValues.id,tempData );
-        }
   
         return { success: true, data: tempData }; // Return validation success and form data
       } catch (error) {

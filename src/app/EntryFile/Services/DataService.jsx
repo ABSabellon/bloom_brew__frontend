@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, writeBatch,query, orderBy, limit, startAfter, startAt } from "@firebase/firestore";
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, writeBatch,query, orderBy, limit, startAfter, startAt, where } from "@firebase/firestore";
 import { firestore } from "../../../environments/environment";
 
 class DataService {
@@ -57,70 +57,30 @@ class DataService {
         throw error;
     }
   }
-  
-  async getAll(orderByField, pageNumber = 1, pageSize = 10, paginate = false) {
+
+  async getAll(query = null) {
     try {
       let querySnapshot;
   
-      if (paginate) {
-        const startAfterDoc = await this.getDocAtPage(pageNumber, pageSize);
-        if (startAfterDoc) {
-          querySnapshot = await getDocs(
-            query(this.collectionRef, orderBy(orderByField), startAfter(startAfterDoc), limit(pageSize))
-          );
-        } else {
-          querySnapshot = await getDocs(this.collectionRef);
-        }
+      if (query) {
+        querySnapshot = await getDocs(query);
       } else {
         querySnapshot = await getDocs(this.collectionRef);
       }
   
-      const docTotalSnapshot = await getDocs(this.collectionRef);
-      const docTotal = docTotalSnapshot.docs.length;
-  
-      const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  
-      return {
-        pageNumber,
-        pageSize,
-        docTotal,
-        data,
-      }; 
+      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       console.error("Error getting documents: ", error);
       throw error;
     }
   }
   
-  async getDocAtPage(pageNumber, pageSize) {
+  async getTotalCount() {
     try {
-      const querySnapshot = await getDocs(
-        query(this.collectionRef, orderBy('createdAt'), limit(pageSize), startAfter(pageNumber * pageSize - 1))
-      );
-        
-      if (!querySnapshot.empty) {
-        return querySnapshot.docs[querySnapshot.docs.length - 1];
-      }
-  
-      return null;
+      const querySnapshot = await getDocs(this.collectionRef);
+      return querySnapshot.size; // Return the total count of documents
     } catch (error) {
-      console.error("Error getting document at page: ", error);
-      throw error;
-    }
-  }
-   
-  async getById(id) {
-    try {
-      const docRef = doc(this.collectionRef, id);
-      const docSnapshot = await getDoc(docRef);
-
-      if (docSnapshot.exists()) {
-        return { id: docSnapshot.id, ...docSnapshot.data() };
-      } else {
-        return null; // Document doesn't exist
-      }
-    } catch (error) {
-      console.error("Error getting document by ID: ", error);
+      console.error("Error getting total count:", error);
       throw error;
     }
   }
@@ -151,6 +111,10 @@ class DataService {
       console.error("Error deleting document(s): ", error);
       throw error;
     }
+  }
+
+  createWhereQuery(fieldName, operator, value) {
+    return query(this.collectionRef, where(fieldName, operator, value));
   }
   
   
