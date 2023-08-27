@@ -14,7 +14,7 @@ const DefaultLayout = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (pathname.includes("menu-")) {
+    if (pathname.includes("pos")) {
       document.body.classList.remove("expand-menu");
       document.body.classList.add("mini-sidebar");
       

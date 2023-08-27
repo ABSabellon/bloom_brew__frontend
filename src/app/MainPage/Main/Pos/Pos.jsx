@@ -1,10 +1,10 @@
 import React,{useState} from "react";
-import MenuItems from "./MenuItems";
-import MenuCheckout from "./MenuCheckout";
+import MenuItems from "./PosItems";
+import MenuCheckout from "./PosCheckout";
 
 import productsJson from "../../../../assets/jsons/productsJson.json"
 
-const MenuList = () => {
+const Pos = () => {
   
   const [products, setProducts] = useState(productsJson);
 
@@ -26,4 +26,4 @@ const MenuList = () => {
   );
 };
 
-export default MenuList;
+export default Pos;

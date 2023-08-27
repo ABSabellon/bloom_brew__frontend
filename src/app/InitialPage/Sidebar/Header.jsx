@@ -41,7 +41,7 @@ const Header = (props) => {
   let pathname = location.pathname;
   
   useEffect(() => {
-    if (pathname.includes("menu-")) {
+    if (pathname.includes("pos")) {
       document.querySelector(".header-left").classList.add("menu-header");
       document.querySelector(".logo-normal").classList.add("showDisplay");
       document.querySelector(".logo-small").classList.add("noDisplay");

@@ -1,6 +1,7 @@
 import Applications from "../MainPage/Main/Application";
 import DashboardIndex from "../MainPage/Main/Dashbord/Dashboard";
-import MenuIndex from "../MainPage/Main/Menu";
+// import MenuIndex from "../MainPage/Main/Menu";
+import PosIndex from "../MainPage/Main/Pos";
 import ManageIndex from "../MainPage/Manage";
 import ProfileIndex from "../MainPage/Profile";
 import ReportsIndex from "../MainPage/Reports";
@@ -9,14 +10,13 @@ import Activities from "../MainPage/Activities";
 import BlankPage from "../MainPage/BlankPage";
 import Error404 from "../MainPage/ErrorPage/Error404";
 import Error500 from "../MainPage/ErrorPage/Error500";
-import Pos from "../InitialPage/pos/pos";
 
 export default [
   { path: "applications", component: Applications,},
 
   { path: "dashboard", component: DashboardIndex, },
 
-  { path: "menu", component: MenuIndex, },
+  { path: "pos", component: PosIndex, },
 
   { path: "manage", component: ManageIndex, },
 
@@ -33,6 +33,4 @@ export default [
   { path: "error404", component: Error404, },
 
   { path: "error500", component: Error500, },
-
-  { path: "pos", component: Pos, },
 ];

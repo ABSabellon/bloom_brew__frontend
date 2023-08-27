@@ -15,7 +15,7 @@ const Sidebar = (props) => {
       title: 'Main', icon: null, path:null, link: "#",
       submenus: [
         { title: 'Dashboard', icon: IconMap('LuLayoutDashboard',null,null,24),path:'dashboard', link: '/admin/dashboard'},
-        { title: 'Menu', icon: IconMap('BiFoodMenu',null,null,24), path:'menu-',link: '/admin/menu/menu-list' },
+        { title: 'Point of Sale', icon: IconMap('BiFoodMenu',null,null,24), path:'pos-',link: '/admin/pos/point-of-sale' },
         { title: 'Application', icon: IconMap('BsPhone',null,null,24), path:'/admin/application',link: "#", submenu_children:[
           {title: 'Chat', icon: null, path:'chat-applications', link:'/admin/applications/chat-applications'},
           { title: 'Calendar', icon: null, path:'calendar-applications', link:  '/admin/applications/calendar-applications' },
