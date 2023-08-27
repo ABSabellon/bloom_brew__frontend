@@ -13,7 +13,7 @@ import {
   IphoneIcon,
   SamsungIcon,
   MacbookIcon,
-} from "../../../EntryFile/imagePath";
+} from "../../../components/imagePath/imagePath";
 import Table from "../../../components/tables/datatables"
 import Chart from "react-apexcharts";
 import { Link } from "react-router-dom";

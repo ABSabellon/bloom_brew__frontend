@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoginImage, Logo, MailIcon, } from '../EntryFile/imagePath'
+import { LoginImage, Logo, MailIcon, } from '../components/imagePath/imagePath'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 

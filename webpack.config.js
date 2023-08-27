@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const fs = require("fs");
+const Dotenv = require('dotenv-webpack');
 
 // const publicPath = "/reactjs/template/";
 const publicPath = "/";
@@ -32,7 +33,7 @@ module.exports = {
   //   "jquery": "jQuery"
   // },
   entry: {
-    app: "./src/app/index.js",
+    app: "./src/index.js",
   },
   output: {
     // The build folder.
@@ -48,7 +49,7 @@ module.exports = {
     hotUpdateMainFilename: "hot/hot-update.json",
   },
   devServer: {
-    contentBase: "./src/app/index.js",
+    contentBase: "./src/index.js",
     host: "localhost",
     compress: true,
     port: 8081, // port number
@@ -156,5 +157,6 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery",
     }),
+    new Dotenv(),
   ],
 };

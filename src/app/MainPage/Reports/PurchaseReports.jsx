@@ -21,7 +21,7 @@ import {
   Product7,
   Product8,
   Product9,
-} from "../../EntryFile/imagePath";
+} from "../../components/imagePath/imagePath";
 import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";
 
@@ -154,8 +154,8 @@ const InventoryReports = () => {
       <div className="content">
         <div className="page-header">
           <div className="page-title">
-            <h4>Sales report</h4>
-            <h6>Manage your sales report</h6>
+            <h4>Inventory Report</h4>
+            <h6>Manage your inventory report</h6>
           </div>
         </div>
         {/* /product list */}

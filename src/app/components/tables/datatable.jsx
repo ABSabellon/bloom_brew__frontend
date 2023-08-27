@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Table, Spin } from "antd";
 import "../../EntryFile/antd.css";
-import { itemRender, onShowSizeChange } from "../pagination";
 import Tabletop from "./tabletop";
 
 const Datatable = ({ url, props, columns, dataSource, inputfilter,header }) => {
@@ -31,7 +30,7 @@ const Datatable = ({ url, props, columns, dataSource, inputfilter,header }) => {
 
   return (
     <>
-      <Tabletop inputfilter={inputfilter} />
+      {/* <Tabletop inputfilter={inputfilter} /> */}
       <Table
         key={props}
         className="table datanew dataTable no-footer"

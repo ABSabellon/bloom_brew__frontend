@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import { Thomas,Benjamin,James,Bruklin,Beverly,Customer6,Customer7,Customer8,Profile2,Product12,Product13,Product15} from '../../../EntryFile/imagePath';
+import { Thomas,Benjamin,James,Bruklin,Beverly,Customer6,Customer7,Customer8,Profile2,Product12,Product13,Product15} from '../../../components/imagePath/imagePath';
 
 const ChatApp = () => {
   return (

@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { LoginImage, Logo, MailIcon, GoogleIcon, FacebookIcon } from '../EntryFile/imagePath'
+import { LoginImage, Logo, MailIcon, GoogleIcon, FacebookIcon } from '../components/imagePath/imagePath'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form'

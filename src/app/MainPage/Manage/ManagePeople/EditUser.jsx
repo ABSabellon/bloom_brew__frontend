@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Profile2, Upload } from "../../../EntryFile/imagePath";
+import { Profile2, Upload } from "../../../components/imagePath/imagePath";
 import { Link } from "react-router-dom";
 import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";

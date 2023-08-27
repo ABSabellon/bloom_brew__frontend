@@ -6,7 +6,7 @@ import {
   GoogleIcon,
   FacebookIcon,
   Users1,
-} from "../EntryFile/imagePath";
+} from "../components/imagePath/imagePath";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-import {Bruklin,Profile3,Profile4,Profile5} from "../EntryFile/imagePath";
+import {Bruklin,Profile3,Profile4,Profile5} from "../components/imagePath/imagePath";
 
 const Activities = () => {
   return (

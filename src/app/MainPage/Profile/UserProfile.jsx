@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Customer5, EditSet } from "../../EntryFile/imagePath";
+import { Customer5, EditSet } from "../../components/imagePath/imagePath";
 
 const UserProfile = () => {
   const [passwordShown, setPasswordShown] = useState(false);

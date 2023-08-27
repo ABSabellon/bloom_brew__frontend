@@ -74,7 +74,15 @@ const SaleDetails = (data) => {
         </div>
       </div>
 
-      <Table columns={columns} dataSource={data.data} />
+      
+      <Tabletop 
+        />
+        <div className="table-responsive">
+          <Table                                    
+            columns={columns}
+            dataSource={data}                 
+          />
+        </div>
       
       <div className="row">
         <div className="col-lg-6 ">

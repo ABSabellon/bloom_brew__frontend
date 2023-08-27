@@ -14,7 +14,7 @@ import {
   Transfer,
   menu_icon,
   settings,
-} from "../../EntryFile/imagePath";
+} from "../../components/imagePath/imagePath";
 
 const Topbar = (props) => {
 

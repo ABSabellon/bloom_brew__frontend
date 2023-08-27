@@ -21,7 +21,7 @@ import {
   Bruklin,
   Beverly,
   search_whites,
-} from "../../../EntryFile/imagePath";
+} from "../../../components/imagePath/imagePath";
 
 const ManageUsers = () => {
   const [inputfilter, setInputfilter] = useState(false);

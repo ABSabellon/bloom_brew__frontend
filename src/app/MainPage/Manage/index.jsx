@@ -18,8 +18,9 @@ const ManageIndex = ({ match}) =>(
         <Redirect exact from={`${match.url}/`} to={`${match.url}/sales-manage`} />
         <Route path={`${match.url}/sales-manage`} component={ManageSales} />
         <Route path={`${match.url}/products-manage`} component={ManageProducts} />
-        <Route path={`${match.url}/categories-manage`} component={ManageCategory} />
+        <Route path={`${match.url}/products-categories`} component={ManageCategory} />
         <Route path={`${match.url}/inventory-manage`} component={ManageInventory} />
+        <Route path={`${match.url}/inventory-categories`} component={ManageCategory} />
         <Route path={`${match.url}/users-manage`} component={ManageUsers} />
         <Route path={`${match.url}/suppliers-manage`} component={ManageSuppliers} />
     </Switch>

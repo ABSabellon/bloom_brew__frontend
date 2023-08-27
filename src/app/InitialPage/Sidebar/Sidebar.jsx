@@ -29,11 +29,11 @@ const Sidebar = (props) => {
         { title: 'Manage Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
         { title: 'Manage Products', icon: IconMap('BiSolidCoffeeTogo',null,null,24),path:'products-', link: '#', submenu_children:[
           {title: 'Products', icon: null, path:'products-manage', link:'/admin/manage/products-manage'},
-          { title: 'Categories', icon: null, path:'categories-manage', link:  '/admin/manage/categories-manage' },
+          { title: 'Categories', icon: null, path:'products-categories', link:  '/admin/manage/products-categories' },
         ]},
         { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
           {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
-          { title: 'Categories', icon: null, path:'categories-manage', link:  '/admin/manage/categories-manage' },
+          { title: 'Categories', icon: null, path:'inventory-categories', link:  '/admin/manage/inventory-categories' },
         ]},
         { title: 'Users', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/admin/manage/users-manage'},
         { title: 'Suppliers', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/admin/manage/suppliers-manage' }, 
@@ -42,9 +42,9 @@ const Sidebar = (props) => {
     { 
       title: 'Reports', icon: null, path:null, link: "#",
       submenus: [
-        { title: 'Sales Report', icon: IconMap('LuFileText',null,null,24), path:'inventory-reports', link: '/admin/reports/inventory-reports'},
-        { title: 'Inventory Report', icon: IconMap('FiDatabase',null,null,24), path:'sales-reports', link: '/admin/reports/sales-reports' },
-        { title: 'Supplier Report', icon: IconMap('AiOutlineGold',null,null,24), path:'supplier-reports', link: '/admin/reports/supplier-reports'},
+        { title: 'Sales Report', icon: IconMap('LuFileText',null,null,24), path:'reports-inventory', link: '/admin/reports/reports-inventory'},
+        { title: 'Inventory Report', icon: IconMap('FiDatabase',null,null,24), path:'reports-sales', link: '/admin/reports/reports-sales' },
+        { title: 'Supplier Report', icon: IconMap('AiOutlineGold',null,null,24), path:'reports-supplier', link: '/admin/reports/reports-supplier'},
       ]
     },
     { 

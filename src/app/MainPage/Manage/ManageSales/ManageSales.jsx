@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Form } from "antd";
 import { Link } from "react-router-dom";
 import AddEditSale from "./AddEditSales";
 import SaleDetails from "./SaleDetails";
@@ -225,7 +224,7 @@ const ManageSales = () => {
             </div>
             <div className="page-btn">
               <Link to="#" 
-              className="btn btn-added"
+                className="btn btn-added"
                 onClick={() => {
                   setInitialValues({})
                   handleOpenDrawer("addEditSale")

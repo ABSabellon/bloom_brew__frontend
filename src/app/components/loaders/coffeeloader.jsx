@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { CoffeeSteaming } from "../../EntryFile/imagePath";
+import { CoffeeSteaming } from "../../components/imagePath/imagePath";
 const CoffeeLoader = () => {
   
   return (

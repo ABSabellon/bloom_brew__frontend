@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import IconMap from "../iconMap";
 import IconMap from "../iconMap/IconMap"
-import { Product29 } from "../../EntryFile/imagePath";
+import { Product29 } from "../../components/imagePath/imagePath";
 
 const CoffeeCard = ({ img, id, name, ingredients, price, active }) => {
   const [isActive, setIsActive] = useState(active || false);

@@ -14,7 +14,7 @@ import {
   Logout,
   LogoWhite,
   Avatar1,
-} from "../../EntryFile/imagePath";
+} from "../../components/imagePath/imagePath";
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 

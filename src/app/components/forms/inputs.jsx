@@ -7,7 +7,7 @@ import Select2 from 'react-select2-wrapper';
 const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
   label, id, type, icon, placeholder, required, tooltip, name, isabled,
   errorType, errorText, format, controlId,loading, option,addonBefore,
-  pattern, readOnly, disabledDate,prefix
+  pattern, readOnly, disabledDate,prefix,rows
   
 }) => {
 
@@ -102,6 +102,18 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           disabledDate={disabledDate}
           prefix={prefix} 
           addonBefore={addonBefore}
+        />
+      );
+    }
+    case "text-area":{
+      const { TextArea } = Input;
+      return(
+        <TextArea
+          style={{ width: '100%' }} 
+          readOnly={readOnly}
+          required={required}
+          onChange={onChange}
+          rows={rows}
         />
       );
     }

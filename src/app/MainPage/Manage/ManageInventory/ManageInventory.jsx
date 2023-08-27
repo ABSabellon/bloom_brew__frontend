@@ -21,7 +21,7 @@ import {
   Product7,
   Product8,
   Product9,
-} from "../../../EntryFile/imagePath";
+} from "../../../components/imagePath/imagePath";
 import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";
 

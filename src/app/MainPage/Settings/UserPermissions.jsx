@@ -8,7 +8,7 @@ import {
   Pdf,
   DeleteIcon,
   EditIcon,
-} from "../../EntryFile/imagePath";
+} from "../../components/imagePath/imagePath";
 import Table from "../../components/tables/datatable";
 import "react-select2-wrapper/css/select2.css";
 import Swal from "sweetalert2";

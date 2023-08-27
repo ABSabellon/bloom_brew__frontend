@@ -3,7 +3,7 @@ import CoffeeCard from "../../components/productCards/coffeeCard";
 import MenuCategories from "../../components/headers/menuCategories/menuCategories";
 import {
   Product29   
-  } from "../../EntryFile/imagePath";
+  } from "../../components/imagePath/imagePath";
 import productsJson from "../../../assets/jsons/productsJson.json"
 
 const Posleft = () => {

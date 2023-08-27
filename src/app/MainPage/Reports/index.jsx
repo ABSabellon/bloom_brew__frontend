@@ -12,10 +12,10 @@ import SupplierReports from './SupplierReports';
 
 const ReportsIndex = ({ match}) =>(
     <Switch>
-        <Redirect exact from={`${match.url}/`} to={`${match.url}/inventory-reports`} />
-        <Route path={`${match.url}/inventory-reports`} component={InventoryReports} />                                                                                             
-        <Route path={`${match.url}/sales-reports`} component={SalesReports} />                                                                                               
-        <Route path={`${match.url}/supplier-reports`} component={SupplierReports} />                                                                                           
+        <Redirect exact from={`${match.url}/`} to={`${match.url}/reports-inventory`} />
+        <Route path={`${match.url}/reports-inventory`} component={InventoryReports} />                                                                                             
+        <Route path={`${match.url}/reports-sales`} component={SalesReports} />                                                                                               
+        <Route path={`${match.url}/reports-supplier`} component={SupplierReports} />                                                                                           
         
     </Switch>
 )

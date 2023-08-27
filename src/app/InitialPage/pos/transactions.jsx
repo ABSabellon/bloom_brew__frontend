@@ -12,7 +12,7 @@ import {
   Pdf,
   Excel,
   Printer,
-} from "../../EntryFile/imagePath";
+} from "../../components/imagePath/imagePath";
 
 const Transactions = () => {
   const confirmText = () => {

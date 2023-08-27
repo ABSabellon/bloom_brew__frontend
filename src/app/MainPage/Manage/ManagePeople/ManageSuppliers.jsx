@@ -15,7 +15,7 @@ import {
   search_whites,
   EditIcon,
   DeleteIcon,
-} from "../../../EntryFile/imagePath";
+} from "../../../components/imagePath/imagePath";
 
 const ManageSuppliers = () => {
   const [inputfilter, setInputfilter] = useState(false);

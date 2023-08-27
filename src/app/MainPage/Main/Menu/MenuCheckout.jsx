@@ -18,7 +18,7 @@ import {
   delete2,
   ellipise1,
   scanner1,
-} from "../../../EntryFile/imagePath";
+} from "../../../components/imagePath/imagePath";
 
 const MenuCheckout = () => {
   const confirmText = () => {

@@ -1,34 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { Button } from "react-bootstrap";
 import Table from "../../../components/tables/datatable";
 import { Link } from "react-router-dom";
 import Tabletop from "../../../components/tables/tabletop";
-import {
-  PlusIcon,
-  MacbookIcon,
-  OrangeImage,
-  PineappleImage,
-  StawberryImage,
-  AvocatImage,
-  EditIcon,
-  DeleteIcon,
-  search_whites,
-} from "../../../EntryFile/imagePath";
-import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";
 import Swal from "sweetalert2";
+import IconMap from "../../../components/iconMap/IconMap";
+import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
+import AddEditCategory from "./AddEditCategory";
 
-const options = [
-  { id: 1, text: "Choose Category", text: "Choose Category" },
-  { id: 2, text: "Computers", text: "Computers" },
-];
-const options1 = [
-  { id: 1, text: "Choose Sub Category", text: "Choose Sub Category" },
-  { id: 2, text: "Fruits", text: "Fruits" },
-];
-const options2 = [
-  { id: 1, text: "Choose Sub Brand", text: "Choose Sub Brand" },
-  { id: 2, text: "Brand", text: "Brand" },
-];
 const confirmText = () => {
   Swal.fire({
     title: "Are you sure?",
@@ -52,62 +32,44 @@ const confirmText = () => {
   });
 };
 const ManageCategory = () => {
-  const [inputfilter, setInputfilter] = useState(false);
+  const childRef = useRef(null);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [initialValues, setInitialValues] = useState({});
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // const [data, setData] = useState({
+  //   name: '',
+  //   description: '',
+  //   created_at:'',
+  //   created_by:'admin'
+  // });
 
-  const togglefilter = (value) => {
-    setInputfilter(value);
+  const handleOpenDrawer = () => {
+    setIsLoading(true); // Assuming setIsLoading is a state update function
+   
+    setOpenDrawer(!openDrawer);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 3000 milliseconds = 3 seconds
   };
 
-  const [data] = useState([
-    {
-      id: 1,
-      image: MacbookIcon,
-      categoryName: "Macbook pro",
-      categoryCode: "PT001",
-      description: "Computer Description",
-      createdBy: "Admin",
-    },
-    {
-      id: 2,
-      image: OrangeImage,
-      categoryName: "Orange",
-      categoryCode: "CTO02",
-      description: "Fruit Description",
-      createdBy: "Admin",
-    },
-    {
-      id: 3,
-      image: PineappleImage,
-      categoryName: "Pinapple",
-      categoryCode: "CTO03",
-      description: "Fruit Description",
-      createdBy: "Admin",
-    },
-    {
-      id: 4,
-      image: StawberryImage,
-      categoryName: "Strawberry",
-      categoryCode: "CTO04",
-      description: "Fruit Description",
-      createdBy: "Admin",
-    },
-    {
-      id: 5,
-      image: AvocatImage,
-      categoryName: "Avocat",
-      categoryCode: "CTO05",
-      description: "Computer Description",
-      createdBy: "Admin",
-    },
-    {
-      id: 6,
-      image: MacbookIcon,
-      categoryName: "Macbook pro",
-      categoryCode: "CTO06",
-      description: "Computer Description",
-      createdBy: "Admin",
-    },
-  ]);
+  const handleDrawerSubmit = async () => {
+    setIsLoading(true);
+    if (childRef.current) {
+      const validation = await childRef.current.formSubmit();
+      if (validation.success) {
+        setIsLoading(false);
+        handleOpenDrawer();
+        // const formData = validation.data;
+        // console.log('Received form data:', formData);
+        // Handle form data as needed (e.g., submit to API)
+      } else {
+        console.error('Form validation error:', validation.error);
+      }
+      // handleOpenDrawer();
+    }
+  };
 
   const columns = [
     {
@@ -145,17 +107,24 @@ const ManageCategory = () => {
       render: () => (
         <>
           <>
-            <Link className="me-3" to="/admin/product/editcategory-product">
-              <img src={EditIcon} alt="img" />
+            <Link className="me-3" to="#" onClick={() => editData(record)}>
+              {IconMap('AiOutlineEye',null,null,24)}
             </Link>
             <Link className="confirm-text" to="#" onClick={confirmText}>
-              <img src={DeleteIcon} alt="img" />
+              {IconMap('FiTrash2',"text-danger",null,24)}
             </Link>
           </>
         </>
       ),
     },
   ];
+
+  const editData = (formData) => {
+    console.log('test at Parent :::: ', formData)
+    // setInitialValues(setData);
+    handleOpenDrawer();
+    
+  };
 
   return (
     <>
@@ -168,10 +137,15 @@ const ManageCategory = () => {
             </div>
             <div className="page-btn">
               <Link
-                to="/admin/product/addcategory-product"
+                to="#"
                 className="btn btn-added"
+                onClick={() => {
+                  // setInitialValues({})
+                  handleOpenDrawer()
+                }}
+
               >
-                <img src={PlusIcon} alt="img" className="me-1" />
+                {IconMap('AiOutlinePlus',"me-1",null,24)}
                 Add Category
               </Link>
             </div>
@@ -179,67 +153,48 @@ const ManageCategory = () => {
           {/* /product list */}
           <div className="card">
             <div className="card-body">
-              <Tabletop inputfilter={inputfilter} togglefilter={togglefilter} />
-              {/* /Filter */}
-              <div
-                className={`card mb-0 ${inputfilter ? "toggleCls" : ""}`}
-                id="filter_inputs"
-                style={{ display: inputfilter ? "block" : "none" }}
-              >
-                <div className="card-body pb-0">
-                  <div className="row">
-                    <div className="col-lg-2 col-sm-6 col-12">
-                      <div className="form-group">
-                        <Select2
-                          className="select"
-                          data={options}
-                          options={{
-                            placeholder: "Choose Category",
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-2 col-sm-6 col-12 me-2">
-                      <div className="form-group">
-                        <Select2
-                          className="select"
-                          data={options1}
-                          options={{
-                            placeholder: "Choose Sub Category",
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-2 col-sm-6 col-12">
-                      <div className="form-group">
-                        <Select2
-                          className="select"
-                          data={options2}
-                          options={{
-                            placeholder: "Choose Sub Brand",
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-1 col-sm-6 col-12 ms-auto">
-                      <div className="form-group">
-                        <a className="btn btn-filters ms-auto">
-                          <img src={search_whites} alt="img" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* /Filter */}
+              <Tabletop 
+              />
               <div className="table-responsive">
-                <Table columns={columns} dataSource={data} />
+                <Table                                    
+                  columns={columns}
+                  dataSource={data}                 
+                />
               </div>
             </div>
           </div>
-          {/* /product list */}
         </div>
       </div>
+      <CoffeeDrawer
+        open={openDrawer}
+        handleOk={handleDrawerSubmit}
+        title={"Add Category "}
+        isLoading={isLoading}
+        body={
+          <AddEditCategory 
+            initialValues={initialValues} 
+            data={data} 
+            ref={childRef} 
+            // onFormSubmit={editData}
+            />
+        }
+        closable={false}
+        footer={
+          <>
+            <Button type="submit" className="btn btn-submit me-2"
+              onClick={handleDrawerSubmit}
+              >
+              Submit
+            </Button>
+            <Button className="btn btn-cancel" 
+              onClick={
+                () => handleOpenDrawer()
+                }>
+              Cancel
+            </Button>
+          </>
+        }
+      />
     </>
   );
 };

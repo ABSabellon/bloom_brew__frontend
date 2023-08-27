@@ -21,7 +21,7 @@ import {
   Product7,
   Product8,
   Product9,
-} from "../../EntryFile/imagePath";
+} from "../../components/imagePath/imagePath";
 
 const SalesReports = () => {
   const [startDate, setStartDate] = useState(new Date());
