@@ -4,6 +4,7 @@ import DataService from "../../../EntryFile/Services/DataService";
 import Inputs from "../../../components/forms/inputs";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-select2-wrapper/css/select2.css";
+import IconMap from "../../../components/iconMap/IconMap";
 
 const validator = {
   require: { required: true, message: "Required" },
@@ -70,6 +71,18 @@ const AddEditMenu = forwardRef(({ initialValues, dataSource }, ref) => {
         <div className="col-lg-4 col-sm-6 col-12">
           <Form.Item name="category_name" rules={[validator.require]} hasFeedback>
             <Inputs type="text" label="Category Name" placeholder="Enter Category Name" name="category_name" required={true} />
+          </Form.Item>
+        </div>
+
+        <div className="col-lg-4 col-sm-6 col-12">
+          <Form.Item name="price_hot">
+              <Inputs type="price" label="Price(Hot)" prefix={IconMap('FaTemperatureHigh','text-danger',null,20)} placeholder="Enter price for hot drink" name="price_hot" />
+          </Form.Item>
+        </div>
+
+        <div className="col-lg-4 col-sm-6 col-12">
+          <Form.Item name="price_cold">
+              <Inputs type="price" label="Price(Cold)" prefix={IconMap('FaTemperatureLow','text-primary',null,20)} placeholder="Enter price (Hot) for cold drink" name="price_cold" />
           </Form.Item>
         </div>
         <div className="col-12">

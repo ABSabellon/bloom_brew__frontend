@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MdOutlineDeleteForever } from 'react-icons/md';
-import { FaCodepen } from 'react-icons/fa';
+import { FaCodepen,FaTemperatureHigh,FaTemperatureLow } from 'react-icons/fa';
 // import {  } from 'react-icons/rx';
 import { AiOutlinePlusSquare, AiOutlineGold, AiOutlineShopping,AiFillFire, 
   AiOutlineEye,AiOutlinePlus,AiOutlinePlusCircle,AiOutlineEdit,AiOutlineInbox
@@ -153,6 +153,14 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
     break;}
     case 'BsArrow90DegUp': {
       icon = <BsArrow90DegUp className={classnames} size={size} style={iconStyle} />
+    break;}
+
+    //temp
+    case 'FaTemperatureHigh': {
+      icon = <FaTemperatureHigh className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'FaTemperatureLow': {
+      icon = <FaTemperatureLow className={classnames} size={size} style={iconStyle} />
     break;}
     
   }
