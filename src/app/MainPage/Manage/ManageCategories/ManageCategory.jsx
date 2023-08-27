@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Table from "../../../components/tables/datatable";
 import { Link } from "react-router-dom";
@@ -8,42 +8,65 @@ import Swal from "sweetalert2";
 import IconMap from "../../../components/iconMap/IconMap";
 import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import AddEditCategory from "./AddEditCategory";
+import DataService from "../../../EntryFile/Services/DataService";
 
-const confirmText = () => {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    type: "warning",
-    showCancelButton: !0,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-    confirmButtonClass: "btn btn-primary",
-    cancelButtonClass: "btn btn-danger ml-1",
-    buttonsStyling: !1,
-  }).then(function (t) {
-    t.value &&
-      Swal.fire({
-        type: "success",
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        confirmButtonClass: "btn btn-success",
-      });
-  });
-};
 const ManageCategory = () => {
+  const dataS = new DataService('Categories')
+  const confirmText = async (record) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FFC107',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      customClass: {
+        icon: 'swal2-icon', // Apply the custom CSS class to the icon
+      },
+    }).then(async (result) => {
+      try{
+        if (result.isConfirmed) {
+          
+          console.log('deleteData ::: ', record.id)
+          
+          const deleteData = await dataS.delete(record.id)
+
+          if(deleteData){
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(()=>{
+              setRefreshTable(true);
+            })
+          }else{
+            // console.error('Failed to delete:', error);
+            Swal.fire({
+              type: 'error',
+              title: 'Error',
+              text: `Data not found in the server`,
+            });
+          }
+        }
+      }catch(error){
+        console.error('Failed to delete:', error);
+        Swal.fire({
+          type: 'error',
+          title: 'Error',
+          text: `Failed to delete Category. Please try again later. Or contact support if error persist`,
+        });
+
+      }
+    });
+  };
+
   const childRef = useRef(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [initialValues, setInitialValues] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
-  // const [data, setData] = useState({
-  //   name: '',
-  //   description: '',
-  //   created_at:'',
-  //   created_by:'admin'
-  // });
+  const [refreshTable, setRefreshTable] = useState(false);
 
   const handleOpenDrawer = () => {
     setIsLoading(true); // Assuming setIsLoading is a state update function
@@ -60,10 +83,8 @@ const ManageCategory = () => {
       const validation = await childRef.current.formSubmit();
       if (validation.success) {
         setIsLoading(false);
+        setRefreshTable(true);
         handleOpenDrawer();
-        // const formData = validation.data;
-        // console.log('Received form data:', formData);
-        // Handle form data as needed (e.g., submit to API)
       } else {
         console.error('Form validation error:', validation.error);
       }
@@ -74,54 +95,69 @@ const ManageCategory = () => {
   const columns = [
     {
       title: "Category Name",
-      dataIndex: "categoryName",
+      dataIndex: "name",
       render: (text, record) => (
         <div className="productimgname">
           <Link to="#" className="product-img">
             <img alt="" src={record.image} />
           </Link>
           <Link to="#" style={{ fontSize: "15px", marginLeft: "10px" }}>
-            {record.categoryName}
+            {record.name}
           </Link>
         </div>
       ),
-      sorter: (a, b) => a.categoryName.length - b.categoryName.length,
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
       title: "Category Code",
-      dataIndex: "categoryCode",
-      sorter: (a, b) => a.categoryCode.length - b.categoryCode.length,
+      dataIndex: "id",
+      sorter: (a, b) => a.id.localeCompare(b.id),
     },
     {
-      title: " Description",
+      title: "Description",
       dataIndex: "description",
-      sorter: (a, b) => a.description.length - b.description.length,
+      render: text => {
+        if (text.length > 40) {
+          return `${text.substring(0, 40)}...`;
+        }
+        return text;
+      },
     },
     {
       title: "Created By",
-      dataIndex: "createdBy",
+      dataIndex: "created_by",
       sorter: (a, b) => a.createdBy.length - b.createdBy.length,
     },
     {
       title: "Action",
-      render: () => (
+      render: (text,record) => (
         <>
-          <>
-            <Link className="me-3" to="#" onClick={() => editData(record)}>
-              {IconMap('AiOutlineEye',null,null,24)}
-            </Link>
-            <Link className="confirm-text" to="#" onClick={confirmText}>
-              {IconMap('FiTrash2',"text-danger",null,24)}
-            </Link>
-          </>
+          <Link className="me-3" to="#" onClick={() => editData(record)}>
+            {IconMap('AiOutlineEdit',null,null,24)}
+          </Link>
+          <Link className="confirm-text" to="#" onClick={() => confirmText(record)}>
+            {IconMap('FiTrash2',"text-danger",null,24)}
+          </Link>
         </>
       ),
     },
   ];
 
-  const editData = (formData) => {
-    console.log('test at Parent :::: ', formData)
-    // setInitialValues(setData);
+  const editData = async (rowData) => {
+    const data = await rowData
+    console.log('test at Parent :::: ', rowData)
+
+    setData({
+      id:data.id,
+      name: data.name,
+      type: data.type,
+      description: data.description,
+      created_at:data.created_at,
+      created_by:data.created_by,
+      updated_at:data.updated_at,
+      updated_by:data.updated_by,
+    });
+    setInitialValues(data)
     handleOpenDrawer();
     
   };
@@ -140,7 +176,7 @@ const ManageCategory = () => {
                 to="#"
                 className="btn btn-added"
                 onClick={() => {
-                  // setInitialValues({})
+                  setInitialValues({})
                   handleOpenDrawer()
                 }}
 
@@ -158,7 +194,8 @@ const ManageCategory = () => {
               <div className="table-responsive">
                 <Table                                    
                   columns={columns}
-                  dataSource={data}                 
+                  dataSource={'Categories'}    
+                  reloadTable={refreshTable}     
                 />
               </div>
             </div>
@@ -173,7 +210,6 @@ const ManageCategory = () => {
         body={
           <AddEditCategory 
             initialValues={initialValues} 
-            data={data} 
             ref={childRef} 
             // onFormSubmit={editData}
             />

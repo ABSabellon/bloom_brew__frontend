@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Form } from "antd";
 // import CoffeeLoader from "../../../components/loaders/coffeeloader";
 import FrenchPressLoader from "../../../components/loaders/frenchPressLoader";
@@ -13,7 +13,6 @@ const validator = {
 
 const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
   const dataS = new DataService('Categories');
-  const [values,setValues]=useState({})
   const [form] = Form.useForm();
 
   // Expose the formSubmit function to the parent component
@@ -21,25 +20,32 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
     formSubmit: async () => {
       try {
         const formValues = await validateForm();
+        const isUpdate = await Object.keys(initialValues).length > 0; // Check if initialValues exist
+  
+        // console.log('isUpdate ::::: ', isUpdate);
+  
         let tempData = {
           name: formValues.category_name,
           description: formValues.category_description,
-          type: window.location.href.includes("inventory-") ? "inventory" : "product",
-          created_at: new Date(),
-          created_by: 'admin',
-          updated_at: null,
-          updated_by: null,
+          type: window.location.href.includes("inventory-") ? "inventory" : "menu", //set category type based on route
+          created_at: isUpdate ? initialValues.created_at : new Date(),
+          created_by: isUpdate ? initialValues.created_by : 'admin',
+          updated_at: isUpdate ? new Date() : null,
+          updated_by: isUpdate ? 'admin' : null,
+        };
+  
+        if (!isUpdate) {
+          await dataS.addItems(tempData, 'CT', true);
+        } else {
+          await dataS.update(initialValues.id,tempData );
         }
-        console.log('Form DATA after submit:', tempData);
-
-        await dataS.addItems(tempData, 'CT', true);
-
-        return { success: true, data: tempData, }; // Return validation success and form data
+  
+        return { success: true, data: tempData }; // Return validation success and form data
       } catch (error) {
         console.error('Form validation error:', error);
         return { success: false, error }; // Return validation failure and error
       }
-    }
+    },
   }));
 
   const validateForm = async () => {
@@ -50,6 +56,17 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
       throw error;
     }
   };
+  
+  useEffect(() => {
+    form.resetFields();
+    console.log('initialValues :::: ', initialValues);
+    if (initialValues) {
+      form.setFieldsValue({
+        category_name: initialValues.name,
+        category_description: initialValues.description,
+      });
+    }
+  }, [initialValues, form]);  
 
   return (
     <>
@@ -58,7 +75,6 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
         name="user_login" 
         className="row ogin-form" 
         layout="vertical" 
-        initialValues={values}
         form={form}
         >
         <div className="col-lg-4 col-sm-6 col-12">

@@ -1,15 +1,43 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Spin } from "antd";
 import "../../EntryFile/antd.css";
-import Tabletop from "./tabletop";
+import DataService from "../../EntryFile/Services/DataService";
 
-const Datatable = ({ url, props, columns, dataSource, inputfilter,header }) => {
-  const [data, setData ]=useState([]);
+const Datatable = ({ url,dataSource, props, columns, reloadTable}) => {
+  const dataS = new DataService(dataSource);
+  const [data, setData] = useState([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 10,
+    total: 0,
+  });
 
-  const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", selectedRowKeys);
+  const fetchData = async (pageNumber, pageSize) => {
+    setIsLoading(true);
+    try {
+      const deets = await dataS.getAll("name", pageNumber, pageSize, true);
+      if (deets) {
+        setData(deets.data);
+        setPagination((prevPagination) => ({
+          ...prevPagination,
+          total: deets.docTotal,
+        }));
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(pagination.current, pagination.pageSize);
+  }, [reloadTable]);
+
+  const onSelectChange = async(newSelectedRowKeys) => {
+    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -18,19 +46,13 @@ const Datatable = ({ url, props, columns, dataSource, inputfilter,header }) => {
     onChange: onSelectChange,
   };
 
-
-  useEffect(() => {
-    if(dataSource){
-      setIsLoading(false)
-      setData(dataSource);
-    }else if(url){
-      // fetchData(url);
-    }
-  }, [dataSource]);
+  const handleTableChange = (newPagination, filters, sorter) => {
+    setPagination(newPagination);
+    fetchData(newPagination.current, newPagination.pageSize);
+  };
 
   return (
     <>
-      {/* <Tabletop inputfilter={inputfilter} /> */}
       <Table
         key={props}
         className="table datanew dataTable no-footer"
@@ -39,13 +61,12 @@ const Datatable = ({ url, props, columns, dataSource, inputfilter,header }) => {
         dataSource={data}
         loading={isLoading ? { indicator: <Spin /> } : false}
         pagination={{
-          total: dataSource.length,
+          ...pagination,
           showTotal: (total, range) =>
             ` ${range[0]} to ${range[1]} of ${total} items`,
-          // sshowSizeChanger: true,
-          // onShowSizeChange: onShowSizeChange,
         }}
         rowKey={(record) => record.id}
+        onChange={handleTableChange}
       />
     </>
   );

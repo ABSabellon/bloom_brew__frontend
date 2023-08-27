@@ -614,10 +614,37 @@ strong {
 
 .load-text {
   position: absolute;
-  top: 18rem;
-  left: 24rem;
+  top: 50%; /* Adjust as needed */
+  left: 33%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
 }
 
+@media (max-width: 576px) {
+  .load-text {
+    width: 80%;
+    top: 49%;
+    left: 50%;
+    transform: translateX(-50%); /* Center the element horizontally */
+  }
+}
+/* Styles for tablets */
+@media (min-width: 577px) and (max-width: 991px) {
+  .load-text {
+    width: 60%;
+    top: 54%;
+    left: 53%;
+    transform: translate(-50%, -50%); /* Center the element */
+  }
+}
+/* Styles for larger screens (PC) */
+@media (min-width: 992px) {
+  .load-text {
+    width: 40%;
+    top: 54%;
+    left: 52%;
+    transform: translate(-50%, -50%); /* Center the element */
+  }
+}
 /****** LAYOUT ******/
 .avatar {
   background-color: transparent;
@@ -1182,6 +1209,28 @@ strong {
 
 .swal2-header .swal2-title {
   font-size: 18px;
+}
+
+.swal2-icon-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div:where(.swal2-icon) {
+  position: relative;
+  box-sizing: content-box;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  margin: 2.5em auto 0.6em;
+  border: 0.25em solid rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  border-color: #000;
+  font-family: inherit;
+  line-height: 5em;
+  cursor: default;
+  user-select: none;
 }
 
 .none {

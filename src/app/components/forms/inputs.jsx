@@ -10,8 +10,6 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
   pattern, readOnly, disabledDate,prefix,rows
   
 }) => {
-
-  
   const [focus, setFocus] = useState(false);
 
   if (!placeholder) placeholder = label;
@@ -110,6 +108,8 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
       return(
         <TextArea
           style={{ width: '100%' }} 
+          id={id}
+          value={value}
           readOnly={readOnly}
           required={required}
           onChange={onChange}
