@@ -18,7 +18,8 @@ import { FiDatabase,FiLogOut,FiEdit2,FiTrash2 } from 'react-icons/fi';
 // import { } from 'react-icons/io'
 // import {  } from 'react-icons/ti'
 // import {  } from 'react-icons/gi';
-import{ BsPhone,BsPeople,BsSnow2,BsArrow90DegRight,BsDownload } from 'react-icons/bs';
+import{ BsPhone,BsPeople,BsSnow2,BsDownload,
+  BsArrow90DegDown,BsArrow90DegLeft,BsArrow90DegRight,BsArrow90DegUp } from 'react-icons/bs';
 import{ LuLayoutDashboard, LuFileText, LuFlame} from 'react-icons/lu';
 import{ CiShoppingBasket } from 'react-icons/ci'
 import{ FaUsersCog, FaUserCog,FaCog } from 'react-icons/fa'
@@ -140,7 +141,19 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
       icon = <BsArrow90DegRight className={classnames} size={size} style={iconStyle} />
     break;}
     
-
+    //arrows
+    case 'BsArrow90DegDown': {
+      icon = <BsArrow90DegDown className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'BsArrow90DegLeft': {
+      icon = <BsArrow90DegLeft className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'BsArrow90DegRight': {
+      icon = <BsArrow90DegRight className={classnames} size={size} style={iconStyle} />
+    break;}
+    case 'BsArrow90DegUp': {
+      icon = <BsArrow90DegUp className={classnames} size={size} style={iconStyle} />
+    break;}
     
   }
   return icon;

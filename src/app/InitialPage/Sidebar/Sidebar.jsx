@@ -28,8 +28,8 @@ const Sidebar = (props) => {
       submenus: [
         { title: 'Manage Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
         { title: 'Manage Menu', icon: IconMap('BiSolidCoffeeTogo',null,null,24),path:'menu-', link: '#', submenu_children:[
-          {title: 'Products', icon: null, path:'products-manage', link:'/admin/manage/menu-manage'},
-          { title: 'Categories', icon: null, path:'products-categories', link:  '/admin/manage/menu-categories' },
+          {title: 'Products', icon: null, path:'menu-manage', link:'/admin/manage/menu-manage'},
+          { title: 'Categories', icon: null, path:'menu-categories', link:  '/admin/manage/menu-categories' },
         ]},
         { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
           {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
@@ -110,7 +110,7 @@ const Sidebar = (props) => {
                               >
                                 {submenu.icon}
                                 <span>{submenu.title}</span>{" "}
-                                <span className={submenu.submenu_children? "menu-arrow":""}></span>
+                                <span className={submenu.submenu_children? "menu-arrow":"none"}>{IconMap('BsArrow90DegRight',null,null,15)}</span>
                               </Link>
                               {isSideMenu == submenu.title ? (
                                 <ul>

@@ -239,7 +239,7 @@
                           color: $__tertiarycolorhover;
                       }
                       .menu-arrow{
-                          background: #FFEDDC;
+                          // background: #FFEDDC;
                           &::before{
                               border-color: $__tertiarycolorhover;
                           }
@@ -256,35 +256,61 @@
             ul {
               li {
                 a {
-                margin-left: 25px;
-                &::after{
-                  content: "";
-                  background: rgba(50, 71, 92, 0.38);
-                  width: 8px;
-                  height: 8px;
-                  border: 2px solid #fff;
-                  @include rounded(50px);
-                  @include position($__absolute,16px,null,null,0);
+                  transition: all .5s;
+                  padding-left: 3rem;
+                  &::before{
+                    background: $__primarycolorhover;
+                    // background: var(--rgba-primary-5);
+                    content: "";
+                    height: .125rem;
+                    left: 2rem;
+                    position: absolute;
+                    top: 50%;
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    transition: all .5s;
+                    width: .375rem;
+                    border-radius: 3.75rem;
                   }
                   &:hover{
-                    color:$__primarycolor;
-                    &:after{
-                    background: $__primarycolor;
-                    border: 2px solid #dcf1ff;
+                    color: $__primarycolorhover;
+                    padding-left: 3.8rem;
+                    &::before{
+                      width: 1.25rem;
                     }
                   }
+                
                 }
+                // a {
+                // margin-left: 25px;
+                // &::after{
+                //   content: "";
+                //   background: rgba(50, 71, 92, 0.38);
+                //   width: 8px;
+                //   height: 8px;
+                //   border: 2px solid #fff;
+                //   @include rounded(50px);
+                //   @include position($__absolute,16px,null,null,0);
+                //   }
+                //   &:hover{
+                //     color:$__primarycolor;
+                //     &:after{
+                //     background: $__primarycolor;
+                //     border: 2px solid #dcf1ff;
+                //     }
+                //   }
+                // }
               }
             } 
           } 
         }         
         .menu-arrow {
-          display: $__flex;
+          // display: $__flex;
           text-rendering: auto;
           line-height: 40px;
           font-size: $__font__size__18;
           line-height: 18px;
-          background: rgba(27, 41, 80, 0.04);
+          // background: rgba(27, 41, 80, 0.04);
           width: 16px;
           height: 16px;
           justify-content: center;
@@ -293,24 +319,24 @@
           @include position($__absolute,12px,15px,null,null);
           @include transform(translate(0, 0));
           @include transition(all 0.2s ease);
-          &::before {
-              height: 5px;
-              width: 5px;
-              border-top: 0;
-              content: "";
-              border-left: 0;
-              border-right: 1px solid #67748E;
-              border-bottom: 1px solid #67748E;
-              transform: rotate(-45deg);
-              position: absolute;
-              left: 5px;
-              top: 5px;
-          }
+          // &::before {
+          //     height: 5px;
+          //     width: 5px;
+          //     border-top: 0;
+          //     content: "";
+          //     border-left: 0;
+          //     border-right: 1px solid #67748E;
+          //     border-bottom: 1px solid #67748E;
+          //     transform: rotate(-45deg);
+          //     position: absolute;
+          //     left: 5px;
+          //     top: 5px;
+          // }
         }
         &.subdrop{
           .menu-arrow {
               @include transform(rotate(90deg));                            
-              background: #FFEDDC;
+              // background: #FFEDDC;
           }
         }
       }
