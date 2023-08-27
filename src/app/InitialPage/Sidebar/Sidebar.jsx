@@ -26,27 +26,27 @@ const Sidebar = (props) => {
     { 
       title: 'Manage', icon: null, path:null, link: "#",
       submenus: [
-        { title: 'Manage Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
+        // { title: 'Manage Sales', icon: IconMap('AiOutlineShopping',null,null,24), path:'sales-manage', link: '/admin/manage/sales-manage'},
         { title: 'Manage Menu', icon: IconMap('BiSolidCoffeeTogo',null,null,24),path:'menu-', link: '#', submenu_children:[
           {title: 'Products', icon: null, path:'menu-manage', link:'/admin/manage/menu-manage'},
           { title: 'Categories', icon: null, path:'menu-categories', link:  '/admin/manage/menu-categories' },
         ]},
-        { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
-          {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
-          { title: 'Categories', icon: null, path:'inventory-categories', link:  '/admin/manage/inventory-categories' },
-        ]},
-        { title: 'Users', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/admin/manage/users-manage'},
-        { title: 'Suppliers', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/admin/manage/suppliers-manage' }, 
+        // { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
+        //   {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
+        //   { title: 'Categories', icon: null, path:'inventory-categories', link:  '/admin/manage/inventory-categories' },
+        // ]},
+        // { title: 'Users', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/admin/manage/users-manage'},
+        // { title: 'Suppliers', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/admin/manage/suppliers-manage' }, 
       ]
     },
-    { 
-      title: 'Reports', icon: null, path:null, link: "#",
-      submenus: [
-        { title: 'Sales Report', icon: IconMap('LuFileText',null,null,24), path:'reports-inventory', link: '/admin/reports/reports-inventory'},
-        { title: 'Inventory Report', icon: IconMap('FiDatabase',null,null,24), path:'reports-sales', link: '/admin/reports/reports-sales' },
-        { title: 'Supplier Report', icon: IconMap('AiOutlineGold',null,null,24), path:'reports-supplier', link: '/admin/reports/reports-supplier'},
-      ]
-    },
+    // { 
+    //   title: 'Reports', icon: null, path:null, link: "#",
+    //   submenus: [
+    //     { title: 'Sales Report', icon: IconMap('LuFileText',null,null,24), path:'reports-inventory', link: '/admin/reports/reports-inventory'},
+    //     { title: 'Inventory Report', icon: IconMap('FiDatabase',null,null,24), path:'reports-sales', link: '/admin/reports/reports-sales' },
+    //     { title: 'Supplier Report', icon: IconMap('AiOutlineGold',null,null,24), path:'reports-supplier', link: '/admin/reports/reports-supplier'},
+    //   ]
+    // },
     { 
       title: 'Settings', icon: null, path:null, link: "#",
       submenus: [
