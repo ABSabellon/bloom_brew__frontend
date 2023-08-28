@@ -17,7 +17,9 @@ const ManageCategory = () => {
   const [initialValues, setInitialValues] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [refreshTable, setRefreshTable] = useState(false);
+  const [refreshTable, setRefreshTable] = useState(true);
+  const [drawerTitle, setDrawerTitle] = useState('Add Category');
+  const [drawerButton, setDrawerButton] = useState('Submit');
 
   const columns = [
     {
@@ -77,11 +79,14 @@ const ManageCategory = () => {
       try {
         const dataHandler = new DataHandlingService('Categories');
         const fetchedData = await dataHandler.fetchDataWithQuery('type', '==', window.location.href.includes("inventory-") ? 'inventory' : 'menu');
-        setData(fetchedData);
-        setIsLoading(false);
+        if(fetchedData){
+          setData(fetchedData);
+          setRefreshTable(false);
+        }
+        
       } catch (error) {
         console.error("Error fetching data:", error);
-        setIsLoading(false);
+        setRefreshTable(false);
       }
     };
 
@@ -122,6 +127,8 @@ const ManageCategory = () => {
   };
 
   const editData = async (rowData) => {
+    setDrawerTitle('Edit Category');
+    setDrawerButton('Update');
     setInitialValues(rowData);
     handleOpenDrawer();
   };
@@ -139,6 +146,8 @@ const ManageCategory = () => {
               to="#"
               className="btn btn-added"
               onClick={() => {
+                setDrawerTitle('Add Category');
+                setDrawerButton('Submit');
                 setInitialValues({});
                 handleOpenDrawer();
               }}
@@ -165,7 +174,7 @@ const ManageCategory = () => {
       <CoffeeDrawer
         open={openDrawer}
         handleOk={handleDrawerSubmit}
-        title={"Add Category "}
+        title={drawerTitle}
         isLoading={isLoading}
         body={
           <AddEditCategory
@@ -181,7 +190,7 @@ const ManageCategory = () => {
               className="btn btn-submit me-2"
               onClick={handleDrawerSubmit}
             >
-              Submit
+              {drawerButton}
             </Button>
             <Button
               className="btn btn-cancel"

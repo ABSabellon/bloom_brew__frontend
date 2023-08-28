@@ -1,12 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client"; // Import createRoot from react-dom
 import Main from './app/EntryFile/Main';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-ReactDOM.render(<Main/>, document.getElementById('app'));
+// Use createRoot instead of ReactDOM.render
+const root = createRoot(document.getElementById('app'));
+root.render(<Main />);
 
-if (module.hot) { // enables hot module replacement if plugin is installed
- module.hot.accept();
+if (module.hot) {
+  module.hot.accept();
 }

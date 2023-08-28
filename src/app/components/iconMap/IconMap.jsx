@@ -7,7 +7,8 @@ import { AiOutlinePlusSquare, AiOutlineGold, AiOutlineShopping,AiFillFire,
   AiOutlineEye,AiOutlinePlus,AiOutlinePlusCircle,AiOutlineEdit,AiOutlineInbox
 } from 'react-icons/ai';
 // import {  } from 'react-icons/bs';
-import { BiFoodMenu,BiSolidEdit,BiSearchAlt,BiBowlHot,BiSolidCoffeeTogo 
+import { BiFoodMenu,BiSolidEdit,BiSearchAlt,BiBowlHot,BiSolidCoffeeTogo,
+  BiCloudUpload 
 } from 'react-icons/bi';
 import { TbCurrencyPeso } from 'react-icons/tb';
 // import {  } from 'react-icons/im';
@@ -161,6 +162,10 @@ const IconMap = (iconName, classnames = '', iconStyle = {}, size) => {
     break;}
     case 'FaTemperatureLow': {
       icon = <FaTemperatureLow className={classnames} size={size} style={iconStyle} />
+    break;}
+
+    case 'BiCloudUpload': {
+      icon = <BiCloudUpload className={classnames} size={size} style={iconStyle} />
     break;}
     
   }

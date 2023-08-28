@@ -4,7 +4,7 @@ import "../../EntryFile/antd.css";
 import IconMap from "../iconMap/IconMap";
 import DeleteConfirm from "../confirm/deleteConfirm";
 
-const Datatable = ({ collectionName, props, columns, data,  }) => {
+const Datatable = ({ collectionName, props, columns, data,reloadTable  }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [isTrashActive, setIsTrashActive] = useState(false);
   const [pagination, setPagination] = useState({
@@ -54,7 +54,7 @@ const Datatable = ({ collectionName, props, columns, data,  }) => {
         rowSelection={rowSelection}
         columns={columns}
         dataSource={data} // Using the data prop passed from the parent
-        loading={false} // No need for loading state here
+        loading={reloadTable} 
         pagination={{
           ...pagination,
           showTotal: (total, range) => `${range[0]} to ${range[1]} of ${total} items`,

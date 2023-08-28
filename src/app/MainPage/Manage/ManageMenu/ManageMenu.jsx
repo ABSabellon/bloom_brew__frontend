@@ -4,13 +4,10 @@ import Table from "../../../components/tables/datatable";
 import { Link } from "react-router-dom";
 import Tabletop from "../../../components/tables/tabletop";
 import "react-select2-wrapper/css/select2.css";
-import Swal from "sweetalert2";
 import IconMap from "../../../components/iconMap/IconMap";
 import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import AddEditMenu from "./AddEditMenu";
 import DeleteConfirm from "../../../components/confirm/deleteConfirm";
-import AddConfirm from "../../../components/confirm/addConfirm";
-import EditConfirm from "../../../components/confirm/editConfirm";
 import DataHandlingService from "../../../EntryFile/Services/DataHandlingService";
 
 const ManageMenu = () => {
@@ -21,6 +18,8 @@ const ManageMenu = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [refreshTable, setRefreshTable] = useState(false);
   const [categoryOption, setCategoryOption]= useState([]);
+  const [drawerTitle, setDrawerTitle] = useState('Add Category');
+  const [drawerButton, setDrawerButton] = useState('Submit');
 
   const columns = [
     {
@@ -121,12 +120,14 @@ const ManageMenu = () => {
   };
 
   const handleDrawerSubmit = async () => {
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const isUpdate = await Object.keys(initialValues).length > 0;
 
     if (childRef.current) {
+      console.log('hit :::: 1')
       const validation = await childRef.current.formSubmit();
+      console.log('validation  ::: ', validation)
       if (validation.success) {
         console.log('submitted Data ::: ', validation.data)
         // if (isUpdate) {
@@ -147,19 +148,9 @@ const ManageMenu = () => {
   };
 
   const editData = async (rowData) => {
-    const data = await rowData;
-
-    setData({
-      id: data.id,
-      name: data.name,
-      type: data.type,
-      description: data.description,
-      created_at: data.created_at,
-      created_by: data.created_by,
-      updated_at: data.updated_at,
-      updated_by: data.updated_by,
-    });
-    setInitialValues(data);
+    setDrawerTitle('Edit Category');
+    setDrawerButton('Update');
+    setInitialValues(rowData);
     handleOpenDrawer();
   };
 
@@ -176,6 +167,8 @@ const ManageMenu = () => {
               to="#"
               className="btn btn-added"
               onClick={() => {
+                setDrawerTitle('Add Category');
+                setDrawerButton('Submit');
                 setInitialValues({});
                 handleOpenDrawer();
               }}
@@ -202,7 +195,7 @@ const ManageMenu = () => {
       <CoffeeDrawer
         open={openDrawer}
         handleOk={handleDrawerSubmit}
-        title={"Add Menu "}
+        title={drawerTitle}
         isLoading={isLoading}
         body={
           <AddEditMenu
@@ -217,9 +210,9 @@ const ManageMenu = () => {
             <Button
               type="submit"
               className="btn btn-submit me-2"
-              onClick={handleDrawerSubmit}
+              onClick={() => handleDrawerSubmit()}
             >
-              Submit
+              {drawerButton}
             </Button>
             <Button
               className="btn btn-cancel"

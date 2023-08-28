@@ -1,18 +1,19 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Form } from "antd";
-import DataService from "../../../EntryFile/Services/DataService";
 import Inputs from "../../../components/forms/inputs";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-select2-wrapper/css/select2.css";
 import IconMap from "../../../components/iconMap/IconMap";
+import OpenImagePreview from "../../../components/forms/openImagePreview";
+
 
 const validator = {
   require: { required: true, message: "Required" },
 };
 
 const AddEditMenu = forwardRef(({ initialValues, dataSource, categoryOption }, ref) => {
-  console.log('categoryOption :::: ', categoryOption)
   const [form] = Form.useForm();
+  const [fileList, setFileList] = useState([]);
 
   const categoryValidator = () => ({
     validator(_, value) {
@@ -22,6 +23,17 @@ const AddEditMenu = forwardRef(({ initialValues, dataSource, categoryOption }, r
       return Promise.reject(new Error("Invalid category selected."));
     },
   });
+
+  const onUploadChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+    const newSelectedFiles = newFileList.map(file => ({
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      uid: file.uid
+    }));
+    console.log('newSelectedFiles ::: ', newSelectedFiles)
+  };
 
   useImperativeHandle(ref, () => ({
     formSubmit: async () => {
@@ -73,7 +85,7 @@ const AddEditMenu = forwardRef(({ initialValues, dataSource, categoryOption }, r
       });
     }
   }, [initialValues, form]);  
-
+  
   return (
     <>
       <Form 
@@ -114,6 +126,17 @@ const AddEditMenu = forwardRef(({ initialValues, dataSource, categoryOption }, r
         <div className="col-lg-4 col-sm-6 col-12">
           <Form.Item name="price_cold">
               <Inputs type="price" label="Price(Cold)" prefix={IconMap('FaTemperatureLow','text-primary',null,20)} placeholder="Enter price (Hot) for cold drink" name="price_cold" />
+          </Form.Item>
+        </div>
+        <div className="col-lg-12">
+          <Form.Item name="product_image" rules={[
+              { 
+                required: true, 
+                message: "Please upload at least one image.", 
+                validator: (_, fileList) => fileList.length > 0,
+              }
+            ]}>
+            <OpenImagePreview fileList={fileList} onChange={onUploadChange}/>
           </Form.Item>
         </div>
       </Form>
