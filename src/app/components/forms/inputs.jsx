@@ -173,6 +173,9 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           />
       );
     }
+    case "switch":{
+      <Switch />
+    }
   }
 
   }

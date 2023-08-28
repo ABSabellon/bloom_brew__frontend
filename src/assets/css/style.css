@@ -5986,6 +5986,10 @@ span.select2-container.select2-container--default.select2-container--open {
   content: none;
 }
 
+.ant-switch-checked {
+  background-color: #704332;
+}
+
 /****** PAGES ******/
 .chat-window .card .card-header {
   background-color: #fff;
