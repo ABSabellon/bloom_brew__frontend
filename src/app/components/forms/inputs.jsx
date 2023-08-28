@@ -27,6 +27,7 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
       return(
         <Input 
           id={id}
+          size="large"
           type={type}
           value={value}
           required={required} 
