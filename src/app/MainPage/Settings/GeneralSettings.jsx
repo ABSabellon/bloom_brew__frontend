@@ -62,8 +62,7 @@ const GeneralSettings = () => {
               </div>
               <div className="col-lg-3 col-sm-6 col-12">
                 <Form.Item name="autocomplete" hasFeedback>
-                  <Inputs type="autocomplete" label="autocomplete" placeholder="autocomplete" name="autocomplete" option={options22}
-                  />
+                  <Inputs type="autocomplete" label="autocomplete" placeholder="autocomplete" name="autocomplete" option={options22}/>
                 </Form.Item>
               </div>
               <div className="col-lg-3 col-sm-6 col-12">

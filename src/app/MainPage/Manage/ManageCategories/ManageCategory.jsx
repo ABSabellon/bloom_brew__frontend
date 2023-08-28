@@ -107,7 +107,7 @@ const ManageCategory = () => {
         if (isUpdate) {
           EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
         } else {
-          AddConfirm({ collection: 'Categories', record: validation.data, updateTable, handleOpenDrawer });
+          AddConfirm({ collection: 'Categories', record: validation.data, updateTable, handleOpenDrawer,dataPrefix:'CT' });
         }
       } else {
         setIsLoading(false);

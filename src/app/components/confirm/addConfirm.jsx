@@ -3,10 +3,10 @@ import React from "react";
 import Swal from "sweetalert2";
 import DataService from "../../EntryFile/Services/DataService";
 
-const AddConfirm = async ({ collection, record, updateTable,handleOpenDrawer }) => {
+const AddConfirm = async ({ collection, record, updateTable,handleOpenDrawer,dataPrefix}) => {
   const dataS = new DataService(collection)
   console.log('record ::: ', record)
-  await dataS.addItems(record,'CT')
+  await dataS.addItems(record,dataPrefix)
   .then(()=>{
     Swal.fire({
       type: 'success',
