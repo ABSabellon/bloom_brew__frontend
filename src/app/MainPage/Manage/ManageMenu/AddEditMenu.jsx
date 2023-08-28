@@ -10,21 +10,36 @@ const validator = {
   require: { required: true, message: "Required" },
 };
 
-const AddEditMenu = forwardRef(({ initialValues, dataSource }, ref) => {
-  const dataS = new DataService('Categories');
+const AddEditMenu = forwardRef(({ initialValues, dataSource, categoryOption }, ref) => {
+  console.log('categoryOption :::: ', categoryOption)
   const [form] = Form.useForm();
 
-  // Expose the formSubmit function to the parent component
+  const categoryValidator = () => ({
+    validator(_, value) {
+      if (categoryOption.some(option => option.value === value)) {
+        return Promise.resolve();
+      }
+      return Promise.reject(new Error("Invalid category selected."));
+    },
+  });
+
   useImperativeHandle(ref, () => ({
     formSubmit: async () => {
       try {
         const formValues = await validateForm();
         const isUpdate = await Object.keys(initialValues).length > 0; // Check if initialValues exist
-  
+        
+        const selectedCategory = categoryOption.find(option => option.value === formValues.menu_category);
+    
         let tempData = {
-          name: formValues.category_name,
-          description: formValues.category_description,
-          type: window.location.href.includes("inventory-") ? "inventory" : "menu", //set category type based on route
+          name: formValues.menu_name,
+          allergens: formValues.menu_allergens,
+          category_id:selectedCategory,
+          details:[
+            {hot:price_hot? true:false, price: price_hot? price_hot:null},
+            {cold:price_cold? true:false, price: price_cold? price_cold:null},
+          ],
+          // type: window.location.href.includes("inventory-") ? "inventory" : "menu", //set category type based on route
           created_at: isUpdate ? initialValues.created_at : new Date(),
           created_by: isUpdate ? initialValues.created_by : 'admin',
           updated_at: isUpdate ? new Date() : null,
@@ -69,8 +84,22 @@ const AddEditMenu = forwardRef(({ initialValues, dataSource }, ref) => {
         form={form}
         >
         <div className="col-lg-4 col-sm-6 col-12">
-          <Form.Item name="category_name" rules={[validator.require]} hasFeedback>
-            <Inputs type="text" label="Category Name" placeholder="Enter Category Name" name="category_name" required={true} />
+          <Form.Item name="menu_name" rules={[validator.require]} hasFeedback>
+            <Inputs type="text" label="Product Name" placeholder="Enter Product Name" name="menu_name" required={true} />
+          </Form.Item>
+        </div>
+
+        {/* <div className="col-lg-4 col-sm-6 col-12 d-none d-lg-block"></div> */}
+
+        <div className="col-lg-4 col-sm-6 col-12">
+          <Form.Item name="menu_category" rules={[validator.require,categoryValidator]} hasFeedback>
+            <Inputs type="autocomplete" label="Category Name" placeholder="Enter Category Name" name="menu_category" option={categoryOption} required={true} />
+          </Form.Item>
+        </div>
+
+        <div className="col-12">
+          <Form.Item name="menu_allergens" rules={[validator.require]} hasFeedback>
+            <Inputs type="text-area" label="Description" placeholder="Enter allergens here" name="menu_allergens" required={true} rows={6} />
           </Form.Item>
         </div>
 
@@ -80,14 +109,11 @@ const AddEditMenu = forwardRef(({ initialValues, dataSource }, ref) => {
           </Form.Item>
         </div>
 
+        {/* <div className="col-lg-4 col-sm-6 col-12 d-none d-lg-block"></div> */}
+
         <div className="col-lg-4 col-sm-6 col-12">
           <Form.Item name="price_cold">
               <Inputs type="price" label="Price(Cold)" prefix={IconMap('FaTemperatureLow','text-primary',null,20)} placeholder="Enter price (Hot) for cold drink" name="price_cold" />
-          </Form.Item>
-        </div>
-        <div className="col-12">
-          <Form.Item name="category_description" rules={[validator.require]} hasFeedback>
-            <Inputs type="text-area" label="Description" placeholder="Input category description here" name="category_description" required={true} rows={6} />
           </Form.Item>
         </div>
       </Form>

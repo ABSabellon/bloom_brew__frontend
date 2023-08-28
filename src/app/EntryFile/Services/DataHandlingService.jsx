@@ -6,6 +6,17 @@ class DataHandlingService {
     this.dataS = new DataService(dataSource);
   }
 
+  async getData(){
+    try{
+
+      const fetchedData = await this.dataS.getAll();
+      return fetchedData
+    }catch (error){
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  }
+
   async fetchDataWithQuery(query, operator, value) {
     try {
       let queryToUse = null;
@@ -21,6 +32,7 @@ class DataHandlingService {
       throw error;
     }
   }
+
   async getTotalCount() {
     // Get the total count of data from the data source
     // Implement the logic to get the total count here

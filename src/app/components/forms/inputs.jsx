@@ -128,7 +128,6 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
           readOnly={readOnly}
           required={required}
           prefix={prefix} 
-          addonBefore={addonBefore}
           filterOption={(inputValue, option) => {
             if (option && option.value) {
               return option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1;

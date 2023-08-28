@@ -20,6 +20,7 @@ const ManageMenu = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refreshTable, setRefreshTable] = useState(false);
+  const [categoryOption, setCategoryOption]= useState([]);
 
   const columns = [
     {
@@ -43,7 +44,7 @@ const ManageMenu = () => {
       sorter: (a, b) => a.category.length - b.category.length,
     },
     {
-      title: "Temperature",
+      title: "Allergens",
       dataIndex: "temp",
       sorter: (a, b) => a.category.length - b.category.length,
     },
@@ -74,25 +75,46 @@ const ManageMenu = () => {
     },
   ];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const dataHandler = new DataHandlingService('Categories');
-        const fetchedData = await dataHandler.fetchDataWithQuery('type', '==', window.location.href.includes("inventory-") ? 'inventory' : 'menu');
-        setData(fetchedData);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+  const fetchData = async () => {
+    try {
+
+      const menuDataHandler = new DataHandlingService('Menu');
+      const fetchedMenuData = await menuDataHandler.getData();
+      // const fetchedMenuData = await data
+      setData(fetchedMenuData)
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false);
+    }
+  };
+
+  const fetchCategoryOption = async () => {
+    try {
+      const categoryDataHandler = new DataHandlingService('Categories');
+      const fetchedCategoryData = await categoryDataHandler.fetchDataWithQuery('type', '==', window.location.href.includes("inventory-") ? 'inventory' : 'menu');
+      if (fetchedCategoryData) {
+        const mappedOptions = fetchedCategoryData.map(item => ({
+          value: item.name,
+          id: item.id,
+        }));
+        setCategoryOption(mappedOptions);
         setIsLoading(false);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, [refreshTable]);
 
   const handleOpenDrawer = () => {
     setIsLoading(true);
     setOpenDrawer(!openDrawer);
+    fetchCategoryOption();
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -106,11 +128,12 @@ const ManageMenu = () => {
     if (childRef.current) {
       const validation = await childRef.current.formSubmit();
       if (validation.success) {
-        if (isUpdate) {
-          EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
-        } else {
-          AddConfirm({ collection: 'Categories', record: validation.data, updateTable, handleOpenDrawer });
-        }
+        console.log('submitted Data ::: ', validation.data)
+        // if (isUpdate) {
+        //   EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
+        // } else {
+        //   AddConfirm({ collection: 'Categories', record: validation.data, updateTable, handleOpenDrawer });
+        // }
       } else {
         setIsLoading(false);
         console.error('Form validation error:', validation.error);
@@ -158,7 +181,7 @@ const ManageMenu = () => {
               }}
             >
               {IconMap('AiOutlinePlus', 'me-1', null, 24)}
-              Add Category
+              Add Menu
             </Link>
           </div>
         </div>
@@ -179,12 +202,13 @@ const ManageMenu = () => {
       <CoffeeDrawer
         open={openDrawer}
         handleOk={handleDrawerSubmit}
-        title={"Add Category "}
+        title={"Add Menu "}
         isLoading={isLoading}
         body={
-          <AddEditCategory
+          <AddEditMenu
             initialValues={initialValues}
             ref={childRef}
+            categoryOption={categoryOption}
           />
         }
         closable={false}

@@ -122,19 +122,7 @@ const ManageCategory = () => {
   };
 
   const editData = async (rowData) => {
-    const data = await rowData;
-
-    setData({
-      id: data.id,
-      name: data.name,
-      type: data.type,
-      description: data.description,
-      created_at: data.created_at,
-      created_by: data.created_by,
-      updated_at: data.updated_at,
-      updated_by: data.updated_by,
-    });
-    setInitialValues(data);
+    setInitialValues(rowData);
     handleOpenDrawer();
   };
 
