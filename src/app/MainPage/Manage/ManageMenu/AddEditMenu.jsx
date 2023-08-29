@@ -13,7 +13,10 @@ const validator = {
 const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
+  const [urlList,setUrlList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
+  
+  // console.log('categoryOption ::: ', categoryOption)
 
   // Functions
   const categoryValidator = () => ({
@@ -41,13 +44,17 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
     }
   };
 
-  const onUploadChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
+  
+const onUploadChange = ({ fileList: newFileList }) => {
+  setFileList(newFileList);
 
-    form.setFieldsValue({
-      product_image: newFileList || [], // Set to an empty array if newFileList is undefined
-    });
-  };
+  // Map the newFileList to get the actual binary data (Blob)
+  const binaryImageFiles = newFileList.map(file => file.originFileObj);
+
+  form.setFieldsValue({
+    product_image: binaryImageFiles || [], // Set to an empty array if newFileList is undefined
+  });
+};
 
   const onCategorySelect = (value) => {
     const matchCategory = categoryOption.find(option => option.value === value);
@@ -59,11 +66,22 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
   // useEffect
   useEffect(() => {
     form.resetFields();
-    if (initialValues) {
+    setFileList([]);
+    const isInitialValuesEmpty = Object.keys(initialValues).length;
+    if (isInitialValuesEmpty) {
+      console.log('categoryOption 2::: ', categoryOption)
+      console.log('initialValues 2::: ', initialValues)
+
+      onCategorySelect(initialValues.category_details.name);
+      setUrlList(initialValues.imgs)
       form.setFieldsValue({
-        category_name: initialValues.name,
-        category_description: initialValues.description,
-        product_image: [],
+        menu_name: initialValues.name,
+        menu_category: initialValues.category_details.name,
+        price_hot:initialValues.price_list?.hot.price,
+        price_cold:initialValues.price_list?.cold.price,
+        price:initialValues.price_list?.price,
+        // price:
+        product_image: initialValues.imgs || [],
       });
     }
   }, [initialValues, form]);
@@ -73,21 +91,19 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
     
     formSubmit: async () => {
       try {
-        console.log('formValues :::: ',  form.getFieldsValue());
-        
         const formValues = await validateForm();
         const isUpdate = await Object.keys(initialValues).length > 0; // Check if initialValues exist
     
         let tempData = {
           name: formValues.menu_name,
-          category_id: selectedCategory,
-          details: selectedCategory.has_temp
-            ? { hot: formValues.price_hot ? true : false, price: formValues.price_hot ? formValues.price_hot : null,
-                cold: formValues.price_cold ? true : false, price: formValues.price_cold ? formValues.price_cold : null }
-              
+          category_id: selectedCategory.id,
+          price_list: selectedCategory.has_temp
+            ? { hot: formValues.price_hot?  { price: formValues.price_hot } : null,
+                cold: formValues.price_cold?  { price: formValues.price_cold } : null,}
             : { price: formValues.price }, // Default price object when has_temp is false
           
-          imgs:formValues.product_image,
+          raw_imgs:formValues.product_image,
+          imgs:null,
           created_at: isUpdate ? initialValues.created_at : new Date(),
           created_by: isUpdate ? initialValues.created_by : 'admin',
           updated_at: isUpdate ? new Date() : null,
@@ -150,7 +166,7 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
             <>
               <input type="hidden" required/>
 
-              <OpenImagePreview fileList={fileList} onChange={onUploadChange} />
+              <OpenImagePreview fileList={fileList} onChange={onUploadChange} urlList={urlList} />
             </>
           </Form.Item>
         </div>

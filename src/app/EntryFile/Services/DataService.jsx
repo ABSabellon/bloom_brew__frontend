@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, writeBatch,query, orderBy, limit, startAfter, startAt, where } from "@firebase/firestore";
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, writeBatch,query, orderBy, limit, startAfter, startAt, where,getById, getDoc } from "@firebase/firestore";
 import { firestore } from "../../../environments/environment";
 
 class DataService {
@@ -43,20 +43,25 @@ class DataService {
                 currentIncrement = parseInt(latestData.substring(docPrefix.length + 8)) + 1;
             }
         }
+
+        const createdIds = []; // Array to store the created IDs
+
         dataArray.forEach(data => {
             const customId = `${docPrefix}${currentDate}${currentIncrement.toString().padStart(5, '0')}`;
             const newDocRef = doc(this.collectionRef, customId);
 
             batch.set(newDocRef, data);
+            createdIds.push(customId); // Add the created ID to the array
             currentIncrement++;
         });
 
         await batch.commit();
+        return createdIds; // Return the array of created IDs
     } catch (error) {
         console.error("Error creating documents: ", error);
         throw error;
     }
-  }
+}
 
   async getAll(query = null) {
     try {
@@ -71,6 +76,22 @@ class DataService {
       return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       console.error("Error getting documents: ", error);
+      throw error;
+    }
+  }
+
+  async getDocById(id) {
+    try {
+      const docRef = doc(this.collectionRef, id);
+      const docSnapshot = await getDoc(docRef);
+
+      if (docSnapshot.exists()) {
+        return { id: docSnapshot.id, ...docSnapshot.data() };
+      } else {
+        return null; // Return null if the document doesn't exist
+      }
+    } catch (error) {
+      console.error("Error getting document by ID: ", error);
       throw error;
     }
   }

@@ -103,6 +103,28 @@
         font-weight: 500;
     }
 }
+.product-price{
+    @extend %display-flex;
+    @extend %align-items-center;
+    justify-content: space-evenly;
+    // @extend %justify-content-center;
+    p{
+        margin-right: 1rem;
+        margin-bottom: 0px;
+        span{
+            font-weight: 900;
+            font-size: 16px;
+        }
+    }
+    // img{
+    //     margin-right: 10px;
+    // }
+    // a{
+    //     color: $__secondarycolor;
+    //     font-weight: 500;
+    // }
+
+}
 .form-group{
     .calc-no{
         width: 50px !important;

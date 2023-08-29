@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import Table from "../../../components/tables/datatable";
 import { Link } from "react-router-dom";
+import Table from "../../../components/tables/datatable";
 import Tabletop from "../../../components/tables/tabletop";
-import "react-select2-wrapper/css/select2.css";
-import IconMap from "../../../components/iconMap/IconMap";
+import AddConfirm from "../../../components/confirm/addConfirm";
 import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
-import AddEditMenu from "./AddEditMenu";
 import DeleteConfirm from "../../../components/confirm/deleteConfirm";
-import DataHandlingService from "../../../EntryFile/Services/DataHandlingService";
+import IconMap from "../../../components/iconMap/IconMap";
+import AddEditMenu from "./AddEditMenu";
+import { fetchMenuData, fetchCategoryOptionData } from "../../../EntryFile/Services/prepareDataService";
 
 const ManageMenu = () => {
   const childRef = useRef(null);
@@ -16,7 +16,7 @@ const ManageMenu = () => {
   const [initialValues, setInitialValues] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [refreshTable, setRefreshTable] = useState(false);
+  const [refreshTable, setRefreshTable] = useState(true);
   const [categoryOption, setCategoryOption]= useState([]);
   const [drawerTitle, setDrawerTitle] = useState('Add Category');
   const [drawerButton, setDrawerButton] = useState('Submit');
@@ -28,33 +28,33 @@ const ManageMenu = () => {
       render: (text, record) => (
         <div className="productimgname">
           <Link to="#" className="product-img">
-            <img alt="" src={record.image} />
+            <img alt="" src={record.imgs[0]} />
           </Link>
           <Link to="#" style={{ fontSize: "15px", marginLeft: "10px" }}>
-            {record.productName}
+            {record.name}
           </Link>
         </div>
       ),
-      sorter: (a, b) => a.productName.length - b.productName.length,
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: "Category",
-      dataIndex: "category",
-      sorter: (a, b) => a.category.length - b.category.length,
-    },
-    {
-      title: "Allergens",
-      dataIndex: "temp",
-      sorter: (a, b) => a.category.length - b.category.length,
+      dataIndex: ["category_details","name"],
+      sorter: (a, b) => a.category_details.name.length - b.category_name.length,
     },
     {
       title: "Price",
-      dataIndex: "price",
-      sorter: (a, b) => a.price.length - b.price.length,
+      render: (text, record) => (
+        <div className="product-price">
+          <p>{IconMap('FaTemperatureHigh','text-danger me-1',null,20)}<span>&#8369; 200</span></p>
+          <p>{IconMap('FaTemperatureLow','text-primary me-1',null,20)}<span>&#8369; 300</span></p>
+        </div>
+      ),
+      // sorter: (a, b) => a.price.length - b.price.length,
     },
     {
-      title: "Created By",
-      dataIndex: "createdBy",
+      title: "Added By",
+      dataIndex: "created_by",
       sorter: (a, b) => a.createdBy.length - b.createdBy.length,
     },
     {
@@ -65,7 +65,7 @@ const ManageMenu = () => {
             {IconMap('AiOutlineEdit',null,null,24)}
           </Link>
           <Link className="confirm-text" to="#" onClick={() => {
-            DeleteConfirm({ collection:'Categories',record:record.id, updateTable})
+            DeleteConfirm({ collection:'Menu',record:record.id, updateTable})
           }}>
             {IconMap('FiTrash2',"text-danger",null,24)}
           </Link>
@@ -76,12 +76,14 @@ const ManageMenu = () => {
 
   const fetchData = async () => {
     try {
-
-      const menuDataHandler = new DataHandlingService('Menu');
-      const fetchedMenuData = await menuDataHandler.getData();
+      const fetcheData = await fetchMenuData();
+      console.log('fetcheData ::: ', fetcheData)
       // const fetchedMenuData = await data
-      setData(fetchedMenuData)
-      setIsLoading(false);
+      if(fetcheData){
+        setData(fetcheData)
+        setRefreshTable(false);
+        setIsLoading(false);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsLoading(false);
@@ -90,18 +92,10 @@ const ManageMenu = () => {
 
   const fetchCategoryOption = async () => {
     try {
-      const categoryDataHandler = new DataHandlingService('Categories');
-      const fetchedCategoryData = await categoryDataHandler.fetchDataWithQuery('type', '==', window.location.href.includes("inventory-") ? 'inventory' : 'menu');
-      if (fetchedCategoryData) {
-        const mappedOptions = fetchedCategoryData.map(item => ({
-          value: item.name,
-          id: item.id,
-          type: item.type,
-          has_temp:item.has_temp
-        }));
-        setCategoryOption(mappedOptions);
-        setIsLoading(false);
-      }
+      const fetcheData = await fetchCategoryOptionData('menu');
+      console.log('fetchedCategoryOption :: ', fetcheData)
+      
+      return fetcheData
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsLoading(false);
@@ -113,30 +107,35 @@ const ManageMenu = () => {
   }, [refreshTable]);
 
   const handleOpenDrawer = () => {
-    setIsLoading(true);
     setOpenDrawer(!openDrawer);
-    fetchCategoryOption();
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   };
 
   const handleDrawerSubmit = async () => {
-    // setIsLoading(true);
-
+    setIsLoading(true);
     const isUpdate = await Object.keys(initialValues).length > 0;
-
     if (childRef.current) {
-      console.log('hit :::: 1')
       const validation = await childRef.current.formSubmit();
-      console.log('validation  ::: ', validation)
+      // console.log('validation  ::: ', validation)
       if (validation.success) {
         console.log('submitted Data ::: ', validation.data)
-        // if (isUpdate) {
-        //   EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
-        // } else {
-        //   AddConfirm({ collection: 'Categories', record: validation.data, updateTable, handleOpenDrawer,dataPrefix:'MN' });
-        // }
+        if (isUpdate) {
+          // EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
+        } else {
+          let tempData = {
+            name: validation.data.name,
+            category_id: validation.data.category_id,
+            price_list: validation.data.price_list,
+            imgs:null,
+            created_at: validation.data.created_at,
+            created_by: validation.data.created_by,
+            updated_at: validation.data.updated_at,
+            updated_by: validation.data.updated_by
+          }
+          AddConfirm({ collection: 'Menu', data: tempData, updateTable, handleOpenDrawer,dataPrefix:'MN',has_files:true, fileList:validation.data.raw_imgs});
+        }
       } else {
         setIsLoading(false);
         console.error('Form validation error:', validation.error);
@@ -149,11 +148,33 @@ const ManageMenu = () => {
     setTimeout(() => setRefreshTable(false), 0);
   };
 
+  const addData = async()=>{
+    setIsLoading(true);
+    
+    const categOption = await fetchCategoryOption();
+    setCategoryOption(categOption)
+    const hasCateg = Object.keys(categOption).length;
+    if(hasCateg){
+      setDrawerTitle('Add Category');
+      setDrawerButton('Submit');
+      handleOpenDrawer();
+    }
+
+  }
+
   const editData = async (rowData) => {
-    setDrawerTitle('Edit Category');
-    setDrawerButton('Update');
-    setInitialValues(rowData);
-    handleOpenDrawer();
+    setIsLoading(true);
+    const categOption = await fetchCategoryOption();
+    setCategoryOption(categOption)
+    const hasCateg = Object.keys(categOption).length;
+    if(hasCateg){
+      
+      setDrawerTitle('Edit Category');
+      setDrawerButton('Update');
+      setInitialValues(rowData);
+      handleOpenDrawer();
+
+    }
   };
 
   return (
@@ -169,10 +190,8 @@ const ManageMenu = () => {
               to="#"
               className="btn btn-added"
               onClick={() => {
-                setDrawerTitle('Add Category');
-                setDrawerButton('Submit');
                 setInitialValues({});
-                handleOpenDrawer();
+                addData();
               }}
             >
               {IconMap('AiOutlinePlus', 'me-1', null, 24)}

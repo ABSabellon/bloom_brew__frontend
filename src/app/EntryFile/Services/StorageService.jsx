@@ -1,37 +1,30 @@
-import { storage } from 'firebase/app';
-import 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 class StorageService {
   constructor() {
     // Initialize Firebase Storage instance
-    this.storage = storage();
+    this.storage = getStorage();
   }
 
   // Upload a file to a specified path in Firebase Storage
   async uploadFile(path, file) {
-    const storageRef = this.storage.ref(path);
-    const uploadTask = storageRef.put(file);
-
-    return new Promise((resolve, reject) => {
-      uploadTask.on(
-        'state_changed',
-        null,
-        (error) => reject(error),
-        () => {
-          // Get the download URL after upload is complete
-          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-            resolve(downloadURL);
-          });
-        }
-      );
-    });
+    const storageRef = ref(this.storage, path);
+    try {
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL;
+    } catch (error) {
+      // Handle error
+      console.error('Error uploading file:', error);
+      throw error;
+    }
   }
 
   // Retrieve a file's download URL from Firebase Storage
   async getFileDownloadURL(path) {
-    const storageRef = this.storage.ref(path);
+    const storageRef = ref(this.storage, path);
     try {
-      const downloadURL = await storageRef.getDownloadURL();
+      const downloadURL = await getDownloadURL(storageRef);
       return downloadURL;
     } catch (error) {
       // Handle error, e.g., file not found
@@ -42,9 +35,9 @@ class StorageService {
 
   // Delete a file from Firebase Storage
   async deleteFile(path) {
-    const storageRef = this.storage.ref(path);
+    const storageRef = ref(this.storage, path);
     try {
-      await storageRef.delete();
+      await deleteObject(storageRef);
       console.log('File deleted successfully');
     } catch (error) {
       // Handle error, e.g., file not found
@@ -53,4 +46,4 @@ class StorageService {
   }
 }
 
-export default new StorageService();
+export default StorageService;
