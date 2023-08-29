@@ -25,16 +25,6 @@ const ManageCategory = () => {
     {
       title: "Category Name",
       dataIndex: "name",
-      render: (text, record) => (
-        <div className="productimgname">
-          <Link to="#" className="product-img">
-            <img alt="" src={record.image} />
-          </Link>
-          <Link to="#" style={{ fontSize: "15px", marginLeft: "10px" }}>
-            {record.name}
-          </Link>
-        </div>
-      ),
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {

@@ -8,7 +8,7 @@ import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import DeleteConfirm from "../../../components/confirm/deleteConfirm";
 import IconMap from "../../../components/iconMap/IconMap";
 import AddEditMenu from "./AddEditMenu";
-import { fetchMenuData, fetchCategoryOptionData } from "../../../EntryFile/Services/prepareDataService";
+import { fetchMenuData, fetchCategoryOptionData } from "../../../EntryFile/Utilities/dataUtils";
 
 const ManageMenu = () => {
   const childRef = useRef(null);
@@ -46,11 +46,22 @@ const ManageMenu = () => {
       title: "Price",
       render: (text, record) => (
         <div className="product-price">
-          <p>{IconMap('FaTemperatureHigh','text-danger me-1',null,20)}<span>&#8369; 200</span></p>
-          <p>{IconMap('FaTemperatureLow','text-primary me-1',null,20)}<span>&#8369; 300</span></p>
+          {record.category_details.has_temp ? (
+            <>
+              <p>
+                {IconMap('FaTemperatureHigh', 'text-danger me-1', null, 20)}
+                <span> {record.formatted_price.hot.price}</span>
+              </p>
+              <p>
+                {IconMap('FaTemperatureLow', 'text-primary me-1', null, 20)}
+                <span> {record.formatted_price.cold.price}</span>
+              </p>
+            </>
+          ) : (
+            <span> {record.formatted_price.price}</span>
+          )}
         </div>
       ),
-      // sorter: (a, b) => a.price.length - b.price.length,
     },
     {
       title: "Added By",
@@ -77,8 +88,7 @@ const ManageMenu = () => {
   const fetchData = async () => {
     try {
       const fetcheData = await fetchMenuData();
-      console.log('fetcheData ::: ', fetcheData)
-      // const fetchedMenuData = await data
+      // console.log('fetcheData ::: ', fetcheData)
       if(fetcheData){
         setData(fetcheData)
         setRefreshTable(false);
@@ -93,7 +103,7 @@ const ManageMenu = () => {
   const fetchCategoryOption = async () => {
     try {
       const fetcheData = await fetchCategoryOptionData('menu');
-      console.log('fetchedCategoryOption :: ', fetcheData)
+      // console.log('fetchedCategoryOption :: ', fetcheData)
       
       return fetcheData
     } catch (error) {
@@ -120,7 +130,7 @@ const ManageMenu = () => {
       const validation = await childRef.current.formSubmit();
       // console.log('validation  ::: ', validation)
       if (validation.success) {
-        console.log('submitted Data ::: ', validation.data)
+        // console.log('submitted Data ::: ', validation.data)
         if (isUpdate) {
           // EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
         } else {
