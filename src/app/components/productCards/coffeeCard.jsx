@@ -15,12 +15,7 @@ const CoffeeCard = ({ img, id, name, ingredients, price, active }) => {
   return (
     <>
       <div
-        className={
-          isActive
-            ? "productset flex-fill active"
-            : "productset flex-fill"
-        }
-      >
+        className={isActive? "productset flex-fill active": "productset flex-fill"}>
         <div className="check-product">
           <i className="fa fa-check" />
         </div>
@@ -55,9 +50,6 @@ const CoffeeCard = ({ img, id, name, ingredients, price, active }) => {
           </div>
           <div className="col-6 productsetcontent">
             <h4>{name}</h4>
-            <div className="product-description">
-              <h5>{ingredients}</h5>
-            </div>
             <div className="product-price">
               <h6>
                 <span>&#8369;</span>

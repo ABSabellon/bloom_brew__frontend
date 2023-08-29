@@ -848,7 +848,7 @@
         img{
             transition: all 0.5s;
             border-radius: 5px 5px 0px 0px;
-            height: 10rem;
+            height: 7rem;
             margin-bottom: 1rem;
             @include respond-below(custom991) {
                 height: 150px;

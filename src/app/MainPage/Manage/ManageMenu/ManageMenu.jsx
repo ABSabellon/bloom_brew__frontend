@@ -96,6 +96,8 @@ const ManageMenu = () => {
         const mappedOptions = fetchedCategoryData.map(item => ({
           value: item.name,
           id: item.id,
+          type: item.type,
+          has_temp:item.has_temp
         }));
         setCategoryOption(mappedOptions);
         setIsLoading(false);

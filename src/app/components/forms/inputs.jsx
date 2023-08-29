@@ -15,7 +15,7 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
   if (!placeholder) placeholder = label;
 
   const isOccupied = focus || (value && value.length !== 0);
-  const labelClass = isOccupied ? "label as-label" : "label as-placeholder";
+  const labelClass = isOccupied || format ? "label as-label" : "label as-placeholder";
   const requiredMark = required ? <span className="text-danger">*</span> : null;
   const hasAddonBefore = addonBefore ? "with-addon" : ""
   const hasPrefix = prefix ? "with-prefix" : ""
@@ -60,6 +60,7 @@ const Inputs = ({url,data, target, style, value, onChange, onKeyDown,
         <InputNumber 
           id={id}
           value={value}
+          formatter={format}
           required={required} 
           readOnly={readOnly}
           onChange={onChange} 
