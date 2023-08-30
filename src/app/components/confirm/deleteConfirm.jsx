@@ -35,6 +35,8 @@ const deleteRecord = async (dataS, collection, record, updateTable) => {
         `${collection} has been deleted.`,
         'success'
       ).then(() => {
+        // console.log('confirmed !!!')
+        // console.log('updateTable ', updateTable)
         if (updateTable) updateTable();
       });
     } else {
