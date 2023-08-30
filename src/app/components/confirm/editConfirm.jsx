@@ -10,15 +10,16 @@ const EditConfirm = async ({ collection, id, data, updateTable, handleOpenDrawer
     await updateData(dataS, id, data);
 
     if (has_files && collection === 'Menu') {
-      const storageHandler = new StorageHandlingService();
-      const imgsToUpload = fileList.filter(file => !file.isInStorage || file.isInStorage === false);
 
-      await uploadImages(storageHandler, id, imgsToUpload);
+      const storageHandler = new StorageHandlingService();
 
       await deleteMarkedFiles(storageHandler, initImgList);
-
+      
+      const imgsToUpload = fileList.filter(file => !file.isInStorage || file.isInStorage === false);
       const imgsInStorage = fileList.filter(file => file.isInStorage || file.isInStorage === true);
-      const imgURLs = [...imgsInStorage.map(img => img.url)];
+
+      const uploadedImageURLs = await uploadImages(storageHandler, id, imgsToUpload);
+      const imgURLs = [...imgsInStorage.map(img => img.url), ...uploadedImageURLs];
 
       await dataS.update(id, { imgs: imgURLs });
     }
@@ -39,8 +40,12 @@ const updateData = async (dataS, id, data) => {
 
 const uploadImages = async (storageHandler, id, imgsToUpload) => {
   try {
+    
     const today = new Date();
-    const formattedDate = formatDate(today);
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}${month}${day}`;
 
     return await storageHandler.uploadMultipleFiles(`Menu/Products/imgs/${id}/${formattedDate}_${id}`, imgsToUpload);
   } catch (uploadError) {
@@ -52,6 +57,7 @@ const deleteMarkedFiles = async (storageHandler, initImgList) => {
   try {
     for (const img of initImgList) {
       if (img.status === 'removed') {
+        
         await storageHandler.deleteFile(img.url);
         // console.log(`File ${img.url} deleted from storage`);
       }
