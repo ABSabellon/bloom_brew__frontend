@@ -45,6 +45,22 @@ class StorageHandlingService {
       // Handle error, e.g., file not found
     }
   }
+
+  async getNames(links) {
+    const filenames = [];
+
+    if (Array.isArray(links)) {
+      for (const link of links) {
+        const filename = await this.storageService.getFileName(link);
+        filenames.push(filename);
+      }
+    } else {
+      const filename = await this.storageService.getFileName(links);
+      filenames.push(filename);
+    }
+
+    return filenames;
+  }
 }
 
 export default StorageHandlingService;

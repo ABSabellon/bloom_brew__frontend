@@ -1,4 +1,4 @@
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, getMetadata } from 'firebase/storage';
 
 class StorageService {
   constructor() {
@@ -42,6 +42,19 @@ class StorageService {
     } catch (error) {
       // Handle error, e.g., file not found
       console.error('Error deleting file:', error);
+    }
+  }
+
+  // Get the filename of a file in Firebase Storage
+  async getFileName(path) {
+    const storageRef = ref(this.storage, path);
+    try {
+      const metadata = await getMetadata(storageRef);
+      return metadata.name;
+    } catch (error) {
+      // Handle error, e.g., file not found
+      console.error('Error getting file name:', error);
+      return null;
     }
   }
 }

@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
+import { fetchMenuData, fetchCategoryOptionData } from "../../../EntryFile/Utilities/dataUtils";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Table from "../../../components/tables/datatable";
 import Tabletop from "../../../components/tables/tabletop";
 import AddConfirm from "../../../components/confirm/addConfirm";
+import EditConfirm from "../../../components/confirm/editConfirm";
 import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import DeleteConfirm from "../../../components/confirm/deleteConfirm";
 import IconMap from "../../../components/iconMap/IconMap";
 import AddEditMenu from "./AddEditMenu";
-import { fetchMenuData, fetchCategoryOptionData } from "../../../EntryFile/Utilities/dataUtils";
 
 const ManageMenu = () => {
   const childRef = useRef(null);
@@ -88,7 +89,7 @@ const ManageMenu = () => {
   const fetchData = async () => {
     try {
       const fetcheData = await fetchMenuData();
-      // console.log('fetcheData ::: ', fetcheData)
+      console.log('fetcheData ::: ', fetcheData)
       if(fetcheData){
         setData(fetcheData)
         setRefreshTable(false);
@@ -131,9 +132,6 @@ const ManageMenu = () => {
       // console.log('validation  ::: ', validation)
       if (validation.success) {
         // console.log('submitted Data ::: ', validation.data)
-        if (isUpdate) {
-          // EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleOpenDrawer });
-        } else {
           let tempData = {
             name: validation.data.name,
             category_id: validation.data.category_id,
@@ -144,6 +142,12 @@ const ManageMenu = () => {
             updated_at: validation.data.updated_at,
             updated_by: validation.data.updated_by
           }
+        if (isUpdate) {
+          
+          // console.log('tempData Data ::: ', tempData)
+          // console.log('fileList ::: ', validation.data.raw_imgs)
+          EditConfirm({ collection: 'Menu', id: initialValues.id, data: tempData, updateTable, handleOpenDrawer,has_files:true, fileList:validation.data.raw_imgs });
+        } else {
           AddConfirm({ collection: 'Menu', data: tempData, updateTable, handleOpenDrawer,dataPrefix:'MN',has_files:true, fileList:validation.data.raw_imgs});
         }
       } else {

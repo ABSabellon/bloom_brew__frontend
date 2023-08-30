@@ -4,7 +4,7 @@ import Inputs from "../../../components/forms/inputs";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-select2-wrapper/css/select2.css";
 import IconMap from "../../../components/iconMap/IconMap";
-import OpenImagePreview from "../../../components/forms/openImagePreview";
+import ImagePreviewUtils from "../../../EntryFile/Utilities/imagePreviewUtils";
 
 const validator = {
   require: { required: true, message: "Required" },
@@ -13,10 +13,7 @@ const validator = {
 const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
-  const [urlList,setUrlList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
-  
-  // console.log('categoryOption ::: ', categoryOption)
 
   // Functions
   const categoryValidator = () => ({
@@ -44,17 +41,22 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
     }
   };
 
+  const onUploadChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   
-const onUploadChange = ({ fileList: newFileList }) => {
-  setFileList(newFileList);
+    // Map the newFileList to get the actual binary data (Blob)
+    const filesNotInStorage = newFileList.filter(file => !file.isInStorage || file.isInStorage === false);
+    const filesInStorage = newFileList.filter(file => file.isInStorage || file.isInStorage === true);
+    const binaryImageFiles = filesNotInStorage.map(file => file.originFileObj);
+  
+    console.log('newFileList ::: ', newFileList)
 
-  // Map the newFileList to get the actual binary data (Blob)
-  const binaryImageFiles = newFileList.map(file => file.originFileObj);
-
-  form.setFieldsValue({
-    product_image: binaryImageFiles || [], // Set to an empty array if newFileList is undefined
-  });
-};
+    const filesUrl = [...filesInStorage, ...binaryImageFiles];
+  
+    form.setFieldsValue({
+      product_image: filesUrl || [], // Set to an empty array if newFileList is undefined
+    });
+  };
 
   const onCategorySelect = (value) => {
     const matchCategory = categoryOption.find(option => option.value === value);
@@ -69,18 +71,16 @@ const onUploadChange = ({ fileList: newFileList }) => {
     setFileList([]);
     const isInitialValuesEmpty = Object.keys(initialValues).length;
     if (isInitialValuesEmpty) {
-      console.log('categoryOption 2::: ', categoryOption)
-      console.log('initialValues 2::: ', initialValues)
+
+      setFileList(initialValues.image_files);
 
       onCategorySelect(initialValues.category_details.name);
-      setUrlList(initialValues.imgs)
       form.setFieldsValue({
         menu_name: initialValues.name,
         menu_category: initialValues.category_details.name,
-        price_hot:initialValues.price_list?.hot.price,
-        price_cold:initialValues.price_list?.cold.price,
-        price:initialValues.price_list?.price,
-        // price:
+        price_hot: initialValues.price_list?.hot?.price || null,
+        price_cold: initialValues.price_list?.cold?.price || null,
+        price: initialValues.price_list?.price || null,
         product_image: initialValues.imgs || [],
       });
     }
@@ -166,7 +166,7 @@ const onUploadChange = ({ fileList: newFileList }) => {
             <>
               <input type="hidden" required/>
 
-              <OpenImagePreview fileList={fileList} onChange={onUploadChange} urlList={urlList} />
+              <ImagePreviewUtils fileList={fileList} onChange={onUploadChange} />
             </>
           </Form.Item>
         </div>
