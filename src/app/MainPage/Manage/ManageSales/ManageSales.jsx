@@ -247,7 +247,7 @@ const ManageSales = () => {
           {/* /product list */}
         </div>
       </div>
-      <CoffeeDrawer
+      {/* <CoffeeDrawer
         open={addEditSale}
         handleOk={handleDrawerSubmit}
         title={"Add Sale"}
@@ -287,7 +287,7 @@ const ManageSales = () => {
             </Button>
           </>
         }
-      />
+      /> */}
       
     </>
   );

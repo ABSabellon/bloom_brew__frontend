@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Drawer as AntDrawer } from 'antd';
 import FrenchPressLoader from '../loaders/frenchPressLoader';
 const CoffeeDrawer = ({ 
-  open, handleOk, handleCancel, title, subtitle, validated, loading, footer, body, 
+  open, handleOk, close, title, subtitle, validated, loading, footer, body, 
   closable, size, width, cancelText, okText, update = 0, isLoading=true
 }) => {
   const [drawerWidth, setDrawerWidth] = useState("30%"); // Default width, adjust as needed
 
+  console.log('::: openDrawer ::: ', open)
   // Update Drawer width based on screen size
   useEffect(() => {
     const handleResize = () => {
@@ -30,7 +31,7 @@ const CoffeeDrawer = ({
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [open]);
 
   return (
     <>
@@ -39,7 +40,7 @@ const CoffeeDrawer = ({
         title={title}
         size={size}
         width={drawerWidth}
-        onClose={handleCancel}
+        onClose={close}
         footer={footer}
         closable={closable}
         >

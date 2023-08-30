@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import 'antd/dist/reset.css'
 
 import SignIn from './SignIn'
 import ForgetPassword from './ForgetPassword';

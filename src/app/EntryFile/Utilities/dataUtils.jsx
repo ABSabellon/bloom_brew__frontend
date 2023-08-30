@@ -34,12 +34,12 @@ export const fetchMenuData = async () => {
 
         const formattedPrice = categoryName.has_temp
           ? {
-              hot: {
+              hot: menuItem.price_list.hot?{
                 price: formatPrice(menuItem.price_list.hot.price),
-              },
-              cold: {
+              } : null,
+              cold: menuItem.price_list.cold? {
                 price: formatPrice(menuItem.price_list.cold.price),
-              },
+              } : null,
             }
           : {
               price: formatPrice(menuItem.price_list.price),

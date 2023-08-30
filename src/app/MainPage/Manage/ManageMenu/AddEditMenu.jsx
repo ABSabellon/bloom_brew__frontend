@@ -4,13 +4,15 @@ import Inputs from "../../../components/forms/inputs";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-select2-wrapper/css/select2.css";
 import IconMap from "../../../components/iconMap/IconMap";
-import ImagePreviewUtils from "../../../EntryFile/Utilities/imagePreviewUtils";
+import ImageUploader from "../../../components/forms/imageUploader";
 
 const validator = {
   require: { required: true, message: "Required" },
 };
 
-const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
+const AddEditMenu = forwardRef(({ initialValues, categoryOption, isUpdate, isOpened }, ref) => {
+  
+  // console.log('isUpdate ::: ', isUpdate)
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
@@ -30,6 +32,24 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
       return Promise.resolve();
     }
     return Promise.reject("At least 1 product image is required.");
+  };
+
+  const validatePriceHot = (rule, value, callback) => {
+    const priceInput = form.getFieldValue('price_cold');
+    if (!value && !priceInput) {
+      return Promise.reject("Price is required (Hot/Cold).");
+    } else {
+      return Promise.resolve();
+    }
+  };
+
+  const validatePriceCold = (rule, value, callback) => {
+    const priceInput = form.getFieldValue('price_hot');
+    if (!value && !priceInput) {
+      return Promise.reject("Price is required (Hot/Cold).");
+    } else {
+      return Promise.resolve();
+    }
   };
 
   const validateForm = async () => {
@@ -69,11 +89,8 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
   useEffect(() => {
     form.resetFields();
     setFileList([]);
-    const isInitialValuesEmpty = Object.keys(initialValues).length;
-    if (isInitialValuesEmpty) {
-
+    if (isUpdate) {
       setFileList(initialValues.image_files);
-
       onCategorySelect(initialValues.category_details.name);
       form.setFieldsValue({
         menu_name: initialValues.name,
@@ -92,7 +109,6 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
     formSubmit: async () => {
       try {
         const formValues = await validateForm();
-        const isUpdate = await Object.keys(initialValues).length > 0; // Check if initialValues exist
     
         let tempData = {
           name: formValues.menu_name,
@@ -121,7 +137,7 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
     <>
       <Form 
         size="large" 
-        name="user_login" 
+        name={isUpdate? "editing_menu_form": "adding_menu_form"} 
         className="row ogin-form" 
         layout="vertical" 
         form={form}
@@ -143,19 +159,19 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
         {selectedCategory && selectedCategory.has_temp ? (
         <>
           <div className="col-lg-4 col-sm-6 col-12">
-            <Form.Item name="price_hot">
+            <Form.Item name="price_hot"  rules={[{ validator: validatePriceHot }]}>
               <Inputs type="price" label="Price(Hot)" prefix={IconMap('FaTemperatureHigh','text-danger',null,20)} placeholder="Enter price for hot drink" name="price_hot" format={(value) => `₱ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}/>
             </Form.Item>
           </div>
           <div className="col-lg-4 col-sm-6 col-12">
-            <Form.Item name="price_cold">
-              <Inputs type="price" label="Price(Cold)" prefix={IconMap('FaTemperatureLow','text-primary',null,20)} placeholder="Enter price for cold drink" name="price_cold" format={(value) => `₱ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}/>
+            <Form.Item name="price_cold" rules={[{ validator: validatePriceCold }]}>
+              <Inputs type="price" label="Price(Cold)" prefix={IconMap('FaTemperatureLow','text-primary',null,20)} placeholder="Enter price for cold drink" name="price_cold" format={(value) => `₱ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} required={true}/>
             </Form.Item>
           </div>
         </>
         ) : (
           <div className="col-lg-4 col-sm-6 col-12">
-            <Form.Item name="price">
+            <Form.Item name="price" rules={[validator.require]}>
               <Inputs type="price" label="Price" placeholder="Enter price" name="price" format={(value) => `₱ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}/>
             </Form.Item>
           </div>
@@ -166,12 +182,11 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
             <>
               <input type="hidden" required/>
 
-              <ImagePreviewUtils fileList={fileList} onChange={onUploadChange} />
+              <ImageUploader fileList={fileList} onChange={onUploadChange} />
             </>
           </Form.Item>
         </div>
       </Form>
-      {/* <FrenchPressLoader/> */}
     </>
     
   );

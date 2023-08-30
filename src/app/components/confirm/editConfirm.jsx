@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import DataService from "../../EntryFile/Services/DataService";
 import StorageHandlingService from "../../EntryFile/Services/StorageHandlingService";
 
-const EditConfirm = async ({ collection, id, data, updateTable, handleOpenDrawer, has_files = false, fileList, initImgList }) => {
+const EditConfirm = async ({ collection, id, data, updateTable, handleCloseDrawer, has_files = false, fileList, initImgList }) => {
   const dataS = new DataService(collection);
 
   try {
@@ -24,7 +24,7 @@ const EditConfirm = async ({ collection, id, data, updateTable, handleOpenDrawer
       await dataS.update(id, { imgs: imgURLs });
     }
 
-    showSuccessAlert(collection, updateTable, handleOpenDrawer);
+    showSuccessAlert(collection, updateTable, handleCloseDrawer);
   } catch (error) {
     handleError(collection, error);
   }
@@ -74,7 +74,7 @@ const formatDate = date => {
   return `${year}${month}${day}`;
 };
 
-const showSuccessAlert = (collection, updateTable, handleOpenDrawer) => {
+const showSuccessAlert = (collection, updateTable, handleCloseDrawer) => {
   Swal.fire({
     type: 'success',
     title: 'Success',
@@ -83,7 +83,7 @@ const showSuccessAlert = (collection, updateTable, handleOpenDrawer) => {
   }).then(() => {
     try {
       if (updateTable) updateTable();
-      handleOpenDrawer();
+      handleCloseDrawer();
     } catch (error) {
       handleError(collection, error);
     }

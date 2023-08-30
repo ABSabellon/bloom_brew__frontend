@@ -10,10 +10,12 @@ import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
 import DeleteConfirm from "../../../components/confirm/deleteConfirm";
 import IconMap from "../../../components/iconMap/IconMap";
 import AddEditMenu from "./AddEditMenu";
+import { ImageViewer } from "../../../EntryFile/Utilities/imageUtils";
 
 const ManageMenu = () => {
-  const childRef = useRef(null);
+  const AddEditMenuRef = useRef(null);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
   const [initialValues, setInitialValues] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,20 +30,18 @@ const ManageMenu = () => {
       dataIndex: "name",
       render: (text, record) => (
         <div className="productimgname">
-          <Link to="#" className="product-img">
-            <img alt="" src={record.imgs[0]} />
-          </Link>
+          <ImageViewer images={record.imgs} width={50} />
           <Link to="#" style={{ fontSize: "15px", marginLeft: "10px" }}>
             {record.name}
           </Link>
         </div>
       ),
-      sorter: (a, b) => a.name.length - b.name.length,
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
       title: "Category",
       dataIndex: ["category_details","name"],
-      sorter: (a, b) => a.category_details.name.length - b.category_name.length,
+      sorter: (a, b) => a.category_details.name.localeCompare(b.category_details.name),
     },
     {
       title: "Price",
@@ -49,25 +49,29 @@ const ManageMenu = () => {
         <div className="product-price">
           {record.category_details.has_temp ? (
             <>
-              <p>
-                {IconMap('FaTemperatureHigh', 'text-danger me-1', null, 20)}
-                <span> {record.formatted_price.hot.price}</span>
-              </p>
-              <p>
-                {IconMap('FaTemperatureLow', 'text-primary me-1', null, 20)}
-                <span> {record.formatted_price.cold.price}</span>
-              </p>
+              {record.formatted_price.hot && (
+                <p>
+                  {IconMap('FaTemperatureHigh', 'text-danger me-1', null, 20)}
+                  <span> {record.formatted_price.hot.price}</span>
+                </p>
+              )}
+              {record.formatted_price.cold && (
+                <p>
+                  {IconMap('FaTemperatureLow', 'text-primary me-1', null, 20)}
+                  <span> {record.formatted_price.cold.price}</span>
+                </p>
+              )}
             </>
           ) : (
-            <span> {record.formatted_price.price}</span>
+            <p><span> {record.formatted_price.price}</span></p>
           )}
         </div>
       ),
-    },
+    },    
     {
       title: "Added By",
       dataIndex: "created_by",
-      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
+      sorter: (a, b) => a.created_by.localeCompare(b.created_by),
     },
     {
       title: "Action",
@@ -89,6 +93,7 @@ const ManageMenu = () => {
   const fetchData = async () => {
     try {
       const fetcheData = await fetchMenuData();
+      console.log('fetcheData', fetcheData)
       if(fetcheData){
         setData(fetcheData)
         setRefreshTable(false);
@@ -117,17 +122,21 @@ const ManageMenu = () => {
   }, [refreshTable]);
 
   const handleOpenDrawer = () => {
-    setOpenDrawer(!openDrawer);
+    setOpenDrawer(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   };
 
+  const handleCloseDrawer = ()=>{
+    setIsUpdate(false);
+    setOpenDrawer(false);
+  }
+
   const handleDrawerSubmit = async () => {
     setIsLoading(true);
-    const isUpdate = await Object.keys(initialValues).length > 0;
-    if (childRef.current) {
-      const validation = await childRef.current.formSubmit();
+    if (AddEditMenuRef.current) {
+      const validation = await AddEditMenuRef.current.formSubmit();
       // console.log('validation  ::: ', validation)
       if (validation.success) {
         // console.log('submitted Data ::: ', validation.data)
@@ -145,9 +154,9 @@ const ManageMenu = () => {
           
           // console.log('tempData Data ::: ', tempData)
           // console.log('fileList ::: ', validation.data.raw_imgs)
-          EditConfirm({ collection: 'Menu', id: initialValues.id, data: tempData, updateTable, handleOpenDrawer,has_files:true, fileList:validation.data.raw_imgs, initImgList: initialValues.image_files });
+          EditConfirm({ collection: 'Menu', id: initialValues.id, data: tempData, updateTable, handleCloseDrawer,has_files:true, fileList:validation.data.raw_imgs, initImgList: initialValues.image_files });
         } else {
-          AddConfirm({ collection: 'Menu', data: tempData, updateTable, handleOpenDrawer,dataPrefix:'MN',has_files:true, fileList:validation.data.raw_imgs});
+          AddConfirm({ collection: 'Menu', data: tempData, updateTable, handleCloseDrawer,dataPrefix:'MN',has_files:true, fileList:validation.data.raw_imgs});
         }
       } else {
         setIsLoading(false);
@@ -170,6 +179,7 @@ const ManageMenu = () => {
     if(hasCateg){
       setDrawerTitle('Add Category');
       setDrawerButton('Submit');
+      setIsUpdate(false);
       handleOpenDrawer();
     }
 
@@ -185,6 +195,7 @@ const ManageMenu = () => {
       setDrawerTitle('Edit Category');
       setDrawerButton('Update');
       setInitialValues(rowData);
+      setIsUpdate(true);
       handleOpenDrawer();
 
     }
@@ -220,43 +231,49 @@ const ManageMenu = () => {
                 columns={columns}
                 data={data}
                 reloadTable={refreshTable}
-                collectionName="Categories"
+                collectionName="Menu"
               />
             </div>
           </div>
         </div>
       </div>
-      <CoffeeDrawer
-        open={openDrawer}
-        handleOk={handleDrawerSubmit}
-        title={drawerTitle}
-        isLoading={isLoading}
-        body={
-          <AddEditMenu
-            initialValues={initialValues}
-            ref={childRef}
-            categoryOption={categoryOption}
-          />
-        }
-        closable={false}
-        footer={
-          <>
-            <Button
-              type="submit"
-              className="btn btn-submit me-2"
-              onClick={() => handleDrawerSubmit()}
-            >
-              {drawerButton}
-            </Button>
-            <Button
-              className="btn btn-cancel"
-              onClick={() => handleOpenDrawer()}
-            >
-              Cancel
-            </Button>
-          </>
-        }
-      />
+      {openDrawer && (
+        <CoffeeDrawer
+          open={openDrawer}
+          handleOk={handleDrawerSubmit}
+          title={drawerTitle}
+          isLoading={isLoading}
+          body={
+            <AddEditMenu
+              initialValues={initialValues}
+              ref={AddEditMenuRef}
+              categoryOption={categoryOption}
+              isUpdate={isUpdate}
+              isOpened={openDrawer}
+            />
+          }
+          closable={false}
+          close={handleCloseDrawer}
+          footer={
+            <>
+              <Button
+                type="submit"
+                className="btn btn-submit me-2"
+                onClick={() => handleDrawerSubmit()}
+              >
+                {drawerButton}
+              </Button>
+              <Button
+                className="btn btn-cancel"
+                onClick={() => handleCloseDrawer()}
+              >
+                Cancel
+              </Button>
+            </>
+          }
+        />
+      )}
+
     </div>
   );
   

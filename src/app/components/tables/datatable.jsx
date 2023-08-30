@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Spin } from "antd";
-import "../../EntryFile/antd.css";
+// import "../../EntryFile/antd.css";
+import 'antd/dist/reset.css'
 import IconMap from "../iconMap/IconMap";
 import DeleteConfirm from "../confirm/deleteConfirm";
 
@@ -15,10 +16,12 @@ const Datatable = ({ collectionName, props, columns, data,reloadTable  }) => {
 
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
+    console.log('newSelectedRowKeys :: ', newSelectedRowKeys)
   };
 
   const deleteMultipleData = async (selectedData) => {
     if (selectedData.length > 0) {
+      console.log('selectedData :: ', selectedData)
       const confirmed = await DeleteConfirm({ collection: collectionName, record: selectedData });
       if (confirmed) {
         reloadTable(true);

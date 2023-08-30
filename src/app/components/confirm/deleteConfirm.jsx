@@ -2,6 +2,30 @@ import React from "react";
 import Swal from "sweetalert2";
 import DataService from "../../EntryFile/Services/DataService";
 
+const DeleteConfirm = ({ collection, record, updateTable }) => {
+
+  console.log('collection ::: ',collection)
+  console.log('record ::: ',record)
+  const dataS = new DataService(collection);
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#FFC107',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+    customClass: {
+      icon: 'swal2-icon', // Apply the custom CSS class to the icon
+    },
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      await deleteRecord(dataS, collection, record, updateTable);
+    }
+  });
+};
+
 const deleteRecord = async (dataS, collection, record, updateTable) => {
   try {
     const deleteData = await dataS.delete(record);
@@ -28,27 +52,6 @@ const deleteRecord = async (dataS, collection, record, updateTable) => {
       text: `Failed to delete ${collection}. Please try again later. Or contact support if error persists.`,
     });
   }
-};
-
-const DeleteConfirm = ({ collection, record, updateTable }) => {
-  const dataS = new DataService(collection);
-
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#FFC107',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!',
-    customClass: {
-      icon: 'swal2-icon', // Apply the custom CSS class to the icon
-    },
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      await deleteRecord(dataS, collection, record, updateTable);
-    }
-  });
 };
 
 export default DeleteConfirm;

@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import DataService from "../../EntryFile/Services/DataService";
 import StorageHandlingService from "../../EntryFile/Services/StorageHandlingService";
 
-const AddConfirm = async ({ collection, data, updateTable, handleOpenDrawer, dataPrefix, has_files = false, fileList }) => {
+const AddConfirm = async ({ collection, data, updateTable, handleCloseDrawer, dataPrefix, has_files = false, fileList }) => {
   try {
     const dataS = new DataService(collection);
     const addedDataArray = await dataS.addItems(data, dataPrefix);
@@ -31,7 +31,7 @@ const AddConfirm = async ({ collection, data, updateTable, handleOpenDrawer, dat
     if (uploadFailed) {
       await handleAddError(dataS, addedDataArray, collection);
     } else {
-      handleAddSuccess(collection, updateTable, handleOpenDrawer);
+      handleAddSuccess(collection, updateTable, handleCloseDrawer);
     }
   } catch (error) {
     console.error('Failed to add:', error);
@@ -59,7 +59,7 @@ const uploadImagesForDocument = async (storageHandler, addedData, fileList) => {
   }
 };
 
-const handleAddSuccess = (collection, updateTable, handleOpenDrawer) => {
+const handleAddSuccess = (collection, updateTable, handleCloseDrawer) => {
   Swal.fire({
     type: 'success',
     title: 'Success',
@@ -68,7 +68,7 @@ const handleAddSuccess = (collection, updateTable, handleOpenDrawer) => {
   }).then(() => {
     try {
       if (updateTable) updateTable();
-      handleOpenDrawer();
+      handleCloseDrawer();
     } catch (error) {
       console.error('Failed to add:', error);
       Swal.fire({
@@ -76,7 +76,7 @@ const handleAddSuccess = (collection, updateTable, handleOpenDrawer) => {
         title: 'Error',
         text: `Failed to add ${collection}. Please try again later. Or contact support if the error persists.`,
       }).then(() => {
-        handleOpenDrawer();
+        handleCloseDrawer();
       });
     }
   });
