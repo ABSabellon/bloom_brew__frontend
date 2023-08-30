@@ -3,69 +3,71 @@ import Swal from "sweetalert2";
 import DataService from "../../EntryFile/Services/DataService";
 import StorageHandlingService from "../../EntryFile/Services/StorageHandlingService"; // Make sure to adjust the import path
 
-const EditConfirm = async ({ collection, id, data, updateTable, handleOpenDrawer, has_files = false, fileList }) => {
-  const dataS = new DataService(collection);
-  // const imgsToUpload = fileList.filter(file => !file.isInStorage || file.isInStorage === false);
-  // const imgsInStorage = fileList.filter(file => file.isInStorage || file.isInStorage === true);
-  // console.log('submitted data :: ', data)
-  // console.log('imgsInStorage :: ', imgsInStorage)
-
+const updateData = async (dataS, id, data) => {
   try {
     await dataS.update(id, data);
-  
-    let uploadFailed = false; // Flag to track if file upload fails
-  
-    // Filter fileList to only include items without isInStorage or with isInStorage set to false
-    const imgsToUpload = fileList.filter(file => !file.isInStorage || file.isInStorage === false);
-    const imgsInStorage = fileList.filter(file => file.isInStorage || file.isInStorage === true);
-  
-    // Assuming you want to handle the document's images separately
-    if (has_files && collection === 'Menu') {
-      const storageHandler = new StorageHandlingService();
-      try {
-        if (imgsToUpload.length > 0) {
-          const uploadedImageURLs = await storageHandler.uploadMultipleFiles(`Menu/Products/imgs/${id}`, imgsToUpload);
+  } catch (error) {
+    console.error('Failed to update:', error);
+    throw new Error(`Failed to update data: ${error.message}`);
+  }
+};
 
-          const imgURLs = [...imgsInStorage.map(img => img.url), ...uploadedImageURLs];
-  
-          // Update the existing document's imgs field with the uploadedImageURLs
-          await dataS.update(id, { imgs:  imgURLs});
-        }
-      } catch (uploadError) {
-        console.error('Failed to upload:', uploadError);
-        uploadFailed = true;
-      }
-    }
-  
-    if (uploadFailed) {
+const uploadImages = async (storageHandler, id, imgsToUpload) => {
+  try {
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}${month}${day}`;
+
+    return await storageHandler.uploadMultipleFiles(`Menu/Products/imgs/${id}/${formattedDate}_${id}`, imgsToUpload);
+  } catch (uploadError) {
+    console.error('Failed to upload:', uploadError);
+    throw new Error('Failed to upload images');
+  }
+};
+
+const showSuccessAlert = (collection, updateTable, handleOpenDrawer) => {
+  Swal.fire({
+    type: 'success',
+    title: 'Success',
+    text: `${collection} was successfully updated.`,
+    confirmButtonClass: "btn btn-success",
+  }).then(() => {
+    try {
+      if (updateTable) updateTable();
+      handleOpenDrawer();
+    } catch (error) {
+      console.error('Failed to update:', error);
       Swal.fire({
         type: 'error',
         title: 'Error',
-        text: `Failed to update files for ${collection}.`,
-      });
-    } else {
-      // Upload succeeded
-      Swal.fire({
-        type: 'success',
-        title: 'Success',
-        text: `${collection} was successfully updated.`,
-        confirmButtonClass: "btn btn-success",
-      }).then(() => {
-        try {
-          if (updateTable) updateTable();
-          handleOpenDrawer();
-        } catch (error) {
-          console.error('Failed to update:', error);
-          Swal.fire({
-            type: 'error',
-            title: 'Error',
-            text: `Failed to update ${collection}. Please try again later. Or contact support if error persists.`,
-          });
-        }
+        text: `Failed to update ${collection}. Please try again later. Or contact support if error persists.`,
       });
     }
+  });
+};
+
+const EditConfirm = async ({ collection, id, data, updateTable, handleOpenDrawer, has_files = false, fileList }) => {
+  const dataS = new DataService(collection);
+
+  try {
+    await updateData(dataS, id, data);
+
+    if (has_files && collection === 'Menu') {
+      const storageHandler = new StorageHandlingService();
+      const imgsToUpload = fileList.filter(file => !file.isInStorage || file.isInStorage === false);
+      
+      const uploadedImageURLs = await uploadImages(storageHandler, id, imgsToUpload);
+      const imgsInStorage = fileList.filter(file => file.isInStorage || file.isInStorage === true);
+      const imgURLs = [...imgsInStorage.map(img => img.url), ...uploadedImageURLs];
+
+      await dataS.update(id, { imgs: imgURLs });
+    }
+
+    showSuccessAlert(collection, updateTable, handleOpenDrawer);
   } catch (error) {
-     
     console.error('Failed to update:', error);
     Swal.fire({
       type: 'error',
