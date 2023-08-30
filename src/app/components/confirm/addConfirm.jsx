@@ -3,6 +3,46 @@ import Swal from "sweetalert2";
 import DataService from "../../EntryFile/Services/DataService";
 import StorageHandlingService from "../../EntryFile/Services/StorageHandlingService";
 
+const AddConfirm = async ({ collection, data, updateTable, handleOpenDrawer, dataPrefix, has_files = false, fileList }) => {
+  try {
+    const dataS = new DataService(collection);
+    const addedDataArray = await dataS.addItems(data, dataPrefix);
+
+    let uploadFailed = false; // Flag to track if file upload fails
+
+    if (has_files && collection === 'Menu') {
+      const storageHandler = new StorageHandlingService();
+
+      for (const addedData of addedDataArray) {
+        try {
+          const uploadedImageURLs = await uploadImagesForDocument(storageHandler, addedData, fileList);
+          console.log(uploadedImageURLs);
+
+          console.log('docID ::: ', addedData);
+          // Update the existing document's imgs field with the uploadedImageURLs
+          await dataS.update(addedData, { imgs: uploadedImageURLs });
+        } catch (uploadError) {
+          uploadFailed = true;
+          break; // Break out of the loop if upload fails
+        }
+      }
+    }
+
+    if (uploadFailed) {
+      await handleAddError(dataS, addedDataArray, collection);
+    } else {
+      handleAddSuccess(collection, updateTable, handleOpenDrawer);
+    }
+  } catch (error) {
+    console.error('Failed to add:', error);
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: `Failed to add ${collection}. Please try again later. Or contact support if the error persists.`,
+    });
+  }
+};
+
 const uploadImagesForDocument = async (storageHandler, addedData, fileList) => {
   const today = new Date();
   const year = today.getFullYear();
@@ -49,51 +89,6 @@ const handleAddError = async (dataS, addedDataArray, collection) => {
     title: 'Error',
     text: `Failed to upload files for ${collection}. Document(s) deleted.`,
   });
-};
-
-const AddConfirm = async ({ collection, data, updateTable, handleOpenDrawer, dataPrefix, has_files = false, fileList }) => {
-  try {
-    const dataS = new DataService(collection);
-    console.log('data ::: ', data);
-    console.log('fileList ::: ', fileList);
-
-    const addedDataArray = await dataS.addItems(data, dataPrefix);
-
-    console.log(addedDataArray);
-
-    let uploadFailed = false; // Flag to track if file upload fails
-
-    if (has_files && collection === 'Menu') {
-      const storageHandler = new StorageHandlingService();
-
-      for (const addedData of addedDataArray) {
-        try {
-          const uploadedImageURLs = await uploadImagesForDocument(storageHandler, addedData, fileList);
-          console.log(uploadedImageURLs);
-
-          console.log('docID ::: ', addedData);
-          // Update the existing document's imgs field with the uploadedImageURLs
-          await dataS.update(addedData, { imgs: uploadedImageURLs });
-        } catch (uploadError) {
-          uploadFailed = true;
-          break; // Break out of the loop if upload fails
-        }
-      }
-    }
-
-    if (uploadFailed) {
-      await handleAddError(dataS, addedDataArray, collection);
-    } else {
-      handleAddSuccess(collection, updateTable, handleOpenDrawer);
-    }
-  } catch (error) {
-    console.error('Failed to add:', error);
-    Swal.fire({
-      type: 'error',
-      title: 'Error',
-      text: `Failed to add ${collection}. Please try again later. Or contact support if the error persists.`,
-    });
-  }
 };
 
 export default AddConfirm;

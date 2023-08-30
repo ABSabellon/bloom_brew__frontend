@@ -9,7 +9,6 @@ class StorageHandlingService {
   async uploadFile(path, file){
     try {
       const downloadURL = await this.storageService.uploadFile(path, file);
-      console.log('File uploaded. Download URL:', downloadURL);
       return downloadURL;
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -36,15 +35,33 @@ class StorageHandlingService {
     return uploadedURLs;
   }
 
-  async deleteFile(){
+  async deleteFile(paths) {
     try {
-      await this.storageService.deleteFile(path);
-      console.log('File deleted successfully');
+      if (!Array.isArray(paths)) {
+        paths = [paths]; // Convert to an array if it's not already
+      }
+  
+      const successfulDeletions = [];
+      const failedDeletions = [];
+  
+      for (const path of paths) {
+        try {
+          await this.storageService.deleteFile(path);
+          successfulDeletions.push(path);
+          console.log(`File ${path} deleted successfully`);
+        } catch (error) {
+          failedDeletions.push(path);
+          console.error(`Error deleting file ${path}:`, error);
+          // Handle error, e.g., file not found
+        }
+      }
+  
+      return { successfulDeletions, failedDeletions };
     } catch (error) {
-      console.error('Error deleting file:', error);
-      // Handle error, e.g., file not found
+      console.error('Error deleting files:', error);
+      return { successfulDeletions: [], failedDeletions: paths };
     }
-  }
+  }  
 
   async getNames(links) {
     const filenames = [];

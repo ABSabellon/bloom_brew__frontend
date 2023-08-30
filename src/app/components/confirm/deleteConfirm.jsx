@@ -32,7 +32,6 @@ const deleteRecord = async (dataS, collection, record, updateTable) => {
 
 const DeleteConfirm = ({ collection, record, updateTable }) => {
   const dataS = new DataService(collection);
-  console.log('delete list ::: ', record);
 
   Swal.fire({
     title: 'Are you sure?',
@@ -47,7 +46,6 @@ const DeleteConfirm = ({ collection, record, updateTable }) => {
     },
   }).then(async (result) => {
     if (result.isConfirmed) {
-      console.log('deleteData ::: ', record);
       await deleteRecord(dataS, collection, record, updateTable);
     }
   });

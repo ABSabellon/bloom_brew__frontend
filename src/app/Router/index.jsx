@@ -1,7 +1,7 @@
 import Applications from "../MainPage/Main/Application";
 import DashboardIndex from "../MainPage/Main/Dashbord/Dashboard";
 // import MenuIndex from "../MainPage/Main/Menu";
-import PosIndex from "../MainPage/Main/Menu";
+import PosIndex from "../MainPage/Main/Pos";
 import ManageIndex from "../MainPage/Manage";
 import ProfileIndex from "../MainPage/Profile";
 import ReportsIndex from "../MainPage/Reports";

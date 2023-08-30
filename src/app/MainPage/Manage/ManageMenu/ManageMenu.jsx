@@ -89,7 +89,6 @@ const ManageMenu = () => {
   const fetchData = async () => {
     try {
       const fetcheData = await fetchMenuData();
-      console.log('fetcheData ::: ', fetcheData)
       if(fetcheData){
         setData(fetcheData)
         setRefreshTable(false);
@@ -146,7 +145,7 @@ const ManageMenu = () => {
           
           // console.log('tempData Data ::: ', tempData)
           // console.log('fileList ::: ', validation.data.raw_imgs)
-          EditConfirm({ collection: 'Menu', id: initialValues.id, data: tempData, updateTable, handleOpenDrawer,has_files:true, fileList:validation.data.raw_imgs });
+          EditConfirm({ collection: 'Menu', id: initialValues.id, data: tempData, updateTable, handleOpenDrawer,has_files:true, fileList:validation.data.raw_imgs, initImgList: initialValues.image_files });
         } else {
           AddConfirm({ collection: 'Menu', data: tempData, updateTable, handleOpenDrawer,dataPrefix:'MN',has_files:true, fileList:validation.data.raw_imgs});
         }

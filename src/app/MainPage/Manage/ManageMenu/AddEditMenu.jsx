@@ -49,7 +49,7 @@ const AddEditMenu = forwardRef(({ initialValues, categoryOption }, ref) => {
     const filesInStorage = newFileList.filter(file => file.isInStorage || file.isInStorage === true);
     const binaryImageFiles = filesNotInStorage.map(file => file.originFileObj);
   
-    console.log('newFileList ::: ', newFileList)
+    // console.log('newFileList ::: ', newFileList)
 
     const filesUrl = [...filesInStorage, ...binaryImageFiles];
   
