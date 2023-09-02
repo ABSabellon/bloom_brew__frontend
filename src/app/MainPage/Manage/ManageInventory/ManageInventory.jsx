@@ -1,378 +1,231 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { fetchSuppliersData } from "../../../EntryFile/Utilities/dataUtils";
+import { Button } from "react-bootstrap";
 import Table from "../../../components/tables/datatable";
 import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import {
-  ClosesIcon,
-  Excel,
-  Filter,
-  Pdf,
-  Calendar,
-  Printer,
-  search_whites,
-  Search,
-  MacbookIcon,
-  OrangeImage,
-  PineappleImage,
-  StawberryImage,
-  AvocatImage,
-  Product1,
-  Product7,
-  Product8,
-  Product9,
-} from "../../../components/imagePath/imagePath";
-import Select2 from "react-select2-wrapper";
-import "react-select2-wrapper/css/select2.css";
+import Tabletop from "../../../components/tables/tabletop";
+import IconMap from "../../../components/iconMap/IconMap";
+import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
+import AddEditInventory from "./AddEditInventory";
+import DeleteConfirm from "../../../components/confirm/deleteConfirm";
+import AddConfirm from "../../../components/confirm/addConfirm";
+import EditConfirm from "../../../components/confirm/editConfirm";
 
-const ManageInventory = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [startDate1, setStartDate1] = useState(new Date());
-  const options = [
-    { id: 1, text: "Choose Supplier", text: "Choose Product" },
-    { id: 2, text: "Supplier", text: "Supplier" },
-  ];
-  const [inputfilter, setInputfilter] = useState(false);
-
-  const togglefilter = (value) => {
-    setInputfilter(value);
-  };
-  const [data] = useState([
-    {
-      Name: "Macbook pro",
-      Sku: "PT001",
-      Category: "Computer",
-      Brand: "N/D",
-      Price: "1500.00",
-      Unit: "pc",
-      Instock: 1356,
-      image: Product1,
-    },
-    {
-      Name: "Orange",
-      amount: 36080,
-      Sku: "PT002",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "10.00",
-      Unit: "kg",
-      Instock: 131,
-      image: OrangeImage,
-    },
-    {
-      Name: "Pineapple",
-      Sku: "PT003",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "10.00",
-      Unit: "kg",
-      Instock: 131,
-      image: PineappleImage,
-    },
-    {
-      Name: "Strawberry",
-      Sku: "PT004",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "10.00",
-      Unit: "kg",
-      Instock: 100,
-      image: StawberryImage,
-    },
-    {
-      Name: "Sunglasses",
-      Sku: "PT005",
-      Category: "Accessories",
-      Brand: "N/D",
-      Price: "10.00",
-      Unit: "pc",
-      Instock: 100,
-      image: AvocatImage,
-    },
-    {
-      Name: "Unpaired gray",
-      Sku: "PT006",
-      Category: "Shoes",
-      Brand: "Adidas",
-      Price: "100.00",
-      Unit: "pc",
-      Instock: 50,
-      image: MacbookIcon,
-    },
-    {
-      Name: "Avocat",
-      Sku: "PT007",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 29,
-      image: Product7,
-    },
-    {
-      Name: "Banana",
-      Sku: "PT008",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 24,
-      image: Product8,
-    },
-    {
-      Name: "Earphones",
-      Sku: "PT009",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 11,
-      image: Product9,
-    },
-    {
-      Name: "Banana",
-      Sku: "PT010",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 24,
-      image: Product8,
-    },
-    {
-      Name: "Earphones",
-      Sku: "PT007",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 11,
-      image: Product9,
-    },
-    {
-      Name: "Unpaired gray",
-      Sku: "PT006",
-      Category: "Shoes",
-      Brand: "Adidas",
-      Price: "100.00",
-      Unit: "pc",
-      Instock: 50,
-      image: MacbookIcon,
-    },
-    {
-      Name: "Avocat",
-      Sku: "PT007",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 29,
-      image: Product7,
-    },
-    {
-      Name: "Banana",
-      Sku: "PT008",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 24,
-      image: Product8,
-    },
-    {
-      Name: "Earphones",
-      Sku: "PT009",
-      Category: "Fruits",
-      Brand: "N/D",
-      Price: "5.00",
-      Unit: "kg",
-      Instock: 11,
-      image: Product9,
-    },
-  ]);
+const ManageSuppliers = () => {
+  const childRef = useRef(null);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(""); 
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [initialValues, setInitialValues] = useState({});
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [refreshTable, setRefreshTable] = useState(true);
+  const [drawerTitle, setDrawerTitle] = useState('Add Supplier');
+  const [drawerButton, setDrawerButton] = useState('Submit');
 
   const columns = [
     {
       title: "Product Name",
-      dataIndex: "Name",
-      render: (text, record) => (
-        <div className="productimgname">
-          <Link to="#" className="product-img">
-            <img src={record.image} alt="product" />
-          </Link>
-          <Link to="#">{text}</Link>
-        </div>
-      ),
-      sorter: (a, b) => a.Name.length - b.Name.length,
-    },
-    {
-      title: "SKU",
-      dataIndex: "Sku",
-      sorter: (a, b) => a.Sku.length - b.Sku.length,
+      dataIndex: "company_name",
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
       title: "Category",
-      dataIndex: "Category",
-      sorter: (a, b) => a.Category.length - b.Category.length,
+      dataIndex: "rep_name",
+      sorter: (a, b) => a.id.localeCompare(b.id),
     },
     {
-      title: "Brand",
-      dataIndex: "Brand",
-      sorter: (a, b) => a.Brand.length - b.Brand.length,
+      title: "Quantity in Stock",
+      dataIndex: "phone",
+      sorter: (a, b) => a.phone.localeCompare(b.phone),
     },
     {
-      title: "Price",
-      dataIndex: "Price",
-      sorter: (a, b) => a.Price.length - b.Price.length,
+      title: "Cost Price",
+      dataIndex: "email",
+      sorter: (a, b) => a.email.localeCompare(b.email),
     },
     {
-      title: "Unit",
-      dataIndex: "Unit",
-      sorter: (a, b) => a.Unit.length - b.Unit.length,
+      title: "Supplier",
+      dataIndex: "address",
     },
     {
-      title: "Instock QTY",
-      dataIndex: "Instock",
-      sorter: (a, b) => a.Instock.length - b.Instock.length,
+      title: "Added By",
+      dataIndex: "created_by",
+      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
+    },
+    {
+      title: "Action",
+      render: (text,record) => (
+        <>
+          <Link className="me-3" to="#" onClick={() => editData(record)}>
+            {IconMap('AiOutlineEdit',null,null,24)}
+          </Link>
+          <Link className="confirm-text" to="#" onClick={() => {
+            DeleteConfirm({ collection:'Suppliers',record:record.id, updateTable})
+          }}>
+            {IconMap('FiTrash2',"text-danger",null,24)}
+          </Link>
+        </>
+      ),
     },
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedData = await fetchSuppliersData();  
+        if (fetchedData) {
+          // Filter the data based on the searchQuery
+          const filteredData = fetchedData.filter((item) =>
+            item.company_name.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+  
+          setData(filteredData);
+          setRefreshTable(false);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setRefreshTable(false);
+      }
+    };
+  
+    fetchData();
+  }, [refreshTable, searchQuery]);
+
+  const handleOpenDrawer = () => {
+    setOpenDrawer(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  };
+  
+  const handleCloseDrawer = ()=>{
+    setIsUpdate(false);
+    setOpenDrawer(false);
+  }
+
+  const handleDrawerSubmit = async () => {
+    setIsLoading(true);
+
+    if (childRef.current) {
+      const validation = await childRef.current.formSubmit();
+      if (validation.success) {
+        console.log('validation.data :::: ', validation.data)
+        if (isUpdate) {
+          EditConfirm({ collection: 'Suppliers', id: initialValues.id, record: validation.data, updateTable, handleCloseDrawer });
+        } else {
+          AddConfirm({ collection: 'Suppliers', data: validation.data, updateTable, handleCloseDrawer, dataPrefix:'SP' });
+        }
+      } else {
+        setIsLoading(false);
+        console.error('Form validation error:', validation.error);
+      }
+    }
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setRefreshTable(true); // Activate table reload when searching
+  };
+
+  const updateTable = () => {
+    setRefreshTable(true);
+    setTimeout(() => setRefreshTable(false), 0);
+  };
+  
+  const addData = async()=>{
+    setIsLoading(true);
+    
+    setDrawerTitle('Add Supplier');
+    setDrawerButton('Submit');
+    setIsUpdate(false);
+    handleOpenDrawer();
+
+  }
+
+  const editData = async (rowData) => {
+    setDrawerTitle('Edit Supplier');
+    setDrawerButton('Update');
+    setInitialValues(rowData);
+    setIsUpdate(true);
+    handleOpenDrawer();
+  };
 
   return (
     <div className="page-wrapper">
       <div className="content">
         <div className="page-header">
           <div className="page-title">
-            <h4>Inventory Report</h4>
-            <h6>Manage your Inventory Report</h6>
+            <h4>Supplier List </h4>
+            <h6>View/Search suppliers</h6>
+          </div>
+          <div className="page-btn">
+            <Link
+              to="#"
+              className="btn btn-added"
+              onClick={() => {
+                // setDrawerTitle('Add Supplier');
+                // setDrawerButton('Submit');
+                // setInitialValues({});
+                // handleOpenDrawer();
+                addData();
+              }}
+            >
+              {IconMap('AiOutlinePlus', 'me-1', null, 24)}
+              Add Supplier
+            </Link>
           </div>
         </div>
-        {/* /product list */}
         <div className="card">
           <div className="card-body">
-            <div className="table-top">
-              <div className="search-set">
-                <div className="search-path">
-                  <a
-                    className={` btn ${
-                      inputfilter ? "btn-filter setclose" : "btn-filter"
-                    } `}
-                    id="filter_search"
-                    onClick={() => togglefilter(!inputfilter)}
-                  >
-                    <img src={Filter} alt="img" />
-                    <span>
-                      <img src={ClosesIcon} alt="img" />
-                    </span>
-                  </a>
-                </div>
-                <div className="search-input">
-                  <input
-                    className="form-control form-control-sm search-icon"
-                    type="text"
-                    placeholder="Search..."
-                  />
-                  <a className="btn btn-searchset">
-                    <img src={Search} alt="img" />
-                  </a>
-                </div>
-              </div>
-              <div className="wordset">
-                <ul>
-                  <li>
-                    <a
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="pdf"
-                    >
-                      <img src={Pdf} alt="img" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="excel"
-                    >
-                      <img src={Excel} alt="img" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="print"
-                    >
-                      <img src={Printer} alt="img" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            {/* /Filter */}
-            <div
-              className={`card mb-0 ${inputfilter ? "toggleCls" : ""}`}
-              id="filter_inputs"
-              style={{ display: inputfilter ? "block" : "none" }}
-            >
-              <div className="card-body pb-0">
-                <div className="row">
-                  <div className="col-lg-2 col-sm-6 col-12">
-                    <div className="form-group">
-                      <div className="input-groupicon">
-                        <DatePicker
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                        />
-                        <div className="addonset">
-                          <img src={Calendar} alt="img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-2 col-sm-6 col-12">
-                    <div className="form-group">
-                      <div className="input-groupicon">
-                        <DatePicker
-                          selected={startDate1}
-                          onChange={(date) => setStartDate1(date)}
-                        />
-                        <div className="addonset">
-                          <img src={Calendar} alt="img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-2 col-sm-6 col-12">
-                    <div className="form-group">
-                      <Select2
-                        className="select"
-                        data={options}
-                        options={{
-                          placeholder: "Choose Suppliers",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-lg-1 col-sm-6 col-12 ms-auto">
-                    <div className="form-group">
-                      <a className="btn btn-filters ms-auto">
-                        <img src={search_whites} alt="img" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* /Filter */}
+            <Tabletop onSearch={handleSearch}/>
             <div className="table-responsive">
-              <Table columns={columns} dataSource={data} />
+              <Table
+                columns={columns}
+                data={data}
+                reloadTable={refreshTable}
+                collectionName="Suppliers"
+              />
             </div>
           </div>
         </div>
-        {/* /product list */}
       </div>
+      {openDrawer && (
+        <CoffeeDrawer
+          open={openDrawer}
+          handleOk={handleDrawerSubmit}
+          title={drawerTitle}
+          isLoading={isLoading}
+          body={
+            <AddEditInventory
+              initialValues={initialValues}
+              ref={childRef}
+              isUpdate={isUpdate}
+            />
+          }
+          closable={false}
+          close={handleCloseDrawer}
+          footer={
+            <>
+              <Button
+                type="submit"
+                className="btn btn-submit me-2"
+                onClick={handleDrawerSubmit}
+              >
+                {drawerButton}
+              </Button>
+              <Button
+                className="btn btn-cancel"
+                onClick={() => handleCloseDrawer()}
+              >
+                Cancel
+              </Button>
+            </>
+          }
+        />
+      )}
     </div>
   );
 };
 
-export default ManageInventory;
+export default ManageSuppliers;

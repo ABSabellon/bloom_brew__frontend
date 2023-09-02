@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Table from "../../../components/tables/datatable";
-import Tabletop from "../../../components/tables/tabletop"
+import Table from "../../../../components/tables/datatable";
+import Tabletop from "../../../../components/tables/tabletop"
 import { Link } from "react-router-dom";
 import Select2 from "react-select2-wrapper";
 import "react-select2-wrapper/css/select2.css";
@@ -21,7 +21,7 @@ import {
   Bruklin,
   Beverly,
   search_whites,
-} from "../../../components/imagePath/imagePath";
+} from "../../../../components/imagePath/imagePath";
 
 const ManageUsers = () => {
   const [inputfilter, setInputfilter] = useState(false);

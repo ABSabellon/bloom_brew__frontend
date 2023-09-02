@@ -9,7 +9,7 @@ const validator = {
   require: { required: true, message: "Required" },
 };
 
-const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
+const AddEditCategory = forwardRef(({ initialValues, isUpdate }, ref) => {
   const [form] = Form.useForm();
 
   // Expose the formSubmit function to the parent component
@@ -17,7 +17,6 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
     formSubmit: async () => {
       try {
         const formValues = await validateForm();
-        const isUpdate = await Object.keys(initialValues).length > 0; // Check if initialValues exist
 
         let tempData = {
           name: formValues.category_name,
@@ -51,7 +50,8 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
   
   useEffect(() => {
     form.resetFields();
-    if (initialValues) {
+    if (isUpdate) {
+      // console.log('initialValues ::: ', initialValues)
       form.setFieldsValue({
         category_name: initialValues.name,
         category_description: initialValues.description,
@@ -64,7 +64,7 @@ const AddEditCategory = forwardRef(({ initialValues, dataSource }, ref) => {
     <>
       <Form 
         size="large" 
-        name="user_login" 
+        name={isUpdate ? "editing_category_form" : "adding_category_form"} 
         className="row ogin-form" 
         layout="vertical" 
         form={form}

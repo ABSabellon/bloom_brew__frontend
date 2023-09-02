@@ -15,6 +15,7 @@ import { ImageViewer } from "../../../EntryFile/Utilities/imageUtils";
 const ManageMenu = () => {
   const AddEditMenuRef = useRef(null);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(""); 
   const [isUpdate, setIsUpdate] = useState(false);
   const [initialValues, setInitialValues] = useState({});
   const [data, setData] = useState([]);
@@ -92,10 +93,14 @@ const ManageMenu = () => {
 
   const fetchData = async () => {
     try {
-      const fetcheData = await fetchMenuData();
-      console.log('fetcheData', fetcheData)
-      if(fetcheData){
-        setData(fetcheData)
+      const fetchedData = await fetchMenuData();
+      if(fetchedData){
+
+        const filteredData = fetchedData.filter((item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        setData(filteredData)
         setRefreshTable(false);
         setIsLoading(false);
       }
@@ -119,7 +124,7 @@ const ManageMenu = () => {
 
   useEffect(() => {
     fetchData();
-  }, [refreshTable]);
+  }, [refreshTable, searchQuery]);
 
   const handleOpenDrawer = () => {
     setOpenDrawer(true);
@@ -163,6 +168,11 @@ const ManageMenu = () => {
         console.error('Form validation error:', validation.error);
       }
     }
+  };
+  
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setRefreshTable(true); // Activate table reload when searching
   };
 
   const updateTable = () => {
@@ -225,7 +235,7 @@ const ManageMenu = () => {
         </div>
         <div className="card">
           <div className="card-body">
-            <Tabletop />
+            <Tabletop onSearch={handleSearch}/>
             <div className="table-responsive">
               <Table
                 columns={columns}

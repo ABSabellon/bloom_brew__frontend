@@ -4,8 +4,8 @@ import ManageSales from './ManageSales/ManageSales';
 import ManageMenu from './ManageMenu/ManageMenu';
 import ManageCategory from './ManageCategories/ManageCategory';
 import ManageInventory from './ManageInventory/ManageInventory';
-import ManageUsers from './ManagePeople/ManageUsers';
-import ManageSuppliers from './ManagePeople/ManageSuppliers';
+import ManageUsers from './ManagePeople/ManageUsers/ManageUsers';
+import ManageSuppliers from './ManagePeople/ManageSuppliers/ManageSuppliers';
 
 
 
@@ -21,8 +21,8 @@ const ManageIndex = ({ match}) =>(
         <Route path={`${match.url}/menu-categories`} component={ManageCategory} />
         <Route path={`${match.url}/inventory-manage`} component={ManageInventory} />
         <Route path={`${match.url}/inventory-categories`} component={ManageCategory} />
-        <Route path={`${match.url}/users-manage`} component={ManageUsers} />
-        <Route path={`${match.url}/suppliers-manage`} component={ManageSuppliers} />
+        <Route path={`${match.url}/people-users`} component={ManageUsers} />
+        <Route path={`${match.url}/people-suppliers`} component={ManageSuppliers} />
     </Switch>
 )
 

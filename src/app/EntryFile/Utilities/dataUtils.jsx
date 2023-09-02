@@ -5,9 +5,9 @@ import { formatPrice } from "./priceUtils";
 
 // Function to fetch the category name based on category_id
 const fetchCategoryName = async (categoryId) => {
-  const categoryDataHandler = new DataHandlingService('Categories');
+  const dataHandler = new DataHandlingService('Categories');
   try {
-    const categoryData = await categoryDataHandler.fetchFromId(categoryId);
+    const categoryData = await dataHandler.fetchFromId(categoryId);
     return categoryData;
   } catch (error) {
     console.error("Error fetching category data:", error);
@@ -62,6 +62,16 @@ export const fetchMenuData = async () => {
   }
 };
 
+export const fetchSuppliersData = async () =>{
+  const dataHandler = new DataHandlingService('Suppliers');
+  try {
+    const suppliersData = await dataHandler.getData();
+    return suppliersData;
+  } catch (error) {
+    console.error("Error fetching suppliers data:", error);
+    return null;
+  }
+}
 
 export const fetchCategoryOptionData = async (fieldType) => {
   try {

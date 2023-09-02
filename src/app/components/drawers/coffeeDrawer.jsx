@@ -8,7 +8,7 @@ const CoffeeDrawer = ({
 }) => {
   const [drawerWidth, setDrawerWidth] = useState("30%"); // Default width, adjust as needed
 
-  console.log('::: openDrawer ::: ', open)
+  // console.log('::: openDrawer ::: ', open)
   // Update Drawer width based on screen size
   useEffect(() => {
     const handleResize = () => {

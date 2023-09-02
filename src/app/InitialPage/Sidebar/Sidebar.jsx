@@ -31,12 +31,15 @@ const Sidebar = (props) => {
           {title: 'Products', icon: null, path:'menu-manage', link:'/admin/manage/menu-manage'},
           { title: 'Categories', icon: null, path:'menu-categories', link:  '/admin/manage/menu-categories' },
         ]},
-        // { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
-        //   {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
-        //   { title: 'Categories', icon: null, path:'inventory-categories', link:  '/admin/manage/inventory-categories' },
-        // ]},
-        // { title: 'Users', icon: IconMap('FaUsersCog',null,null,24), path:'users-manage', link: '/admin/manage/users-manage'},
-        // { title: 'Suppliers', icon: IconMap('FaUserCog',null,null,24), path:'suppliers-manage', link: '/admin/manage/suppliers-manage' }, 
+        { title: 'Manage Inventory', icon: IconMap('AiOutlineInbox',null,null,24), path:'inventory-', link: '#', submenu_children:[
+          {title: 'Products', icon: null, path:'inventory-manage', link:'/admin/manage/inventory-manage'},
+          { title: 'Categories', icon: null, path:'inventory-categories', link:  '/admin/manage/inventory-categories' },
+        ]},
+        { title: 'Manage People', icon: IconMap('FaUserCog',null,null,24),path:'people-', link: '#', submenu_children:[
+          {title: 'Suppliers', icon: null, path:'people-suppliers', link:'/admin/manage/people-suppliers'},
+          // { title: 'Users', icon: null, path:'people-users', link:  '/admin/manage/people-users' },
+        ]},
+        
       ]
     },
     // { 
@@ -61,7 +64,7 @@ const Sidebar = (props) => {
   ];
 
   const toggleSidebar = (value) => {
-    console.log('ToggleSlider ::: ', value)
+    // console.log('ToggleSlider ::: ', value)
     setSideMenu(value);
   };
   const expandMenu = () => {

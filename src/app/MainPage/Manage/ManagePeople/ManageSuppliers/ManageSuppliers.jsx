@@ -1,51 +1,56 @@
 import React, { useState, useRef, useEffect } from "react";
+import { fetchSuppliersData } from "../../../../EntryFile/Utilities/dataUtils";
 import { Button } from "react-bootstrap";
-import Table from "../../../components/tables/datatable";
+import Table from "../../../../components/tables/datatable";
 import { Link } from "react-router-dom";
-import Tabletop from "../../../components/tables/tabletop";
-import IconMap from "../../../components/iconMap/IconMap";
-import CoffeeDrawer from "../../../components/drawers/coffeeDrawer";
-import AddEditCategory from "./AddEditCategory";
-import DeleteConfirm from "../../../components/confirm/deleteConfirm";
-import AddConfirm from "../../../components/confirm/addConfirm";
-import EditConfirm from "../../../components/confirm/editConfirm";
-import DataHandlingService from "../../../EntryFile/Services/DataHandlingService";
+import Tabletop from "../../../../components/tables/tabletop";
+import IconMap from "../../../../components/iconMap/IconMap";
+import CoffeeDrawer from "../../../../components/drawers/coffeeDrawer";
+import AddEditSupplier from "./AddEditSupplier";
+import DeleteConfirm from "../../../../components/confirm/deleteConfirm";
+import AddConfirm from "../../../../components/confirm/addConfirm";
+import EditConfirm from "../../../../components/confirm/editConfirm";
+import DataHandlingService from "../../../../EntryFile/Services/DataHandlingService";
 
-const ManageCategory = () => {
+const ManageSuppliers = () => {
   const childRef = useRef(null);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [initialValues, setInitialValues] = useState({});
   const [searchQuery, setSearchQuery] = useState(""); 
   const [isUpdate, setIsUpdate] = useState(false);
+  const [initialValues, setInitialValues] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refreshTable, setRefreshTable] = useState(true);
-  const [drawerTitle, setDrawerTitle] = useState('Add Category');
+  const [drawerTitle, setDrawerTitle] = useState('Add Supplier');
   const [drawerButton, setDrawerButton] = useState('Submit');
 
   const columns = [
     {
-      title: "Category Name",
-      dataIndex: "name",
+      title: "Company",
+      dataIndex: "company_name",
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
-      title: "Category Code",
-      dataIndex: "id",
+      title: "Representative Name",
+      dataIndex: "rep_name",
       sorter: (a, b) => a.id.localeCompare(b.id),
     },
     {
-      title: "Description",
-      dataIndex: "description",
-      render: text => {
-        if (text.length > 40) {
-          return `${text.substring(0, 40)}...`;
-        }
-        return text;
-      },
+      title: "Phone",
+      dataIndex: "phone",
+      sorter: (a, b) => a.phone.localeCompare(b.phone),
     },
     {
-      title: "Created By",
+      title: "Email",
+      dataIndex: "email",
+      sorter: (a, b) => a.email.localeCompare(b.email),
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+    },
+    {
+      title: "Added By",
       dataIndex: "created_by",
       sorter: (a, b) => a.createdBy.length - b.createdBy.length,
     },
@@ -57,7 +62,7 @@ const ManageCategory = () => {
             {IconMap('AiOutlineEdit',null,null,24)}
           </Link>
           <Link className="confirm-text" to="#" onClick={() => {
-            DeleteConfirm({ collection:'Categories',record:record.id, updateTable})
+            DeleteConfirm({ collection:'Suppliers',record:record.id, updateTable})
           }}>
             {IconMap('FiTrash2',"text-danger",null,24)}
           </Link>
@@ -69,24 +74,22 @@ const ManageCategory = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dataHandler = new DataHandlingService('Categories');
-        const fetchedData = await dataHandler.fetchDataWithQuery('type', '==', window.location.href.includes("inventory-") ? 'inventory' : 'menu');
-        if(fetchedData){
-
+        const fetchedData = await fetchSuppliersData();  
+        if (fetchedData) {
+          // Filter the data based on the searchQuery
           const filteredData = fetchedData.filter((item) =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase())
+            item.company_name.toLowerCase().includes(searchQuery.toLowerCase())
           );
-
+  
           setData(filteredData);
           setRefreshTable(false);
         }
-        
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
         setRefreshTable(false);
       }
     };
-
+  
     fetchData();
   }, [refreshTable, searchQuery]);
 
@@ -97,7 +100,6 @@ const ManageCategory = () => {
     }, 3000);
   };
   
-  
   const handleCloseDrawer = ()=>{
     setIsUpdate(false);
     setOpenDrawer(false);
@@ -105,13 +107,15 @@ const ManageCategory = () => {
 
   const handleDrawerSubmit = async () => {
     setIsLoading(true);
+
     if (childRef.current) {
       const validation = await childRef.current.formSubmit();
       if (validation.success) {
+        console.log('validation.data :::: ', validation.data)
         if (isUpdate) {
-          EditConfirm({ collection: 'Categories', id: initialValues.id, record: validation.data, updateTable, handleCloseDrawer });
+          EditConfirm({ collection: 'Suppliers', id: initialValues.id, record: validation.data, updateTable, handleCloseDrawer });
         } else {
-          AddConfirm({ collection: 'Categories', data: validation.data, updateTable, handleCloseDrawer,dataPrefix:'CT' });
+          AddConfirm({ collection: 'Suppliers', data: validation.data, updateTable, handleCloseDrawer, dataPrefix:'SP' });
         }
       } else {
         setIsLoading(false);
@@ -119,7 +123,7 @@ const ManageCategory = () => {
       }
     }
   };
-  
+
   const handleSearch = (query) => {
     setSearchQuery(query);
     setRefreshTable(true); // Activate table reload when searching
@@ -129,11 +133,11 @@ const ManageCategory = () => {
     setRefreshTable(true);
     setTimeout(() => setRefreshTable(false), 0);
   };
-
+  
   const addData = async()=>{
     setIsLoading(true);
     
-    setDrawerTitle('Add Category');
+    setDrawerTitle('Add Supplier');
     setDrawerButton('Submit');
     setIsUpdate(false);
     handleOpenDrawer();
@@ -141,7 +145,7 @@ const ManageCategory = () => {
   }
 
   const editData = async (rowData) => {
-    setDrawerTitle('Edit Category');
+    setDrawerTitle('Edit Supplier');
     setDrawerButton('Update');
     setInitialValues(rowData);
     setIsUpdate(true);
@@ -153,15 +157,15 @@ const ManageCategory = () => {
       <div className="content">
         <div className="page-header">
           <div className="page-title">
-            <h4>Product Category List </h4>
-            <h6>View/Search product Category</h6>
+            <h4>Supplier List </h4>
+            <h6>View/Search suppliers</h6>
           </div>
           <div className="page-btn">
             <Link
               to="#"
               className="btn btn-added"
               onClick={() => {
-                // setDrawerTitle('Add Category');
+                // setDrawerTitle('Add Supplier');
                 // setDrawerButton('Submit');
                 // setInitialValues({});
                 // handleOpenDrawer();
@@ -169,7 +173,7 @@ const ManageCategory = () => {
               }}
             >
               {IconMap('AiOutlinePlus', 'me-1', null, 24)}
-              Add Category
+              Add Supplier
             </Link>
           </div>
         </div>
@@ -181,46 +185,48 @@ const ManageCategory = () => {
                 columns={columns}
                 data={data}
                 reloadTable={refreshTable}
-                collectionName="Categories"
+                collectionName="Suppliers"
               />
             </div>
           </div>
         </div>
       </div>
-      <CoffeeDrawer
-        open={openDrawer}
-        handleOk={handleDrawerSubmit}
-        title={drawerTitle}
-        isLoading={isLoading}
-        body={
-          <AddEditCategory
-            initialValues={initialValues}
-            ref={childRef}
-            isUpdate={isUpdate}
-          />
-        }
-        closable={false}
-        close={handleCloseDrawer}
-        footer={
-          <>
-            <Button
-              type="submit"
-              className="btn btn-submit me-2"
-              onClick={handleDrawerSubmit}
-            >
-              {drawerButton}
-            </Button>
-            <Button
-              className="btn btn-cancel"
-              onClick={() => handleCloseDrawer()}
-            >
-              Cancel
-            </Button>
-          </>
-        }
-      />
+      {openDrawer && (
+        <CoffeeDrawer
+          open={openDrawer}
+          handleOk={handleDrawerSubmit}
+          title={drawerTitle}
+          isLoading={isLoading}
+          body={
+            <AddEditSupplier
+              initialValues={initialValues}
+              ref={childRef}
+              isUpdate={isUpdate}
+            />
+          }
+          closable={false}
+          close={handleCloseDrawer}
+          footer={
+            <>
+              <Button
+                type="submit"
+                className="btn btn-submit me-2"
+                onClick={handleDrawerSubmit}
+              >
+                {drawerButton}
+              </Button>
+              <Button
+                className="btn btn-cancel"
+                onClick={() => handleCloseDrawer()}
+              >
+                Cancel
+              </Button>
+            </>
+          }
+        />
+      )}
     </div>
   );
 };
 
-export default ManageCategory;
+export default ManageSuppliers;
